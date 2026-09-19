@@ -1514,8 +1514,7 @@
       function selectRegion(id, el) {
         const r = regions[id];
         if (!r) return;
-        $$(".zone").forEach(z => z.classList.remove("active"));
-        if (el) el.classList.add("active");
+        $$(".zone").forEach(z => z.classList.toggle("active", z.dataset.region === id));
         const card = $("#regionCard");
         card.classList.add("show");
         card.classList.toggle("wet-card", r.wet);
