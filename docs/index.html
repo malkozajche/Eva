@@ -182,23 +182,164 @@
     .float-chip.b { top: 18%; right: 0; animation-delay: 0.8s; background: #fff; }
     .float-chip.c { bottom: 12%; left: 8%; animation-delay: 1.2s; }
 
-    /* Nav tabs */
-    .tabs {
-      display: flex; gap: 0.4rem; overflow-x: auto; padding: 0.5rem 0 1rem;
-      scrollbar-width: none;
+    /* Learning layout + chapter nav */
+    .learn-layout {
+      display: grid; gap: 1rem;
+      grid-template-columns: 1fr;
+      align-items: start;
     }
-    .tabs::-webkit-scrollbar { display: none; }
-    .tab {
-      flex: 0 0 auto; border: none; cursor: pointer;
-      font-family: var(--font-display); font-weight: 600;
-      padding: 0.55rem 1rem; border-radius: 999px; font-size: 0.95rem;
-      background: rgba(255,255,255,0.55); color: var(--ocean-deep);
-      transition: background 0.15s, color 0.15s;
+    @media (min-width: 900px) {
+      .learn-layout { grid-template-columns: 240px 1fr; gap: 1.25rem; }
     }
-    .tab.active {
+    .side-nav {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1rem 0.85rem;
+      box-shadow: var(--shadow);
+      border: 2px solid rgba(8, 76, 97, 0.06);
+      position: sticky; top: 0.75rem;
+    }
+    .side-nav .nav-group {
+      margin-bottom: 0.85rem;
+    }
+    .side-nav .nav-group:last-child { margin-bottom: 0; }
+    .side-nav .nav-label {
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em;
+      text-transform: uppercase; color: #5a7380;
+      padding: 0 0.55rem; margin-bottom: 0.35rem;
+    }
+    .side-nav .tab {
+      width: 100%; display: flex; align-items: center; gap: 0.55rem;
+      border: none; cursor: pointer; text-align: left;
+      font-family: var(--font-display); font-weight: 600; font-size: 0.95rem;
+      padding: 0.65rem 0.7rem; border-radius: 14px;
+      background: transparent; color: var(--ocean-deep);
+      transition: background 0.15s, color 0.15s, transform 0.15s;
+    }
+    .side-nav .tab .ico {
+      width: 34px; height: 34px; border-radius: 10px;
+      display: grid; place-items: center; font-size: 1.05rem;
+      background: #dff5f1; flex: 0 0 auto;
+    }
+    .side-nav .tab:hover { background: rgba(8, 76, 97, 0.06); }
+    .side-nav .tab.active {
       background: var(--ocean-deep); color: white;
     }
-    .tab .lock { opacity: 0.55; margin-left: 0.2rem; }
+    .side-nav .tab.active .ico { background: rgba(255,255,255,0.18); }
+
+    /* Mobile: horizontal chapter chips under path bar */
+    @media (max-width: 899px) {
+      .side-nav {
+        position: relative; top: 0; padding: 0.75rem;
+        display: flex; flex-direction: column; gap: 0.35rem;
+      }
+      .side-nav .nav-groups {
+        display: flex; gap: 0.45rem; overflow-x: auto;
+        padding-bottom: 0.15rem; scrollbar-width: thin;
+      }
+      .side-nav .nav-group { margin: 0; flex: 0 0 auto; }
+      .side-nav .nav-label { display: none; }
+      .side-nav .tab {
+        width: auto; padding: 0.45rem 0.7rem;
+        background: rgba(8, 76, 97, 0.06);
+      }
+      .side-nav .tab .ico { width: 28px; height: 28px; font-size: 0.95rem; }
+      .side-nav .tab .tab-text { display: none; }
+      .side-nav .tab.active .tab-text { display: inline; }
+    }
+
+    .path-bar {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 0.65rem; margin-bottom: 0.85rem;
+      padding: 0.75rem 1rem; border-radius: 16px;
+      background: linear-gradient(135deg, #dff5f1, #fff7eb);
+      border: 2px solid rgba(8, 76, 97, 0.06);
+    }
+    .path-bar .now {
+      font-family: var(--font-display); font-weight: 700; color: var(--ocean-deep);
+      font-size: 1.05rem;
+    }
+    .path-bar .steps {
+      font-size: 0.85rem; font-weight: 800; color: #5a7380;
+    }
+    .path-actions { display: flex; gap: 0.45rem; flex-wrap: wrap; }
+
+    .voice-panel {
+      display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;
+    }
+    .voice-panel select {
+      font-family: var(--font-body); font-weight: 700; font-size: 0.8rem;
+      border: 2px solid rgba(8, 76, 97, 0.12); background: var(--card);
+      border-radius: 999px; padding: 0.4rem 0.7rem; max-width: 160px;
+      color: var(--ocean-deep);
+    }
+
+    /* Visual path on home */
+    .journey {
+      margin-top: 1.75rem; padding-top: 0.5rem;
+    }
+    .journey h2 {
+      font-family: var(--font-display); color: var(--ocean-deep);
+      font-size: 1.4rem; margin-bottom: 0.35rem;
+    }
+    .journey-grid {
+      display: grid; gap: 0.75rem;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      margin-top: 0.85rem;
+    }
+    .station {
+      border: none; cursor: pointer; text-align: left;
+      background: var(--card); border-radius: 18px; padding: 1rem 0.9rem;
+      box-shadow: var(--shadow); border: 2px solid rgba(8, 76, 97, 0.06);
+      transition: transform 0.15s, border-color 0.15s;
+      min-height: 132px;
+      display: flex; flex-direction: column; gap: 0.35rem;
+    }
+    .station:hover { transform: translateY(-3px); border-color: var(--ocean); }
+    .station .st-ico {
+      width: 48px; height: 48px; border-radius: 14px;
+      display: grid; place-items: center; font-size: 1.5rem;
+      background: linear-gradient(145deg, #dff5f1, #fff7eb);
+    }
+    .station .st-title {
+      font-family: var(--font-display); font-weight: 700;
+      color: var(--ocean-deep); font-size: 1.05rem;
+    }
+    .station .st-sub { font-size: 0.82rem; color: #5a7380; font-weight: 700; line-height: 1.3; }
+    .station .st-num {
+      font-size: 0.72rem; font-weight: 800; color: var(--coral);
+      letter-spacing: 0.04em; text-transform: uppercase;
+    }
+
+    .compare-visual {
+      display: grid; gap: 0.75rem; margin: 1rem 0;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 700px) {
+      .compare-visual { grid-template-columns: 1fr 1fr; }
+    }
+    .compare-tile {
+      border-radius: 18px; padding: 1rem; min-height: 160px;
+      position: relative; overflow: hidden;
+      border: 2px solid rgba(8, 76, 97, 0.08);
+    }
+    .compare-tile.normal {
+      background: linear-gradient(160deg, #9ed4ef 0%, #177e89 70%);
+      color: white;
+    }
+    .compare-tile.elnino {
+      background: linear-gradient(160deg, #ffc857 0%, #ff6b5a 75%);
+      color: white;
+    }
+    .compare-tile h3 {
+      font-family: var(--font-display); font-size: 1.15rem; margin-bottom: 0.45rem;
+    }
+    .compare-tile ul { margin-left: 1.1rem; line-height: 1.45; font-weight: 700; font-size: 0.92rem; }
+    .compare-tile .big-emoji {
+      position: absolute; right: 0.6rem; bottom: 0.2rem;
+      font-size: 3.2rem; opacity: 0.35; pointer-events: none;
+    }
+
 
     /* Panels */
     .panel {
@@ -629,7 +770,12 @@
       <div class="hud">
         <div class="pill stars" title="Sterne">⭐ <span id="starCount">0</span></div>
         <div class="pill score" title="Punkte">🏆 <span id="scoreCount">0</span></div>
-        <button type="button" class="icon-btn" id="voiceToggle" title="Stimme an/aus" aria-label="Stimme an- oder ausschalten">🔊</button>
+        <div class="voice-panel">
+          <select id="voiceSelect" title="Stimme wählen" aria-label="Deutsche Stimme wählen">
+            <option value="">Stimme…</option>
+          </select>
+          <button type="button" class="icon-btn" id="voiceToggle" title="Stimme an/aus" aria-label="Stimme an- oder ausschalten">🔊</button>
+        </div>
       </div>
     </header>
 
@@ -643,7 +789,7 @@
             Hier lernst du das mit Simulator, Karten, Weltkarte und Challenges.
           </p>
           <div class="cta-row">
-            <button type="button" class="btn btn-primary" data-go="learn" id="startBtn">Los geht’s 🚀</button>
+            <button type="button" class="btn btn-primary" id="startBtn">Los geht’s 🚀</button>
             <button type="button" class="btn btn-secondary" id="introVoice">Erzähl mir’s 🎤</button>
             <button type="button" class="btn btn-ghost" data-go="faq">Zuerst FAQ (für Einsteiger)</button>
           </div>
@@ -656,21 +802,70 @@
           <div class="float-chip c">Weihnachten 🎄</div>
         </div>
       </div>
+
+      <div class="journey">
+        <h2>Dein Lernweg – tippe eine Station</h2>
+        <p class="muted">Alles an einem Ort. Von links nach rechts – oder springe dahin, wo du bist.</p>
+        <div class="journey-grid" id="journeyGrid"></div>
+        <div class="compare-visual" aria-hidden="true">
+          <div class="compare-tile normal">
+            <h3>Normaljahr</h3>
+            <ul>
+              <li>Starker Wind Ost → West</li>
+              <li>Warmes Wasser bei Asien</li>
+              <li>Peru eher trocken</li>
+            </ul>
+            <div class="big-emoji">🌬️</div>
+          </div>
+          <div class="compare-tile elnino">
+            <h3>El Niño</h3>
+            <ul>
+              <li>Wind wird schwach</li>
+              <li>Warmes Wasser nach Peru</li>
+              <li>Asien oft zu trocken</li>
+            </ul>
+            <div class="big-emoji">🌪️</div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- APP SHELL with tabs -->
+    <!-- APP SHELL with chapter nav -->
     <section class="screen" id="screen-app" aria-label="Lernen">
-      <nav class="tabs" role="tablist" aria-label="Abschnitte">
-        <button type="button" class="tab active" data-tab="learn" role="tab">📖 Lernen</button>
-        <button type="button" class="tab" data-tab="faq" role="tab">❓ FAQ</button>
-        <button type="button" class="tab" data-tab="cards" role="tab">🃏 Karten</button>
-        <button type="button" class="tab" data-tab="map" role="tab">🗺️ Weltkarte</button>
-        <button type="button" class="tab" data-tab="sort" role="tab">🧩 Sortieren</button>
-        <button type="button" class="tab" data-tab="climate" role="tab">📊 Klima</button>
-        <button type="button" class="tab" data-tab="quiz" role="tab">⚡ Quiz</button>
-        <button type="button" class="tab" data-tab="challenge" role="tab">🏆 Challenge</button>
-        <button type="button" class="tab" data-tab="exam" role="tab">📝 Klassenarbeit</button>
-      </nav>
+      <div class="learn-layout">
+        <aside class="side-nav" aria-label="Lernkapitel">
+          <div class="nav-groups">
+            <div class="nav-group">
+              <div class="nav-label">Start</div>
+              <button type="button" class="tab" data-tab="faq" role="tab"><span class="ico">❓</span><span class="tab-text">FAQ</span></button>
+              <button type="button" class="tab active" data-tab="learn" role="tab"><span class="ico">🌊</span><span class="tab-text">Simulator</span></button>
+            </div>
+            <div class="nav-group">
+              <div class="nav-label">Üben</div>
+              <button type="button" class="tab" data-tab="cards" role="tab"><span class="ico">🃏</span><span class="tab-text">Karten</span></button>
+              <button type="button" class="tab" data-tab="map" role="tab"><span class="ico">🗺️</span><span class="tab-text">Weltkarte</span></button>
+              <button type="button" class="tab" data-tab="sort" role="tab"><span class="ico">🧩</span><span class="tab-text">Sortieren</span></button>
+              <button type="button" class="tab" data-tab="climate" role="tab"><span class="ico">📊</span><span class="tab-text">Klima</span></button>
+            </div>
+            <div class="nav-group">
+              <div class="nav-label">Prüfen</div>
+              <button type="button" class="tab" data-tab="quiz" role="tab"><span class="ico">⚡</span><span class="tab-text">Quiz</span></button>
+              <button type="button" class="tab" data-tab="challenge" role="tab"><span class="ico">🏆</span><span class="tab-text">Challenge</span></button>
+              <button type="button" class="tab" data-tab="exam" role="tab"><span class="ico">📝</span><span class="tab-text">Klassenarbeit</span></button>
+            </div>
+          </div>
+        </aside>
+        <div class="main-col">
+          <div class="path-bar">
+            <div>
+              <div class="steps" id="pathSteps">Station 1 / 9</div>
+              <div class="now" id="pathNow">Simulator</div>
+            </div>
+            <div class="path-actions">
+              <button type="button" class="btn btn-ghost" id="pathPrev">← Zurück</button>
+              <button type="button" class="btn btn-primary" id="pathNext">Weiter →</button>
+            </div>
+          </div>
 
       <!-- LEARN -->
       <div class="tab-panel" id="tab-learn">
@@ -1466,6 +1661,8 @@
           <p class="muted" style="margin-top:1rem;">Gesamtpunkte: <strong>24</strong> &nbsp;·&nbsp; Empfohlene Zeit: ca. 25–30 Minuten</p>
         </div>
       </div>
+        </div><!-- /.main-col -->
+      </div><!-- /.learn-layout -->
     </section>
 
     <p class="foot">El Niño Akademie · zum Lernen aus dem Geografie-Unterricht</p>
@@ -1481,7 +1678,9 @@
 
       /* ---------- Voice ---------- */
       let voiceOn = state.voiceOn !== false;
+      let chosenVoiceURI = state.voiceURI || "";
       const voiceToggle = $("#voiceToggle");
+      const voiceSelect = $("#voiceSelect");
       syncVoiceBtn();
 
       function syncVoiceBtn() {
@@ -1490,22 +1689,74 @@
         voiceToggle.setAttribute("aria-pressed", String(voiceOn));
       }
 
+      function scoreVoice(v) {
+        const n = (v.name || "") + " " + (v.lang || "");
+        let s = 0;
+        if (/^de/i.test(v.lang)) s += 50;
+        if (/de-DE/i.test(v.lang)) s += 20;
+        if (/Google|Microsoft|Natural|Neural|Premium|Enhanced/i.test(n)) s += 40;
+        if (/Anna|Petra|Hedda|Katja|Greta|Helena|Serena|Flow|Online/i.test(n)) s += 25;
+        if (/female|frau|woman/i.test(n)) s += 10;
+        if (/Compact|Eloquence|eSpeak/i.test(n)) s -= 30;
+        return s;
+      }
+
+      function germanVoices() {
+        if (!window.speechSynthesis) return [];
+        return speechSynthesis.getVoices()
+          .filter(v => /^de/i.test(v.lang) || /german|deutsch/i.test(v.name))
+          .sort((a, b) => scoreVoice(b) - scoreVoice(a));
+      }
+
+      function pickVoice() {
+        const list = germanVoices();
+        if (!list.length) return null;
+        if (chosenVoiceURI) {
+          const hit = list.find(v => v.voiceURI === chosenVoiceURI);
+          if (hit) return hit;
+        }
+        return list[0];
+      }
+
+      function fillVoiceSelect() {
+        if (!voiceSelect) return;
+        const list = germanVoices();
+        const cur = chosenVoiceURI;
+        voiceSelect.innerHTML = "";
+        if (!list.length) {
+          const o = document.createElement("option");
+          o.value = ""; o.textContent = "Keine DE-Stimme";
+          voiceSelect.appendChild(o);
+          return;
+        }
+        list.forEach((v, i) => {
+          const o = document.createElement("option");
+          o.value = v.voiceURI;
+          const tag = /Google|Microsoft|Natural|Neural/i.test(v.name) ? " ★" : "";
+          o.textContent = (v.name.replace(/^Microsoft |^Google /i, "") + tag).slice(0, 28);
+          voiceSelect.appendChild(o);
+        });
+        voiceSelect.value = cur && list.some(v => v.voiceURI === cur) ? cur : list[0].voiceURI;
+        chosenVoiceURI = voiceSelect.value;
+        state.voiceURI = chosenVoiceURI;
+        saveState();
+      }
+
       function speak(text, opts = {}) {
         if (!voiceOn || !window.speechSynthesis) return;
         window.speechSynthesis.cancel();
         const u = new SpeechSynthesisUtterance(text);
         u.lang = "de-DE";
-        u.rate = opts.rate || 1.02;
-        u.pitch = opts.pitch || 1.08;
-        const voices = speechSynthesis.getVoices();
-        const de = voices.find(v => v.lang.startsWith("de") && /female|anna|petra|hedda|google/i.test(v.name))
-          || voices.find(v => v.lang.startsWith("de"));
-        if (de) u.voice = de;
+        u.rate = opts.rate || 0.98;
+        u.pitch = opts.pitch || 1.02;
+        const v = pickVoice();
+        if (v) { u.voice = v; u.lang = v.lang || "de-DE"; }
         speechSynthesis.speak(u);
       }
 
       if (window.speechSynthesis) {
-        speechSynthesis.onvoiceschanged = () => {};
+        fillVoiceSelect();
+        speechSynthesis.onvoiceschanged = () => fillVoiceSelect();
       }
 
       voiceToggle.addEventListener("click", () => {
@@ -1514,15 +1765,23 @@
         saveState();
         syncVoiceBtn();
         if (!voiceOn) speechSynthesis?.cancel();
-        else speak(voiceOn ? "Stimme an." : "");
+        else speak("Stimme an. So klinge ich.");
       });
 
-      $$("[data-speak]").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const id = btn.getAttribute("data-speak");
-          const el = document.getElementById(id);
-          if (el) speak(el.textContent.trim());
-        });
+      voiceSelect?.addEventListener("change", () => {
+        chosenVoiceURI = voiceSelect.value;
+        state.voiceURI = chosenVoiceURI;
+        saveState();
+        if (voiceOn) speak("Alles klar. Neue Stimme ausgewählt.");
+      });
+
+      // Event delegation so speak works for all current/future buttons
+      document.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-speak]");
+        if (!btn) return;
+        const id = btn.getAttribute("data-speak");
+        const el = document.getElementById(id);
+        if (el) speak(el.textContent.trim());
       });
 
       /* ---------- Score / stars ---------- */
@@ -1574,6 +1833,19 @@
       }
 
       /* ---------- Navigation ---------- */
+      const PATH = [
+        { id: "faq", title: "FAQ für Einsteiger", ico: "❓", blurb: "Was? Warum? Warum wichtig?" },
+        { id: "learn", title: "Simulator", ico: "🌊", blurb: "Walker-Zelle & Pazifik" },
+        { id: "cards", title: "Lernkarten", ico: "🃏", blurb: "Normal vs. El Niño" },
+        { id: "map", title: "Weltkarte", ico: "🗺️", blurb: "Wo wird es nass/trocken?" },
+        { id: "sort", title: "Sortieren", ico: "🧩", blurb: "Aussagen zuordnen" },
+        { id: "climate", title: "Klimadiagramme", ico: "📊", blurb: "Manila & Arequipa" },
+        { id: "quiz", title: "Blitz-Quiz", ico: "⚡", blurb: "Schnell checken" },
+        { id: "challenge", title: "Challenge", ico: "🏆", blurb: "Boss-Level" },
+        { id: "exam", title: "Klassenarbeit", ico: "📝", blurb: "Fragen + Lösungen" }
+      ];
+      let currentTab = "faq";
+
       function showHome() {
         $("#screen-home").classList.add("active");
         $("#screen-app").classList.remove("active");
@@ -1584,13 +1856,39 @@
         if (tab) switchTab(tab);
       }
       function switchTab(name) {
-        $$(".tab").forEach(t => t.classList.toggle("active", t.dataset.tab === name));
+        currentTab = name;
+        $$(".side-nav .tab").forEach(t => t.classList.toggle("active", t.dataset.tab === name));
         $$(".tab-panel").forEach(p => p.classList.toggle("hidden", p.id !== `tab-${name}`));
+        const idx = PATH.findIndex(p => p.id === name);
+        const meta = PATH[idx] || PATH[0];
+        if ($("#pathSteps")) $("#pathSteps").textContent = `Station ${idx + 1} / ${PATH.length}`;
+        if ($("#pathNow")) $("#pathNow").textContent = meta.title;
+        const prev = $("#pathPrev");
+        const next = $("#pathNext");
+        if (prev) prev.disabled = idx <= 0;
+        if (next) next.disabled = idx >= PATH.length - 1;
         if (name === "quiz") startQuiz();
         if (name === "challenge") startBoss();
         if (name === "sort") renderSort();
         if (name === "climate") renderClimate();
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
+
+      function renderJourney() {
+        const grid = $("#journeyGrid");
+        if (!grid) return;
+        grid.innerHTML = PATH.map((p, i) => `
+          <button type="button" class="station" data-go-station="${p.id}">
+            <span class="st-num">Station ${i + 1}</span>
+            <span class="st-ico">${p.ico}</span>
+            <span class="st-title">${p.title}</span>
+            <span class="st-sub">${p.blurb}</span>
+          </button>`).join("");
+        grid.querySelectorAll("[data-go-station]").forEach(btn => {
+          btn.addEventListener("click", () => showApp(btn.getAttribute("data-go-station")));
+        });
+      }
+      renderJourney();
 
       $$("[data-go]").forEach(el => {
         el.addEventListener("click", e => {
@@ -1603,8 +1901,24 @@
           else if (go === "exam") showApp("exam");
         });
       });
-      $$(".tab").forEach(t => t.addEventListener("click", () => switchTab(t.dataset.tab)));
+      $$(".side-nav .tab").forEach(t => t.addEventListener("click", () => switchTab(t.dataset.tab)));
       $$("[data-tab-jump]").forEach(b => b.addEventListener("click", () => switchTab(b.dataset.tabJump)));
+      $("#pathPrev")?.addEventListener("click", () => {
+        const i = PATH.findIndex(p => p.id === currentTab);
+        if (i > 0) switchTab(PATH[i - 1].id);
+      });
+      $("#pathNext")?.addEventListener("click", () => {
+        const i = PATH.findIndex(p => p.id === currentTab);
+        if (i < PATH.length - 1) switchTab(PATH[i + 1].id);
+      });
+      // Default first station = FAQ when opening app via Los geht's still learn - change start to faq for beginners
+      const startBtn = $("#startBtn");
+      if (startBtn) {
+        startBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          showApp("faq");
+        });
+      }
 
       $("#introVoice").addEventListener("click", () => {
         speak("El Niño – und die Welt steht Kopf. Alle zwei bis sieben Jahre, um die Weihnachtszeit, taucht dieses Phänomen auf. Fischer nannten es Corriente del Niño. Der Pazifik kehrt die Normalzustände um: Flut in Peru, Dürre in den Philippinen. Bereit zum Lernen?");
