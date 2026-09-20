@@ -333,6 +333,28 @@
       .pacific { height: 260px; }
     }
 
+
+    /* Klassenarbeit */
+    .exam-q {
+      background: white; border-radius: 16px; padding: 1rem 1.1rem;
+      margin: 0.75rem 0; border: 2px solid rgba(8, 76, 97, 0.08);
+    }
+    .exam-q h3 {
+      font-family: var(--font-display); font-size: 1.05rem;
+      color: var(--ocean-deep); margin-bottom: 0.4rem;
+    }
+    .exam-q .points {
+      font-size: 0.8rem; font-weight: 800; color: #5a7380; margin-bottom: 0.35rem;
+    }
+    .exam-answer {
+      display: none; margin-top: 0.75rem; padding: 0.75rem 0.9rem;
+      background: #dff5f1; border-radius: 12px; line-height: 1.5; font-weight: 600;
+    }
+    .exam-answer.show { display: block; animation: fadeUp 0.3s ease; }
+    .exam-toolbar {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0 0.25rem;
+    }
+
     /* Flashcards */
     .card-deck {
       display: grid; gap: 1rem;
@@ -630,6 +652,7 @@
         <button type="button" class="tab" data-tab="climate" role="tab">📊 Klima</button>
         <button type="button" class="tab" data-tab="quiz" role="tab">⚡ Quiz</button>
         <button type="button" class="tab" data-tab="challenge" role="tab">🏆 Challenge</button>
+        <button type="button" class="tab" data-tab="exam" role="tab">📝 Klassenarbeit</button>
       </nav>
 
       <!-- LEARN -->
@@ -1347,6 +1370,28 @@
             <p class="muted">Gesamtpunkte: <span id="finalScore">0</span></p>
             <button type="button" class="btn btn-primary" id="bossRestart" style="margin-top:1rem;">Challenge neu</button>
           </div>
+        </div>
+      </div>
+
+      <!-- EXAM / KLASSENARBEIT -->
+      <div class="tab-panel hidden" id="tab-exam">
+        <div class="panel">
+          <div class="guide">
+            <div class="guide-face">👩‍🏫</div>
+            <div class="guide-bubble">
+              <strong>Für die Lehrkraft / zum Üben:</strong>
+              <p id="examIntro">Das ist eine Klassenarbeit zum Thema El Niño (wie aus dem Schulbuch). Erst selbst antworten – Antworten kannst du aufdecken.</p>
+              <button type="button" class="btn btn-secondary speak-btn" data-speak="examIntro">Vorlesen 🔊</button>
+            </div>
+          </div>
+          <h2>Klassenarbeit: El Niño</h2>
+          <p class="muted">Name: _____________ &nbsp; Klasse: _____________ &nbsp; Datum: _____________</p>
+          <div class="exam-toolbar">
+            <button type="button" class="btn btn-secondary" id="showAllAnswers">Alle Antworten zeigen</button>
+            <button type="button" class="btn btn-ghost" id="hideAllAnswers">Antworten verbergen</button>
+          </div>
+          <div id="examList"></div>
+          <p class="muted" style="margin-top:1rem;">Gesamtpunkte: <strong>24</strong> &nbsp;·&nbsp; Empfohlene Zeit: ca. 25–30 Minuten</p>
         </div>
       </div>
     </section>
@@ -2201,6 +2246,87 @@
         saveState();
         speak($("#bossResultText").textContent);
       }
+
+
+      /* ---------- Klassenarbeit ---------- */
+      const examItems = [
+        {
+          points: 2,
+          q: "Erkläre kurz, warum das Phänomen „El Niño“ heißt und wie oft es ungefähr auftritt.",
+          a: "Peruanische Fischer beobachteten die Erwärmung oft um Weihnachten und nannten die Strömung „Corriente del Niño“ (Christkind). Es tritt etwa alle 2–7 Jahre auf."
+        },
+        {
+          points: 3,
+          q: "Beschreibe die Normaljahr-Situation im Pazifik: Passatwinde, warmes Oberflächenwasser und kaltes Tiefenwasser.",
+          a: "Starke Passatwinde wehen von Ost nach West. Sie drücken warmes Oberflächenwasser nach Westen (SO-Asien). Vor Südamerika steigt kaltes Tiefenwasser auf (Auftrieb)."
+        },
+        {
+          points: 3,
+          q: "Was ist die Walker-Zelle? Erkläre sie in einfachen Worten (Hoch/Tief, Windrichtung).",
+          a: "Die Walker-Zelle ist ein Luft-Förderband über dem Pazifik: Im Osten (kaltes Wasser) sinkt Luft ab (Hochdruck), im Westen steigt Luft auf (Tiefdruck/Regen). Am Boden wehen Passate von Ost nach West; oben fließt die Luft zurück."
+        },
+        {
+          points: 3,
+          q: "Erkläre mit dem Simulator-/Diagrammwissen, wie El Niño beginnt.",
+          a: "Die Passatwinde werden schwächer. Warmes Wasser fließt nach Osten zurück. Weniger kaltes Tiefenwasser steigt vor Südamerika auf. Die Walker-Zelle gerät aus dem Takt – Wetterverhältnisse kehren sich um."
+        },
+        {
+          points: 2,
+          q: "Nenne die typischen Auswirkungen von El Niño in Peru/Ecuador.",
+          a: "Ungewöhnlich warmes Küstenwasser, schwere Regenfälle, Überschwemmungen und Hangrutschungen (z. B. Juli 2015)."
+        },
+        {
+          points: 2,
+          q: "Nenne die typischen Auswirkungen von El Niño in Südostasien / den Philippinen / Nordaustralien.",
+          a: "Unterdurchschnittlicher Regen: Hitze, Dürre, Busch-/Waldbrände und schlechte Ernten (z. B. trockene Reisfelder)."
+        },
+        {
+          points: 3,
+          q: "Wähle drei Regionen von der Weltkarte und nenne jeweils, ob es nasser oder trockener als normal wird – plus ein typisches Folgeproblem.",
+          a: "Beispiele: Australien – trockener, Buschfeuer; Horn von Afrika – nasser, Überschwemmungen; Südostchina – nasser, Fluten/Wirbelstürme; Südliches Afrika – trockener, Ernteausfälle; Neuseeland – nasser."
+        },
+        {
+          points: 3,
+          q: "Vergleiche Manila (Philippinen) und Arequipa (Peru) anhand der Klimadiagramme: Temperatur, Jahresniederschlag, was das für El Niño bedeutet.",
+          a: "Manila: heiß (~27 °C), sehr nass (~1834 mm, Monsun). Arequipa: kühler (~15 °C), extrem trocken (~99 mm, hoch gelegen). Bei El Niño wird der sonst nasse Westen oft zu trocken und der sonst trockene Osten (Peru) zu nass – Extreme kehren sich um."
+        },
+        {
+          points: 3,
+          q: "Aufgabenstellung wie im Schulbuch: Erkläre die Entstehung von El Niño anhand der Querschnittsdiagramme (Normal vs. El Niño).",
+          a: "Normal: starker SO-Passat, warmes Wasser im Westen, Auftrieb im Osten, Walker-Zirkulation intakt. El Niño: schwacher Passat, warmes Wasser nach Osten, wenig Auftrieb, gestörte Walker-Zelle, Regengebiet wandert nach Osten."
+        }
+      ];
+
+      function renderExam() {
+        const list = $("#examList");
+        if (!list) return;
+        list.innerHTML = examItems.map((item, i) => `
+          <article class="exam-q" data-exam="${i}">
+            <div class="points">${item.points} Punkte · Aufgabe ${i + 1}</div>
+            <h3>${item.q}</h3>
+            <p class="muted">Antwortfeld (zum Üben auf Papier oder hier denken) …</p>
+            <button type="button" class="btn btn-ghost exam-toggle" data-exam-toggle="${i}">Antwort zeigen</button>
+            <div class="exam-answer" id="examAns${i}"><strong>Musterlösung:</strong> ${item.a}</div>
+          </article>`).join("");
+        list.querySelectorAll("[data-exam-toggle]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const id = btn.getAttribute("data-exam-toggle");
+            const ans = document.getElementById("examAns" + id);
+            const open = ans.classList.toggle("show");
+            btn.textContent = open ? "Antwort verbergen" : "Antwort zeigen";
+          });
+        });
+      }
+      renderExam();
+      $("#showAllAnswers")?.addEventListener("click", () => {
+        $$(".exam-answer").forEach(a => a.classList.add("show"));
+        $$("[data-exam-toggle]").forEach(b => { b.textContent = "Antwort verbergen"; });
+      });
+      $("#hideAllAnswers")?.addEventListener("click", () => {
+        $$(".exam-answer").forEach(a => a.classList.remove("show"));
+        $$("[data-exam-toggle]").forEach(b => { b.textContent = "Antwort zeigen"; });
+      });
+
 
       // Prefetch voices on first user gesture
       document.addEventListener("click", () => {

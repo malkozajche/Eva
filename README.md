@@ -1,27 +1,19 @@
 # El Niño Akademie
 
-Cute, gamified HTML learning resource for the German geography topic **„El Niño – und die Welt steht Kopf“**.
+Interactive German learning page for **„El Niño – und die Welt steht Kopf“**.
 
-## Open it
+## Open the site
 
-Open [`el-nino-lernen/index.html`](el-nino-lernen/index.html) in a browser (Chrome/Edge/Firefox). No build step.
+- **App:** [`el-nino-lernen/index.html`](el-nino-lernen/index.html)
+- **Teacher test (Q&A):** [`el-nino-lernen/KLASSENARBEIT.md`](el-nino-lernen/KLASSENARBEIT.md)
+- In the app, open the tab **Klassenarbeit** for the same test with show/hide answers.
 
-## What’s inside
+## GitHub Pages (permanent link)
 
-| Mode | What you do |
-|------|-------------|
-| **Lernen** | Voice guide “Nino” + Pacific Normal↔El Niño simulator (Walker cell) |
-| **Karten** | Flip cards: Normalfall vs El Niño (from study notes) |
-| **Weltkarte** | Tap regions for effect cards (drought, floods, fires…) |
-| **Sortieren** | Drag statements into Normal / El Niño buckets |
-| **Klima** | Match Manila vs Arequipa climate diagrams |
-| **Quiz** | 8-question blitz with explanations |
-| **Challenge** | Boss level: regions + mechanism |
+After the repo is **public**:
 
-**Voice:** Browser Web Speech API (`de-DE`). Toggle 🔊 in the top bar. Works best in Chrome.
+1. Go to **Settings → Pages**
+2. Source: **GitHub Actions**
+3. Site URL: **https://malkozajche.github.io/Eva/**
 
-**Progress:** Stars & score saved in `localStorage`.
-
-## Textbook sources
-
-Scans in `el-nino-lernen/assets/` (for reference while studying).
+The workflow in `.github/workflows/pages.yml` deploys `el-nino-lernen/` on every push to `main`.
