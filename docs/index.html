@@ -467,8 +467,8 @@
     .pacific .wx { transition: all 0.8s ease; }
     .pacific.normal .wx-rain { transform: translate(0,0); }
     .pacific.normal .wx-sun { transform: translate(0,0); }
-    .pacific.elnino .wx-rain { transform: translate(480px, 8px); }
-    .pacific.elnino .wx-sun { transform: translate(-480px, 8px); }
+    .pacific.elnino .wx-rain { transform: translate(480px, 0); }
+    .pacific.elnino .wx-sun { transform: translate(-480px, 0); }
 
     @media (max-width: 500px) {
       .pacific { height: 260px; }
@@ -1037,22 +1037,22 @@
                   <text id="windLabel" x="400" y="118" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="13" font-weight="700" fill="#084c61">Passatwinde: Ost → West</text>
                 </g>
 
-                <!-- Weather icons as simple shapes -->
+                <!-- Weather icons (high in the sky) -->
                 <g class="wx wx-rain">
-                  <ellipse cx="160" cy="55" rx="28" ry="16" fill="#fff"/>
-                  <ellipse cx="145" cy="58" rx="16" ry="12" fill="#fff"/>
-                  <ellipse cx="175" cy="58" rx="14" ry="11" fill="#fff"/>
-                  <line x1="150" y1="72" x2="145" y2="88" stroke="#4a9fe8" stroke-width="3" stroke-linecap="round"/>
-                  <line x1="162" y1="72" x2="158" y2="90" stroke="#4a9fe8" stroke-width="3" stroke-linecap="round"/>
-                  <line x1="174" y1="72" x2="170" y2="86" stroke="#4a9fe8" stroke-width="3" stroke-linecap="round"/>
+                  <ellipse cx="160" cy="28" rx="28" ry="16" fill="#fff"/>
+                  <ellipse cx="145" cy="31" rx="16" ry="12" fill="#fff"/>
+                  <ellipse cx="175" cy="31" rx="14" ry="11" fill="#fff"/>
+                  <line x1="150" y1="45" x2="145" y2="58" stroke="#4a9fe8" stroke-width="3" stroke-linecap="round"/>
+                  <line x1="162" y1="45" x2="158" y2="60" stroke="#4a9fe8" stroke-width="3" stroke-linecap="round"/>
+                  <line x1="174" y1="45" x2="170" y2="56" stroke="#4a9fe8" stroke-width="3" stroke-linecap="round"/>
                 </g>
                 <g class="wx wx-sun">
-                  <circle cx="660" cy="55" r="16" fill="#ffc857"/>
+                  <circle cx="660" cy="30" r="16" fill="#ffc857"/>
                   <g stroke="#ffc857" stroke-width="3" stroke-linecap="round">
-                    <line x1="660" y1="28" x2="660" y2="34"/>
-                    <line x1="660" y1="76" x2="660" y2="82"/>
-                    <line x1="633" y1="55" x2="639" y2="55"/>
-                    <line x1="681" y1="55" x2="687" y2="55"/>
+                    <line x1="660" y1="6" x2="660" y2="12"/>
+                    <line x1="660" y1="48" x2="660" y2="54"/>
+                    <line x1="633" y1="30" x2="639" y2="30"/>
+                    <line x1="681" y1="30" x2="687" y2="30"/>
                   </g>
                 </g>
               </svg>
