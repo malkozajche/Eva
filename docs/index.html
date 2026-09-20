@@ -278,11 +278,11 @@
     .walker-mini { width: 100%; height: auto; display: block; border-radius: 14px; }
 
     .pacific {
-      position: relative; height: 320px; border-radius: 20px; overflow: hidden;
-      background: #5eb0c8;
+      position: relative; height: 340px; border-radius: 20px; overflow: hidden;
+      background: linear-gradient(180deg, #d7eef8 0%, #5eb0c8 45%, #0b3d4a 100%);
       border: 3px solid rgba(255,255,255,0.5);
     }
-    .pacific-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .pacific-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
     .sim-legend {
       display: flex; flex-wrap: wrap; gap: 0.55rem 1rem;
       margin-top: 0.65rem; font-size: 0.82rem; font-weight: 700;
@@ -333,6 +333,22 @@
       .pacific { height: 260px; }
     }
 
+
+    /* FAQ */
+    .faq-grid { display: grid; gap: 1rem; }
+    .faq-card {
+      background: white; border-radius: 18px; padding: 1.15rem 1.25rem;
+      border: 2px solid rgba(8, 76, 97, 0.08); box-shadow: var(--shadow);
+    }
+    .faq-card .faq-q {
+      font-family: var(--font-display); font-size: 1.35rem;
+      color: var(--ocean-deep); margin-bottom: 0.55rem;
+    }
+    .faq-card .faq-a { line-height: 1.55; font-size: 1.02rem; }
+    .faq-card .faq-a p + p { margin-top: 0.65rem; }
+    .faq-card.what { background: linear-gradient(165deg, #e8f7f4, #fff); }
+    .faq-card.why { background: linear-gradient(165deg, #fff7eb, #fff); }
+    .faq-card.care { background: linear-gradient(165deg, #ffe8df, #fff); }
 
     /* Klassenarbeit */
     .exam-q {
@@ -629,7 +645,7 @@
           <div class="cta-row">
             <button type="button" class="btn btn-primary" data-go="learn" id="startBtn">Los geht’s 🚀</button>
             <button type="button" class="btn btn-secondary" id="introVoice">Erzähl mir’s 🎤</button>
-            <button type="button" class="btn btn-ghost" data-go="challenge">Direkt zur Challenge</button>
+            <button type="button" class="btn btn-ghost" data-go="faq">Zuerst FAQ (für Einsteiger)</button>
           </div>
         </div>
         <div class="hero-art" aria-hidden="true">
@@ -646,6 +662,7 @@
     <section class="screen" id="screen-app" aria-label="Lernen">
       <nav class="tabs" role="tablist" aria-label="Abschnitte">
         <button type="button" class="tab active" data-tab="learn" role="tab">📖 Lernen</button>
+        <button type="button" class="tab" data-tab="faq" role="tab">❓ FAQ</button>
         <button type="button" class="tab" data-tab="cards" role="tab">🃏 Karten</button>
         <button type="button" class="tab" data-tab="map" role="tab">🗺️ Weltkarte</button>
         <button type="button" class="tab" data-tab="sort" role="tab">🧩 Sortieren</button>
@@ -733,7 +750,7 @@
             </div>
 
             <div class="pacific normal" id="pacific" aria-live="polite">
-              <svg class="pacific-svg" viewBox="0 0 800 320" preserveAspectRatio="xMidYMid slice">
+              <svg class="pacific-svg" viewBox="0 0 800 320" preserveAspectRatio="xMidYMid meet">
                 <defs>
                   <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stop-color="#d7eef8"/>
@@ -764,11 +781,21 @@
                 <rect x="0" y="150" width="800" height="170" fill="url(#oceanGradSim)"/>
                 <text x="400" y="305" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="13" font-weight="700" fill="rgba(255,255,255,0.75)">Pazifik (Schnitt am Äquator)</text>
 
-                <!-- Continents -->
-                <path d="M0,90 L55,80 L70,150 L70,300 L0,300 Z" fill="#6bbf8a"/>
-                <path d="M730,95 L800,85 L800,300 L730,300 Z" fill="#c4a574"/>
-                <text x="28" y="175" font-family="Fredoka,sans-serif" font-size="12" font-weight="700" fill="#084c61" transform="rotate(-90 28,175)">SO-Asien</text>
-                <text x="770" y="185" font-family="Fredoka,sans-serif" font-size="12" font-weight="700" fill="#5a3a18" transform="rotate(90 770,185)">Südamerika</text>
+                <!-- Continents (wide & obvious so they never get cropped) -->
+                <g id="continentAsia" aria-label="Südostasien">
+                  <path d="M0,70 C25,55 55,60 95,75 L110,150 L105,310 L0,310 Z" fill="#5aaa6e" stroke="#3d7a4a" stroke-width="2"/>
+                  <path d="M20,95 C45,88 70,100 85,120 L70,150 L25,145 Z" fill="#6bbf8a" opacity="0.9"/>
+                  <rect x="8" y="200" width="78" height="36" rx="10" fill="rgba(255,247,235,0.95)" stroke="#084c61" stroke-width="1.5"/>
+                  <text x="47" y="216" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="13" font-weight="700" fill="#084c61">SO-Asien</text>
+                  <text x="47" y="230" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="800" fill="#3d5a66">Westen</text>
+                </g>
+                <g id="continentSA" aria-label="Südamerika">
+                  <path d="M690,80 C720,60 760,55 800,70 L800,310 L695,310 L685,150 Z" fill="#c4a574" stroke="#8a6a3a" stroke-width="2"/>
+                  <path d="M710,100 C740,90 770,105 785,125 L770,155 L715,145 Z" fill="#d4b584" opacity="0.9"/>
+                  <rect x="714" y="200" width="78" height="36" rx="10" fill="rgba(255,247,235,0.95)" stroke="#5a3a18" stroke-width="1.5"/>
+                  <text x="753" y="216" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="12" font-weight="700" fill="#5a3a18">Südamerika</text>
+                  <text x="753" y="230" text-anchor="middle" font-family="Nunito,sans-serif" font-size="10" font-weight="800" fill="#6a4a28">Osten</text>
+                </g>
 
                 <!-- Warm surface pool: moved via CSS classes on parent -->
                 <rect class="warm-pool" id="warmPool" x="90" y="155" width="360" height="55" rx="22" fill="url(#warmGrad)" opacity="0.95"/>
@@ -776,16 +803,16 @@
 
                 <!-- Cold upwelling -->
                 <g class="upwell">
-                  <path d="M680,280 L700,170 L720,280 Z" fill="#4a9fe8" opacity="0.85"/>
-                  <text x="700" y="295" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="800" fill="#d7efff">kaltes Tiefenwasser ↑</text>
+                  <path d="M640,280 L660,170 L680,280 Z" fill="#4a9fe8" opacity="0.85"/>
+                  <text x="660" y="295" text-anchor="middle" font-family="Nunito,sans-serif" font-size="11" font-weight="800" fill="#d7efff">kaltes Tiefenwasser ↑</text>
                 </g>
 
                 <!-- Pressure labels -->
                 <g class="pressure">
                   <circle cx="140" cy="70" r="16" fill="#dff5f1" stroke="#0d5c4d" stroke-width="2"/>
                   <text id="pressW" x="140" y="75" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="14" font-weight="700" fill="#0d5c4d">T</text>
-                  <circle cx="680" cy="70" r="16" fill="#ffe8d6" stroke="#8a3d12" stroke-width="2"/>
-                  <text id="pressE" x="680" y="75" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="14" font-weight="700" fill="#8a3d12">H</text>
+                  <circle cx="650" cy="70" r="16" fill="#ffe8d6" stroke="#8a3d12" stroke-width="2"/>
+                  <text id="pressE" x="650" y="75" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="14" font-weight="700" fill="#8a3d12">H</text>
                 </g>
 
                 <!-- Walker loop NORMAL: rise west, upper to east, sink east, surface west <-- from east -->
@@ -852,6 +879,51 @@
         </div>
       </div>
 
+
+      <!-- FAQ -->
+      <div class="tab-panel hidden" id="tab-faq">
+        <div class="panel">
+          <h2>FAQ – El Niño für absolute Einsteiger</h2>
+          <p class="muted">Drei Fragen. Kein Fachchinesisch. Genau das, was man wirklich wissen muss.</p>
+          <div class="faq-grid" style="margin-top:1rem;">
+            <article class="faq-card what">
+              <div class="faq-q" id="faqWhatQ">1. Was ist das?</div>
+              <div class="faq-a" id="faqWhat">
+                <p><strong>El Niño</strong> ist eine starke Störung im Pazifik: Wind und Wasser machen plötzlich etwas anderes als sonst.</p>
+                <p>Normalerweise weht der Wind von Südamerika nach Asien und schiebt warmes Wasser nach Westen. Bei El Niño wird dieser Wind schwach – und das warme Wasser rutscht nach Osten (Richtung Peru).</p>
+                <p>Kurz: <strong>El Niño = der Pazifik steht Kopf</strong> (ungefähr alle 2–7 Jahre, oft um Weihnachten – daher der Name „Christkind“).</p>
+              </div>
+              <button type="button" class="btn btn-secondary speak-btn" style="margin-top:0.75rem;" data-speak="faqWhat">Vorlesen 🔊</button>
+            </article>
+
+            <article class="faq-card why">
+              <div class="faq-q" id="faqWhyQ">2. Warum passiert das?</div>
+              <div class="faq-a" id="faqWhy">
+                <p>Über dem Pazifik läuft normalerweise ein Luft-Förderband: die <strong>Walker-Zelle</strong>.</p>
+                <p><strong>Normal:</strong> Kaltes Wasser vor Südamerika → Luft sinkt (Hochdruck). Warmes Wasser bei Asien → Luft steigt (Tiefdruck + Regen). Der Wind am Boden weht deshalb Ost → West.</p>
+                <p><strong>Bei El Niño:</strong> Dieser Wind wird schwächer. Dann kann das warme Wasser nicht mehr im Westen „festgehalten“ werden – es fließt zurück nach Osten. Weniger kaltes Wasser steigt vor Peru auf. Das Förderband gerät aus dem Takt.</p>
+                <p>Man muss sich das nicht als „Schalter“ vorstellen – eher als System, das manchmal aus dem Gleichgewicht kippt.</p>
+              </div>
+              <button type="button" class="btn btn-secondary speak-btn" style="margin-top:0.75rem;" data-speak="faqWhy">Vorlesen 🔊</button>
+            </article>
+
+            <article class="faq-card care">
+              <div class="faq-q" id="faqCareQ">3. Warum sollte mich das interessieren?</div>
+              <div class="faq-a" id="faqCare">
+                <p>Weil El Niño das Wetter <strong>auf der ganzen Welt</strong> durcheinanderbringen kann – nicht nur irgendwo im Ozean.</p>
+                <p><strong>Peru / Ecuador:</strong> plötzlich enorme Regenmengen, Überschwemmungen, Hangrutsche.<br/>
+                <strong>Philippinen / Indonesien / Australien:</strong> Dürre, Brände, schlechte Ernten (weniger Reis, weniger Wasser).</p>
+                <p>Das betrifft Menschen, Tiere, Fischerei, Landwirtschaft und Preise für Lebensmittel. Deshalb beobachten Meteorologen El Niño so genau – und deshalb lernst du es in Geografie.</p>
+                <p><strong>Merksatz:</strong> Wenn der Pazifik kippt, merken das Menschen von Südamerika bis Asien – und oft noch weiter.</p>
+              </div>
+              <button type="button" class="btn btn-secondary speak-btn" style="margin-top:0.75rem;" data-speak="faqCare">Vorlesen 🔊</button>
+            </article>
+          </div>
+          <div style="margin-top:1.25rem;">
+            <button type="button" class="btn btn-primary" data-tab-jump="learn">Weiter zum Simulator →</button>
+          </div>
+        </div>
+      </div>
       <!-- CARDS -->
       <div class="tab-panel hidden" id="tab-cards">
         <div class="panel">
@@ -1526,7 +1598,9 @@
           const go = el.getAttribute("data-go");
           if (go === "home") showHome();
           else if (go === "learn") showApp("learn");
+          else if (go === "faq") showApp("faq");
           else if (go === "challenge") showApp("challenge");
+          else if (go === "exam") showApp("exam");
         });
       });
       $$(".tab").forEach(t => t.addEventListener("click", () => switchTab(t.dataset.tab)));
