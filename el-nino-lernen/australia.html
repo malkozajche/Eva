@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eva’s Australia Adventure — Unit 1 Vocabulary</title>
+  <meta name="description" content="Cute English vocabulary practice for Unit 1 Australia: IPA pronunciation, EN/DE voice, flip cards, listen mode, and quiz." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #16353f;
+      --paper: #fffdf8;
+      --reef: #1aa6a0;
+      --reef-deep: #0e7d78;
+      --sun: #f4b942;
+      --sun-deep: #d99214;
+      --bush: #3d9b5f;
+      --bush-deep: #2a7344;
+      --coral: #ff6f61;
+      --coral-deep: #e24d42;
+      --sky: #5eb7e0;
+      --sky-deep: #2f86ad;
+      --shadow: 0 12px 28px rgba(14, 85, 90, 0.16);
+      --font-display: "Baloo 2", "Trebuchet MS", sans-serif;
+      --font-body: "Nunito", "Trebuchet MS", sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--font-body);
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 100% 70% at 50% -15%, #ffe9a8 0%, transparent 48%),
+        radial-gradient(circle at 88% 12%, rgba(90, 183, 224, 0.35) 0%, transparent 28%),
+        radial-gradient(circle at 10% 80%, rgba(26, 166, 160, 0.22) 0%, transparent 32%),
+        linear-gradient(180deg, #8ed4ef 0%, #b8e8df 38%, #ffe8b0 72%, #f7c978 100%);
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(2px 2px at 14% 24%, rgba(255,255,255,.55) 50%, transparent 51%),
+        radial-gradient(2px 2px at 32% 52%, rgba(255,255,255,.35) 50%, transparent 51%),
+        radial-gradient(3px 3px at 78% 18%, rgba(255,255,255,.5) 50%, transparent 51%),
+        radial-gradient(2px 2px at 90% 44%, rgba(255,255,255,.3) 50%, transparent 51%);
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(1100px, 94vw);
+      margin: 0 auto;
+      padding: 1.15rem 0 3.4rem;
+    }
+
+    .float-sun {
+      position: fixed;
+      top: 1.1rem;
+      right: 4vw;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fff6c8, var(--sun) 55%, #ff8f2a);
+      box-shadow: 0 0 0 10px rgba(244, 185, 66, 0.28), 0 0 36px rgba(244, 185, 66, 0.4);
+      animation: bob 4s ease-in-out infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .float-roo {
+      position: fixed;
+      bottom: 1.2rem;
+      left: 3vw;
+      font-size: 2.4rem;
+      animation: hop 2.8s ease-in-out infinite;
+      z-index: 0;
+      pointer-events: none;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+    @keyframes hop {
+      0%, 100% { transform: translateY(0) rotate(-4deg); }
+      40% { transform: translateY(-14px) rotate(2deg); }
+      60% { transform: translateY(-6px) rotate(-2deg); }
+    }
+    @keyframes pop-in {
+      from { opacity: 0; transform: translateY(16px) scale(0.97); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes wiggle {
+      0%, 100% { transform: none; }
+      25% { transform: rotate(-4deg); }
+      75% { transform: rotate(4deg); }
+    }
+    @keyframes confetti-fall {
+      to { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+    }
+    @keyframes pulse-soft {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .top-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 0.65rem;
+      animation: pop-in 0.5s ease both;
+    }
+    .top-links a {
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--sky-deep);
+      background: rgba(255,255,255,0.72);
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: 2px solid rgba(47, 134, 173, 0.25);
+    }
+    .top-links a:hover { background: white; }
+
+    header.hero {
+      text-align: center;
+      padding: 0.7rem 0.5rem 0.85rem;
+      animation: pop-in 0.65s ease both;
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 6.5vw, 3.4rem);
+      line-height: 1.05;
+      color: #0d5c62;
+      text-shadow: 0 3px 0 rgba(255,255,255,0.4);
+    }
+    .brand span {
+      display: block;
+      margin-top: 0.3rem;
+      font-size: 0.4em;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--coral-deep);
+      font-weight: 700;
+    }
+
+    .tagline {
+      margin: 0.7rem auto 0;
+      max-width: 38rem;
+      font-weight: 700;
+      color: #1f5a66;
+      font-size: 1.05rem;
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      justify-content: center;
+      margin-top: 0.85rem;
+    }
+    .stat {
+      font-weight: 800;
+      font-size: 0.82rem;
+      background: white;
+      border-radius: 999px;
+      padding: 0.32rem 0.75rem;
+      box-shadow: var(--shadow);
+      color: #0d5c62;
+    }
+
+    nav.tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      justify-content: center;
+      margin: 1.25rem 0 1rem;
+      animation: pop-in 0.75s ease 0.08s both;
+    }
+
+    .tab-btn, .btn, .chip, .speak-btn, .choice {
+      font-family: var(--font-body);
+      cursor: pointer;
+    }
+
+    .tab-btn {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      border: none;
+      padding: 0.65rem 1.2rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.58);
+      color: var(--ink);
+      box-shadow: 0 4px 0 rgba(14, 85, 90, 0.12);
+      transition: transform 0.15s ease;
+    }
+    .tab-btn:hover { transform: translateY(-2px); }
+    .tab-btn.active {
+      background: linear-gradient(180deg, var(--coral), var(--coral-deep));
+      color: white;
+      box-shadow: 0 5px 0 #b83830;
+    }
+
+    .panel { display: none; animation: pop-in 0.4s ease both; }
+    .panel.active { display: block; }
+
+    .howto {
+      background: rgba(255,253,248,0.88);
+      border-radius: 18px;
+      padding: 1rem 1.15rem;
+      margin: 0 auto 1rem;
+      max-width: 720px;
+      border: 2px solid rgba(255,255,255,0.95);
+      box-shadow: var(--shadow);
+    }
+    .howto h2 {
+      font-family: var(--font-display);
+      color: #0d5c62;
+      font-size: 1.3rem;
+      margin-bottom: 0.3rem;
+    }
+    .howto ol { margin-left: 1.15rem; font-weight: 600; line-height: 1.5; }
+
+    .filter-row, .search-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      justify-content: center;
+      margin-bottom: 0.85rem;
+    }
+
+    .chip {
+      font-weight: 800;
+      font-size: 0.82rem;
+      border: none;
+      border-radius: 999px;
+      padding: 0.4rem 0.85rem;
+      background: rgba(255,255,255,0.7);
+      color: var(--ink);
+    }
+    .chip.active {
+      background: #0d5c62;
+      color: white;
+    }
+
+    #search {
+      width: min(420px, 92vw);
+      font: inherit;
+      font-weight: 700;
+      padding: 0.65rem 1rem;
+      border-radius: 999px;
+      border: 2px solid rgba(26, 166, 160, 0.35);
+      background: white;
+      outline: none;
+    }
+
+    .hint, .count-label {
+      text-align: center;
+      font-weight: 700;
+      color: #1f5a66;
+      margin-bottom: 0.8rem;
+    }
+    .count-label { color: var(--sky-deep); font-weight: 800; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .card {
+      background: rgba(255,253,248,0.94);
+      border-radius: 20px;
+      padding: 1rem 1.05rem 1.1rem;
+      box-shadow: var(--shadow);
+      border: 3px solid rgba(255,255,255,0.9);
+      cursor: pointer;
+      text-align: left;
+      min-height: 155px;
+      transition: transform 0.15s ease;
+      position: relative;
+    }
+    .card:hover { transform: translateY(-3px) rotate(-0.3deg); }
+    .card.flipped {
+      background: linear-gradient(160deg, #fff 0%, #e6f8f5 100%);
+      border-color: #7ad4cf;
+    }
+
+    .card .icon {
+      font-size: 2.2rem;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+      display: inline-block;
+      animation: pulse-soft 3s ease-in-out infinite;
+    }
+    .card .en {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: #0d5c62;
+      line-height: 1.15;
+    }
+    .card .ipa {
+      font-size: 0.85rem;
+      color: #5a7a85;
+      font-weight: 600;
+      margin-top: 0.12rem;
+    }
+    .card .reveal {
+      display: none;
+      margin-top: 0.65rem;
+      padding-top: 0.6rem;
+      border-top: 2px dashed rgba(14, 125, 120, 0.22);
+    }
+    .card.flipped .reveal { display: block; }
+
+    .badge {
+      position: absolute;
+      top: 0.65rem;
+      right: 0.65rem;
+      font-size: 0.66rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.22rem 0.48rem;
+      border-radius: 999px;
+      background: var(--sun);
+      color: #5a3200;
+    }
+    .badge.animals { background: #ffd0c4; color: #8a2e20; }
+    .badge.describing { background: #c8edff; color: #0b4f6c; }
+    .badge.city { background: #d8f5e0; color: #1c6b3a; }
+    .badge.travel { background: #ffe2a8; color: #7a4a00; }
+
+    .lang-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .speak-btn {
+      font-weight: 800;
+      font-size: 0.78rem;
+      border: none;
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: transform 0.12s;
+    }
+    .speak-btn:hover { transform: scale(1.05); }
+    .speak-btn.en-btn { background: #d8f5e0; color: #1c6b3a; }
+    .speak-btn.de-btn { background: #d4e8ff; color: #1a4f7a; }
+    .speak-btn.fr-btn { background: #ffd4cc; color: #a32a1d; }
+    .speak-btn.example-btn {
+      background: #fff0c2;
+      color: #8a5a00;
+      width: 100%;
+      justify-content: center;
+      margin-top: 0.35rem;
+    }
+
+    .trans {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 0.15rem 0;
+    }
+    .trans .label {
+      display: inline-block;
+      min-width: 2.1rem;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      opacity: 0.65;
+    }
+
+    .example {
+      margin-top: 0.45rem;
+      font-size: 0.88rem;
+      line-height: 1.35;
+      color: #2a5560;
+      background: rgba(90, 183, 224, 0.16);
+      border-radius: 12px;
+      padding: 0.55rem 0.65rem;
+    }
+    .example .de-ex {
+      display: block;
+      margin-top: 0.22rem;
+      font-style: italic;
+      color: #4a6a75;
+    }
+    .note {
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #8a4a00;
+      background: #fff3d6;
+      border-radius: 10px;
+      padding: 0.4rem 0.55rem;
+    }
+
+    .stage {
+      background: rgba(255,253,248,0.94);
+      border-radius: 28px;
+      padding: 1.45rem 1.3rem 1.7rem;
+      box-shadow: var(--shadow);
+      border: 3px solid rgba(255,255,255,0.85);
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .progress-bar {
+      height: 14px;
+      background: rgba(14, 125, 120, 0.12);
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 0.85rem 0 1.2rem;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--bush), #7ed957);
+      border-radius: 999px;
+      transition: width 0.35s ease;
+    }
+
+    .q-meta { font-weight: 800; color: #3a6a75; margin-bottom: 0.45rem; }
+    .q-prompt {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 4.8vw, 2.1rem);
+      color: #0d5c62;
+      margin: 0.45rem 0 0.3rem;
+      line-height: 1.15;
+    }
+    .q-icon { font-size: 2.8rem; margin: 0.35rem 0; display: block; }
+
+    .choices { display: grid; gap: 0.6rem; margin-top: 1rem; }
+    .choice {
+      font-weight: 800;
+      font-size: 1.02rem;
+      padding: 0.85rem 1rem;
+      border-radius: 16px;
+      border: 3px solid transparent;
+      background: #eef8f6;
+      color: var(--ink);
+      transition: transform 0.12s, background 0.2s;
+    }
+    .choice:hover:not(:disabled) { transform: translateY(-2px); background: #e0f4f1; }
+    .choice.correct { background: #d4f8de; border-color: var(--bush); animation: wiggle 0.4s ease; }
+    .choice.wrong { background: #ffe0db; border-color: var(--coral); }
+    .choice:disabled { cursor: default; }
+
+    .feedback { min-height: 1.5rem; margin-top: 0.85rem; font-weight: 800; font-size: 1.02rem; }
+    .feedback.good { color: #1c6b3a; }
+    .feedback.bad { color: #a32a1d; }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      font-family: var(--font-display);
+      font-size: 1.12rem;
+      border: none;
+      border-radius: 999px;
+      padding: 0.72rem 1.4rem;
+      color: white;
+      background: linear-gradient(180deg, var(--bush), var(--bush-deep));
+      box-shadow: 0 5px 0 #1e5c34;
+      transition: transform 0.12s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(3px); box-shadow: none; }
+    .btn.secondary {
+      background: linear-gradient(180deg, var(--sky), var(--sky-deep));
+      box-shadow: 0 5px 0 #1f6280;
+    }
+    .btn.coral {
+      background: linear-gradient(180deg, var(--coral), var(--coral-deep));
+      box-shadow: 0 5px 0 #b83830;
+    }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .listen-big {
+      margin: 0.7rem auto;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(180deg, var(--coral), var(--coral-deep));
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+      box-shadow: 0 6px 0 #b83830;
+      animation: pulse-soft 2.2s ease-in-out infinite;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .score-big {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 7vw, 3.8rem);
+      color: var(--coral-deep);
+      line-height: 1;
+      margin: 0.45rem 0;
+    }
+    .stars { font-size: 1.9rem; letter-spacing: 0.12rem; margin: 0.4rem 0 0.9rem; }
+
+    .grammar-box {
+      background: rgba(255,253,248,0.94);
+      border-radius: 22px;
+      border: 3px solid white;
+      box-shadow: var(--shadow);
+      padding: 1.25rem 1.2rem;
+      max-width: 760px;
+      margin: 0 auto 1rem;
+      text-align: left;
+    }
+    .grammar-box h2 {
+      font-family: var(--font-display);
+      color: #0d5c62;
+      font-size: 1.45rem;
+      margin-bottom: 0.4rem;
+    }
+    .grammar-box .rule {
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+      line-height: 1.45;
+      color: #1f5a66;
+    }
+    .grammar-box .rule em {
+      color: var(--coral-deep);
+      font-style: normal;
+      font-weight: 800;
+    }
+    .grammar-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.55rem 1rem;
+    }
+    @media (max-width: 620px) {
+      .grammar-grid { grid-template-columns: 1fr; }
+      .float-sun { width: 46px; height: 46px; }
+      .float-roo { font-size: 1.7rem; }
+    }
+    .g-item {
+      background: #eef8f6;
+      border-radius: 14px;
+      padding: 0.65rem 0.75rem;
+    }
+    .g-item .en { font-weight: 800; color: #0d5c62; }
+    .g-item .de { font-size: 0.9rem; font-weight: 700; color: #4a6a75; margin-top: 0.15rem; }
+
+    .voice-note, footer {
+      text-align: center;
+      font-weight: 700;
+      margin-top: 1.1rem;
+      color: #1f5a66;
+      font-size: 0.9rem;
+    }
+    footer {
+      color: rgba(255,255,255,0.95);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      font-size: 0.95rem;
+    }
+
+    #confetti-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 50;
+    }
+    .confetti {
+      position: absolute;
+      top: -10px;
+      width: 10px;
+      height: 14px;
+      border-radius: 2px;
+      animation: confetti-fall 2.7s ease-in forwards;
+    }
+  </style>
+</head>
+<body>
+  <div class="float-sun" aria-hidden="true"></div>
+  <div class="float-roo" aria-hidden="true">🦘</div>
+  <div id="confetti-layer" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="top-links">
+      <a href="index.html">🌊 El Niño Akademie</a>
+      <a href="https://malkozajche.github.io/Eva/australia.html">🔗 Permanent link</a>
+    </div>
+
+    <header class="hero">
+      <h1 class="brand">
+        Eva’s Australia Adventure
+        <span>Unit 1 · Australia, country and continent</span>
+      </h1>
+      <p class="tagline">Learn English words from your book — tap cards, hear pronunciation (EN + DE), then quiz yourself!</p>
+      <div class="stats">
+        <span class="stat" id="stat-count">33 words</span>
+        <span class="stat">🔊 EN / DE voice</span>
+        <span class="stat">⭐ Quiz ready</span>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="Learning modes">
+      <button class="tab-btn active" data-tab="learn" type="button">📚 Learn</button>
+      <button class="tab-btn" data-tab="practice" type="button">🎧 Listen</button>
+      <button class="tab-btn" data-tab="quiz" type="button">⭐ Quiz (15)</button>
+      <button class="tab-btn" data-tab="grammar" type="button">🧠 Grammar tip</button>
+    </nav>
+
+    <!-- LEARN -->
+    <section id="panel-learn" class="panel active" role="tabpanel">
+      <div class="howto">
+        <h2>How to study</h2>
+        <ol>
+          <li>Tap a card to flip it and see the German meaning.</li>
+          <li>Press <strong>EN</strong> or <strong>DE</strong> to hear the pronunciation (same idea as Maya’s French page).</li>
+          <li>Tap the yellow button to hear the English example sentence.</li>
+          <li>When ready: Listen mode → then the 15-question Quiz!</li>
+        </ol>
+      </div>
+
+      <div class="search-row">
+        <input id="search" type="search" placeholder="Search English or German…" aria-label="Search vocabulary" />
+      </div>
+
+      <div class="filter-row" role="group" aria-label="Filter words">
+        <button class="chip active" data-filter="all" type="button">All</button>
+        <button class="chip" data-filter="nature" type="button">🌏 Nature</button>
+        <button class="chip" data-filter="animals" type="button">🐨 Animals</button>
+        <button class="chip" data-filter="describing" type="button">✨ Describing</button>
+        <button class="chip" data-filter="city" type="button">🏙️ City</button>
+        <button class="chip" data-filter="travel" type="button">✈️ Travel</button>
+      </div>
+
+      <p class="count-label" id="count-label">Showing all words</p>
+      <p class="hint">Tip: flip a card and press EN a few times — practice makes perfect!</p>
+      <div class="grid" id="vocab-grid"></div>
+      <p class="voice-note" id="voice-status">Loading voices…</p>
+    </section>
+
+    <!-- PRACTICE -->
+    <section id="panel-practice" class="panel" role="tabpanel">
+      <div class="stage">
+        <p class="q-meta" id="practice-meta">Listen &amp; choose</p>
+        <div class="progress-bar"><div class="progress-fill" id="practice-progress"></div></div>
+        <span class="q-icon" id="practice-icon">🔊</span>
+        <p class="q-prompt" id="practice-prompt">Tap the speaker, then pick the meaning</p>
+        <button class="listen-big" id="practice-listen" type="button" aria-label="Play English word">🔊</button>
+        <div class="choices" id="practice-choices"></div>
+        <p class="feedback" id="practice-feedback"></p>
+        <div class="cta-row">
+          <button class="btn secondary" id="practice-restart" type="button">Restart</button>
+          <button class="btn" id="practice-next" type="button" disabled>Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="panel-quiz" class="panel" role="tabpanel">
+      <div class="stage" id="quiz-stage">
+        <p class="q-meta" id="quiz-meta">15-word test · Unit 1 Australia</p>
+        <div class="progress-bar"><div class="progress-fill" id="quiz-progress"></div></div>
+        <span class="q-icon" id="quiz-icon">⭐</span>
+        <p class="q-prompt" id="quiz-prompt">Ready when you are!</p>
+        <button class="listen-big" id="quiz-listen" type="button" aria-label="Hear English hint" title="Hint: hear English" style="display:none">🔊</button>
+        <div class="choices" id="quiz-choices"></div>
+        <p class="feedback" id="quiz-feedback"></p>
+        <div class="cta-row">
+          <button class="btn coral" id="quiz-start" type="button">Start 15-word test!</button>
+          <button class="btn" id="quiz-next" type="button" disabled style="display:none">Next →</button>
+        </div>
+      </div>
+
+      <div class="stage" id="quiz-results" style="display:none">
+        <p class="q-meta">Quiz complete!</p>
+        <div class="score-big" id="final-score">0 / 15</div>
+        <div class="stars" id="final-stars">⭐⭐⭐</div>
+        <p id="final-message" style="font-weight:700;font-size:1.15rem;margin-bottom:0.5rem;"></p>
+        <p id="missed-list" style="font-weight:600;color:#3a6a75;margin-bottom:1rem;"></p>
+        <div class="cta-row">
+          <button class="btn coral" id="quiz-again" type="button">Try again</button>
+          <button class="btn secondary" id="back-learn" type="button">Back to Learn</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRAMMAR -->
+    <section id="panel-grammar" class="panel" role="tabpanel">
+      <div class="grammar-box">
+        <h2>a half-hour ride, a five-minute walk…</h2>
+        <p class="rule">
+          In English, in phrases like these the noun stays <em>singular</em>:
+          <br />✅ a five-<em>minute</em> walk &nbsp;&nbsp; ❌ a five-minutes walk
+        </p>
+        <button class="btn secondary" type="button" id="speak-grammar" style="margin-bottom:1rem;">🔊 Regel vorlesen (DE)</button>
+        <div class="grammar-grid" id="grammar-grid"></div>
+      </div>
+    </section>
+
+    <footer>G’day Eva! 🦘 The outback is waiting for you.</footer>
+  </div>
+
+  <script>
+    /* ========== VOCABULARY — Unit 1 Australia (pages deduped) ========== */
+    const VOCAB = [
+      { id: "region", category: "nature", en: "region", ipa: "[ˈriːdʒən]", de: "Region", icon: "🗺️", exampleEn: "Australia has many different regions.", exampleDe: "Australien hat viele verschiedene Regionen.", note: "stress: REgion", fr: "la région" },
+      { id: "bush", category: "nature", en: "bush", ipa: "[bʊʃ]", de: "Busch, Strauch; wildes Land", icon: "🌿", exampleEn: "They lived in the Australian bush.", exampleDe: "Sie lebten im australischen Busch.", note: "also: wild land in Australia & Africa" },
+      { id: "coral", category: "nature", en: "coral", ipa: "[ˈkɒrəl]", de: "Koralle; Korallen-", icon: "🪸", exampleEn: "The Great Barrier Reef has beautiful coral.", exampleDe: "Das Great Barrier Reef hat schöne Korallen.", note: "stress: COral" },
+      { id: "outback", category: "nature", en: "the outback", ipa: "[ˈaʊtbæk]", de: "das Hinterland Australiens", icon: "🏜️", exampleEn: "The outback is hot and remote.", exampleDe: "Das Outback ist heiß und abgelegen." },
+      { id: "coastal", category: "nature", en: "coastal", ipa: "[ˈkəʊstl]", de: "Küsten-", icon: "🏖️", exampleEn: "Plymouth is a coastal town in England.", exampleDe: "Plymouth ist eine Küstenstadt in England." },
+      { id: "tropics", category: "nature", en: "the tropics", ipa: "[ˈtrɒpɪks]", de: "die Tropen", icon: "🌴", exampleEn: "Many exotic animals live in the tropics.", exampleDe: "Viele exotische Tiere leben in den Tropen." },
+      { id: "tropical", category: "describing", en: "tropical", ipa: "[ˈtrɒpɪkl]", de: "tropisch, Tropen-", icon: "🌳", exampleEn: "a tropical rainforest / island / climate", exampleDe: "ein tropischer Regenwald / eine tropische Insel", fr: "tropical" },
+      { id: "exotic", category: "describing", en: "exotic", ipa: "[ɪɡˈzɒtɪk]", de: "exotisch", icon: "🦋", exampleEn: "We saw lots of exotic animals at the zoo.", exampleDe: "Wir sahen viele exotische Tiere im Zoo.", fr: "exotique" },
+      { id: "humid", category: "describing", en: "humid", ipa: "[ˈhjuːmɪd]", de: "feucht, feuchtwarm", icon: "💧", exampleEn: "We get a lot of rain here in the summer, so it's often very humid.", exampleDe: "Im Sommer regnet es viel, deshalb ist es oft sehr feucht.", note: "humid ↔ dry", fr: "humide" },
+      { id: "remote", category: "describing", en: "remote", ipa: "[rɪˈməʊt]", de: "abgelegen, abgeschieden", icon: "📍", exampleEn: "We stayed in a remote village 60 miles from the nearest town.", exampleDe: "Wir übernachteten in einem abgelegenen Dorf, 60 Meilen von der nächsten Stadt." },
+      { id: "stunning", category: "describing", en: "stunning", ipa: "[ˈstʌnɪŋ]", de: "atemberaubend, überwältigend", icon: "✨", exampleEn: "Don't they look stunning in their wedding clothes?", exampleDe: "Sehen sie nicht atemberaubend in ihren Hochzeitskleidern aus?", note: "= wonderful, amazing, fantastic" },
+      { id: "urban", category: "describing", en: "urban", ipa: "[ˈɜːbən]", de: "städtisch, Stadt-", icon: "🏙️", exampleEn: "Urban planners think about the future of towns and cities.", exampleDe: "Stadtplaner denken über die Zukunft von Städten nach.", fr: "urbain" },
+      { id: "lively", category: "describing", en: "lively", ipa: "[ˈlaɪvli]", de: "lebendig, lebhaft", icon: "💃", exampleEn: "My grandma is still very lively at 75. She goes dancing twice a week.", exampleDe: "Meine Oma ist mit 75 noch sehr lebhaft. Sie geht zweimal die Woche tanzen." },
+      { id: "historical", category: "describing", en: "historical", ipa: "[hɪˈstɒrɪkl]", de: "historisch, geschichtlich", icon: "🏰", exampleEn: "The town's main historical attraction is a 12th century castle.", exampleDe: "Die wichtigste historische Sehenswürdigkeit der Stadt ist eine Burg aus dem 12. Jahrhundert.", fr: "historique" },
+      { id: "trendy", category: "describing", en: "trendy", ipa: "[ˈtrendi]", de: "modisch, angesagt, „in“", icon: "😎", exampleEn: "Everyone is talking about this trendy new restaurant in George Street.", exampleDe: "Alle reden über dieses angesagte neue Restaurant in der George Street." },
+      { id: "kangaroo", category: "animals", en: "kangaroo", ipa: "[ˌkæŋɡəˈruː]", de: "Känguru", icon: "🦘", exampleEn: "A kangaroo can jump very far.", exampleDe: "Ein Känguru kann sehr weit springen.", note: "AusE informal: roo · stress: kangaROO" },
+      { id: "spider", category: "animals", en: "spider", ipa: "[ˈspaɪdə]", de: "Spinne", icon: "🕷️", exampleEn: "Some Australian spiders are poisonous.", exampleDe: "Manche australischen Spinnen sind giftig." },
+      { id: "camel", category: "animals", en: "camel", ipa: "[ˈkæml]", de: "Kamel", icon: "🐪", exampleEn: "Camels live in the dry outback.", exampleDe: "Kamele leben im trockenen Outback.", note: "stress: CAmel" },
+      { id: "koala", category: "animals", en: "koala", ipa: "[kəʊˈɑːlə]", de: "Koala", icon: "🐨", exampleEn: "The koala is sitting in a eucalyptus tree.", exampleDe: "Der Koala sitzt in einem Eukalyptusbaum." },
+      { id: "poisonous", category: "animals", en: "poisonous", ipa: "[ˈpɔɪzənəs]", de: "giftig", icon: "☠️", exampleEn: "Be careful! Snakes can be poisonous. If you eat poisonous plants, you might die.", exampleDe: "Vorsicht! Schlangen können giftig sein." },
+      { id: "flying-fox", category: "animals", en: "flying fox", ipa: "[ˌflaɪɪŋ ˈfɒks]", de: "Flughund", icon: "🦇", exampleEn: "A flying fox is a large fruit bat.", exampleDe: "Ein Flughund ist eine große Fruchtfledermaus." },
+      { id: "fox", category: "animals", en: "fox", ipa: "[fɒks]", de: "Fuchs", icon: "🦊", exampleEn: "The red fox lives in the woods.", exampleDe: "Der Rotfuchs lebt im Wald." },
+      { id: "aboriginal", category: "city", en: "Aboriginal", ipa: "[ˌæbəˈrɪdʒənl]", de: "Aborigine- (die Ureinwohner Australiens betreffend)", icon: "🟡", exampleEn: "Aboriginal artists / culture; the Aboriginal population", exampleDe: "Aborigine-Künstler / -Kultur; die Aborigine-Bevölkerung", note: "the Aboriginal flag" },
+      { id: "convict", category: "city", en: "convict", ipa: "[ˈkɒnvɪkt]", de: "Sträfling, Strafgefangene(r)", icon: "⛓️", exampleEn: "Britain sent convicts to Australia.", exampleDe: "Großbritannien schickte Sträflinge nach Australien." },
+      { id: "quarter", category: "city", en: "quarter", ipa: "[ˈkwɔːtə]", de: "Viertel (auch: Stadtviertel)", icon: "🏘️", exampleEn: "The student quarter has a lot of pubs and cafés.", exampleDe: "Im Studentenviertel gibt es viele Pubs und Cafés.", fr: "le quartier" },
+      { id: "settle", category: "city", en: "(to) settle", ipa: "[ˈsetl]", de: "sich niederlassen, sich ansiedeln", icon: "🏡", exampleEn: "When the Romans settled in Britain, they built roads and towns.", exampleDe: "Als sich die Römer in Britannien ansiedelten, bauten sie Straßen und Städte." },
+      { id: "business", category: "city", en: "business", ipa: "[ˈbɪznəs]", de: "Geschäft; Unternehmen, Betrieb", icon: "💼", exampleEn: "Mike started his own business when he was 17.", exampleDe: "Mike gründete mit 17 sein eigenes Unternehmen.", note: "a business trip/lunch = Geschäftsreise/-essen" },
+      { id: "district", category: "city", en: "district", ipa: "[ˈdɪstrɪkt]", de: "Gegend, Bezirk, Viertel", icon: "🏬", exampleEn: "There are lots of skyscrapers in Sydney's business district.", exampleDe: "Im Geschäftsviertel von Sydney gibt es viele Wolkenkratzer." },
+      { id: "opera", category: "city", en: "opera", ipa: "[ˈɒprə]", de: "Oper", icon: "🎭", exampleEn: "We visited the Sydney Opera House.", exampleDe: "Wir haben das Sydney Opera House besucht.", fr: "l'opéra" },
+      { id: "quay", category: "city", en: "quay", ipa: "[kiː]", de: "Kai", icon: "🚢", exampleEn: "We walked along Circular Quay.", exampleDe: "Wir gingen am Circular Quay entlang.", note: "! pronunciation: quay = key", fr: "le quai" },
+      { id: "exchange", category: "travel", en: "exchange", ipa: "[ɪksˈtʃeɪndʒ]", de: "Austausch", icon: "🤝", exampleEn: "There are some exchange students from France at our school.", exampleDe: "An unserer Schule gibt es Austauschschüler aus Frankreich.", fr: "l'échange" },
+      { id: "flight", category: "travel", en: "flight", ipa: "[flaɪt]", de: "Flug", icon: "✈️", exampleEn: "an in-flight magazine / meal", exampleDe: "Bordmagazin / Bordmahlzeit", note: "verb: fly, flew, flown — noun: flight" },
+      { id: "half-hour", category: "travel", en: "a half-hour ride", ipa: "[ə ˌhɑːf ˈaʊə raɪd]", de: "eine halbstündige Fahrt", icon: "⏱️", exampleEn: "It's only a half-hour ride to the beach.", exampleDe: "Es ist nur eine halbstündige Fahrt zum Strand.", note: "noun stays singular!" }
+    ];
+
+    const GRAMMAR = [
+      { en: "a five-minute walk", de: "ein fünfminütiger Spaziergang" },
+      { en: "a half-hour ride", de: "eine halbstündige Fahrt" },
+      { en: "a six-month stay", de: "ein sechsmonatiger Aufenthalt" },
+      { en: "a three-week holiday", de: "ein dreiwöchiger Urlaub" },
+      { en: "a ten-kilometre tour", de: "eine Zehn-Kilometer-Tour" },
+      { en: "a 150-kilogram bear", de: "ein 150 Kilo schwerer Bär" },
+      { en: "a 60-year-old waiter", de: "ein 60-jähriger Kellner" },
+      { en: "a 24-hour supermarket", de: "ein Supermarkt, der 24 Stunden geöffnet ist" }
+    ];
+
+    const CATEGORY_LABEL = {
+      nature: "Nature",
+      animals: "Animals",
+      describing: "Describing",
+      city: "City",
+      travel: "Travel"
+    };
+
+    document.getElementById("stat-count").textContent = VOCAB.length + " words";
+
+    /* ========== SPEECH (same pattern as Maya’s French page) ========== */
+    let voices = [];
+    let voicesReady = false;
+
+    function loadVoices() {
+      voices = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+      voicesReady = voices.length > 0;
+      const el = document.getElementById("voice-status");
+      if (!window.speechSynthesis) {
+        el.textContent = "Speech is not available. Try Chrome, Edge, or Safari.";
+        return;
+      }
+      const en = pickVoice("en");
+      const de = pickVoice("de");
+      const fr = pickVoice("fr");
+      el.textContent = voicesReady
+        ? `Pronunciation ready · EN: ${en?.name || "default"} · DE: ${de?.name || "default"}${fr ? " · FR: " + fr.name : ""}`
+        : "Tap any speaker button to unlock voices on this device.";
+    }
+
+    if (window.speechSynthesis) {
+      loadVoices();
+      speechSynthesis.onvoiceschanged = loadVoices;
+    } else {
+      loadVoices();
+    }
+
+    function pickVoice(langPrefix) {
+      const list = voices.filter(v => v.lang.toLowerCase().startsWith(langPrefix));
+      if (!list.length) return null;
+      const preferred = list.find(v => /google|apple|microsoft|natural|enhanced|premium/i.test(v.name));
+      return preferred || list[0];
+    }
+
+    function speak(text, lang) {
+      if (!window.speechSynthesis || !text) return;
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = lang === "de" ? "de-DE" : lang === "fr" ? "fr-FR" : "en-GB";
+      const voice = pickVoice(lang === "de" ? "de" : lang === "fr" ? "fr" : "en");
+      if (voice) u.voice = voice;
+      u.rate = lang === "en" ? 0.9 : 0.92;
+      u.pitch = 1.05;
+      speechSynthesis.speak(u);
+      if (!voicesReady) setTimeout(loadVoices, 300);
+    }
+
+    /* ========== LEARN CARDS ========== */
+    const grid = document.getElementById("vocab-grid");
+    let filter = "all";
+    let searchQ = "";
+
+    function filteredVocab() {
+      const q = searchQ.trim().toLowerCase();
+      return VOCAB.filter(v => {
+        const catOk = filter === "all" || v.category === filter;
+        if (!catOk) return false;
+        if (!q) return true;
+        return [v.en, v.de, v.ipa, v.exampleEn, v.note || "", v.fr || ""].join(" ").toLowerCase().includes(q);
+      });
+    }
+
+    function renderCards() {
+      const items = filteredVocab();
+      document.getElementById("count-label").textContent =
+        filter === "all" && !searchQ
+          ? `Showing all ${items.length} words`
+          : `Showing ${items.length} word${items.length === 1 ? "" : "s"}`;
+
+      grid.innerHTML = items.map(v => `
+        <article class="card" data-id="${v.id}" tabindex="0" role="button" aria-expanded="false">
+          <span class="badge ${v.category}">${CATEGORY_LABEL[v.category] || v.category}</span>
+          <div class="icon" aria-hidden="true">${v.icon}</div>
+          <div class="en">${escapeHtml(v.en)}</div>
+          <div class="ipa">${escapeHtml(v.ipa)}</div>
+          <div class="reveal">
+            <div class="lang-row">
+              <button type="button" class="speak-btn en-btn" data-speak="en" data-text="${escapeAttr(v.en)}">🔊 EN</button>
+              <button type="button" class="speak-btn de-btn" data-speak="de" data-text="${escapeAttr(v.de)}">🔊 DE</button>
+              ${v.fr ? `<button type="button" class="speak-btn fr-btn" data-speak="fr" data-text="${escapeAttr(v.fr)}">🔊 FR</button>` : ""}
+            </div>
+            <p class="trans"><span class="label">DE</span> ${escapeHtml(v.de)}</p>
+            ${v.fr ? `<p class="trans"><span class="label">FR</span> ${escapeHtml(v.fr)}</p>` : ""}
+            <div class="example">
+              <strong>EN:</strong> ${escapeHtml(v.exampleEn)}
+              <span class="de-ex"><strong>DE:</strong> ${escapeHtml(v.exampleDe)}</span>
+            </div>
+            ${v.note ? `<div class="note">💡 ${escapeHtml(v.note)}</div>` : ""}
+            <button type="button" class="speak-btn example-btn" data-speak="en" data-text="${escapeAttr(v.exampleEn)}">🔊 Hear the English example</button>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+    function escapeAttr(s) {
+      return escapeHtml(s).replace(/'/g, "&#39;");
+    }
+
+    grid.addEventListener("click", (e) => {
+      const speakBtn = e.target.closest("[data-speak]");
+      if (speakBtn) {
+        e.stopPropagation();
+        speak(speakBtn.dataset.text, speakBtn.dataset.speak);
+        return;
+      }
+      const card = e.target.closest(".card");
+      if (!card) return;
+      toggleCard(card);
+    });
+
+    grid.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const card = e.target.closest(".card");
+      if (!card) return;
+      e.preventDefault();
+      toggleCard(card);
+    });
+
+    function toggleCard(card) {
+      const open = card.classList.toggle("flipped");
+      card.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) {
+        const word = VOCAB.find(v => v.id === card.dataset.id);
+        if (word) speak(word.en, "en");
+      }
+    }
+
+    document.querySelectorAll(".chip").forEach(chip => {
+      chip.addEventListener("click", () => {
+        document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+        filter = chip.dataset.filter;
+        renderCards();
+      });
+    });
+
+    document.getElementById("search").addEventListener("input", (e) => {
+      searchQ = e.target.value;
+      renderCards();
+    });
+
+    renderCards();
+
+    /* ========== GRAMMAR ========== */
+    document.getElementById("grammar-grid").innerHTML = GRAMMAR.map(g => `
+      <div class="g-item">
+        <div class="en">${escapeHtml(g.en)}
+          <button type="button" class="speak-btn en-btn" style="margin-left:0.35rem;" data-g-en="${escapeAttr(g.en)}">🔊</button>
+        </div>
+        <div class="de">${escapeHtml(g.de)}</div>
+      </div>
+    `).join("");
+
+    document.getElementById("grammar-grid").addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-g-en]");
+      if (btn) speak(btn.dataset.gEn, "en");
+    });
+
+    document.getElementById("speak-grammar").addEventListener("click", () => {
+      speak("Im Englischen steht in Wendungen wie den folgenden das Nomen im Singular: a five-minute walk — nicht a five-minutes walk.", "de");
+    });
+
+    /* ========== TABS ========== */
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("panel-" + btn.dataset.tab).classList.add("active");
+        if (btn.dataset.tab === "practice") startPractice();
+        if (btn.dataset.tab === "quiz") resetQuizUI();
+      });
+    });
+
+    /* ========== HELPERS ========== */
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function wrongChoices(correct, count = 3) {
+      return shuffle(VOCAB.filter(v => v.id !== correct.id)).slice(0, count);
+    }
+
+    /* ========== PRACTICE ========== */
+    let practiceQueue = [];
+    let practiceIndex = 0;
+    let practiceAnswered = false;
+
+    function startPractice() {
+      practiceQueue = shuffle(VOCAB).slice(0, 15);
+      practiceIndex = 0;
+      practiceAnswered = false;
+      document.getElementById("practice-next").disabled = true;
+      renderPractice();
+    }
+
+    function renderPractice() {
+      const item = practiceQueue[practiceIndex];
+      const total = practiceQueue.length;
+      document.getElementById("practice-meta").textContent = `Word ${practiceIndex + 1} of ${total} · Listen in English`;
+      document.getElementById("practice-progress").style.width = `${(practiceIndex / total) * 100}%`;
+      document.getElementById("practice-icon").textContent = "🔊";
+      document.getElementById("practice-prompt").textContent = "What does this English word mean?";
+      document.getElementById("practice-feedback").textContent = "";
+      document.getElementById("practice-feedback").className = "feedback";
+      document.getElementById("practice-next").disabled = true;
+      practiceAnswered = false;
+
+      const options = shuffle([item, ...wrongChoices(item)]);
+      document.getElementById("practice-choices").innerHTML = options.map(o => `
+        <button type="button" class="choice" data-id="${o.id}">
+          ${o.icon} ${escapeHtml(o.de)}
+          <div style="font-size:0.85rem;font-weight:700;opacity:0.75;margin-top:0.15rem;">${escapeHtml(o.en)}</div>
+        </button>
+      `).join("");
+
+      setTimeout(() => speak(item.en, "en"), 250);
+    }
+
+    document.getElementById("practice-listen").addEventListener("click", () => {
+      const item = practiceQueue[practiceIndex];
+      if (item) speak(item.en, "en");
+    });
+
+    document.getElementById("practice-choices").addEventListener("click", (e) => {
+      const btn = e.target.closest(".choice");
+      if (!btn || practiceAnswered) return;
+      const item = practiceQueue[practiceIndex];
+      practiceAnswered = true;
+      [...document.querySelectorAll("#practice-choices .choice")].forEach(b => {
+        b.disabled = true;
+        if (b.dataset.id === item.id) b.classList.add("correct");
+      });
+      const fb = document.getElementById("practice-feedback");
+      if (btn.dataset.id === item.id) {
+        fb.textContent = "Awesome! 🎉 " + item.en + " = " + item.de;
+        fb.className = "feedback good";
+        document.getElementById("practice-icon").textContent = item.icon;
+      } else {
+        btn.classList.add("wrong");
+        fb.textContent = "Almost! Correct: " + item.en + " = " + item.de;
+        fb.className = "feedback bad";
+        speak(item.en, "en");
+      }
+      document.getElementById("practice-next").disabled = false;
+      document.getElementById("practice-progress").style.width = `${((practiceIndex + 1) / practiceQueue.length) * 100}%`;
+    });
+
+    document.getElementById("practice-next").addEventListener("click", () => {
+      if (practiceIndex < practiceQueue.length - 1) {
+        practiceIndex++;
+        renderPractice();
+      } else {
+        document.getElementById("practice-prompt").textContent = "You finished listening practice!";
+        document.getElementById("practice-choices").innerHTML = "";
+        document.getElementById("practice-feedback").textContent = "Ready for the Quiz? Tap Quiz (15) above!";
+        document.getElementById("practice-feedback").className = "feedback good";
+        document.getElementById("practice-next").disabled = true;
+        document.getElementById("practice-icon").textContent = "🌟";
+      }
+    });
+
+    document.getElementById("practice-restart").addEventListener("click", startPractice);
+
+    /* ========== QUIZ ========== */
+    let quizQueue = [];
+    let quizIndex = 0;
+    let quizScore = 0;
+    let quizAnswered = false;
+    let missed = [];
+
+    function resetQuizUI() {
+      document.getElementById("quiz-stage").style.display = "block";
+      document.getElementById("quiz-results").style.display = "none";
+      document.getElementById("quiz-start").style.display = "inline-block";
+      document.getElementById("quiz-next").style.display = "none";
+      document.getElementById("quiz-next").disabled = true;
+      document.getElementById("quiz-choices").innerHTML = "";
+      document.getElementById("quiz-feedback").textContent = "";
+      document.getElementById("quiz-meta").textContent = "15-word test · Unit 1 Australia";
+      document.getElementById("quiz-prompt").textContent = "Ready when you are!";
+      document.getElementById("quiz-icon").textContent = "⭐";
+      document.getElementById("quiz-progress").style.width = "0%";
+      document.getElementById("quiz-listen").style.display = "none";
+    }
+
+    function buildQuiz() {
+      const words = shuffle(VOCAB).slice(0, 15);
+      return words.map((word, i) => {
+        const styles = ["deToEn", "enToDe", "listenToDe", "iconToEn"];
+        return { word, style: styles[i % styles.length] };
+      });
+    }
+
+    function startQuiz() {
+      quizQueue = buildQuiz();
+      quizIndex = 0;
+      quizScore = 0;
+      missed = [];
+      quizAnswered = false;
+      document.getElementById("quiz-start").style.display = "none";
+      document.getElementById("quiz-next").style.display = "inline-block";
+      document.getElementById("quiz-results").style.display = "none";
+      document.getElementById("quiz-stage").style.display = "block";
+      renderQuizQuestion();
+    }
+
+    function renderQuizQuestion() {
+      const { word, style } = quizQueue[quizIndex];
+      const total = quizQueue.length;
+      quizAnswered = false;
+
+      document.getElementById("quiz-meta").textContent = `Question ${quizIndex + 1} of ${total}`;
+      document.getElementById("quiz-progress").style.width = `${(quizIndex / total) * 100}%`;
+      document.getElementById("quiz-feedback").textContent = "";
+      document.getElementById("quiz-feedback").className = "feedback";
+      document.getElementById("quiz-next").disabled = true;
+      document.getElementById("quiz-listen").style.display = "none";
+      document.getElementById("quiz-icon").textContent = word.icon;
+
+      let prompt = "";
+      let choices = [];
+      let labelFn = (w) => w.en;
+
+      if (style === "deToEn") {
+        prompt = `Was heißt auf Englisch: „${word.de}“?`;
+        choices = shuffle([word, ...wrongChoices(word)]);
+        labelFn = (w) => w.en;
+      } else if (style === "enToDe") {
+        prompt = `What does “${word.en}” mean in German?`;
+        choices = shuffle([word, ...wrongChoices(word)]);
+        labelFn = (w) => w.de;
+      } else if (style === "listenToDe") {
+        prompt = `Listen — what does it mean?`;
+        choices = shuffle([word, ...wrongChoices(word)]);
+        labelFn = (w) => w.de;
+        document.getElementById("quiz-listen").style.display = "inline-flex";
+        document.getElementById("quiz-listen").onclick = () => speak(word.en, "en");
+        setTimeout(() => speak(word.en, "en"), 200);
+      } else {
+        prompt = `Which English word matches this?`;
+        choices = shuffle([word, ...wrongChoices(word)]);
+        labelFn = (w) => w.en;
+      }
+
+      document.getElementById("quiz-prompt").textContent = prompt;
+      document.getElementById("quiz-choices").innerHTML = choices.map(o => `
+        <button type="button" class="choice" data-id="${o.id}">${o.icon} ${escapeHtml(labelFn(o))}</button>
+      `).join("");
+    }
+
+    document.getElementById("quiz-choices").addEventListener("click", (e) => {
+      const btn = e.target.closest(".choice");
+      if (!btn || quizAnswered || !quizQueue.length) return;
+      const { word } = quizQueue[quizIndex];
+      quizAnswered = true;
+      [...document.querySelectorAll("#quiz-choices .choice")].forEach(b => {
+        b.disabled = true;
+        if (b.dataset.id === word.id) b.classList.add("correct");
+      });
+
+      const fb = document.getElementById("quiz-feedback");
+      if (btn.dataset.id === word.id) {
+        quizScore++;
+        fb.textContent = "Super! ✅ " + word.en + " — " + word.de;
+        fb.className = "feedback good";
+        speak(word.en, "en");
+      } else {
+        btn.classList.add("wrong");
+        missed.push(word);
+        fb.textContent = "Not quite → " + word.en + " = " + word.de;
+        fb.className = "feedback bad";
+        speak(word.en, "en");
+      }
+      document.getElementById("quiz-next").disabled = false;
+      document.getElementById("quiz-progress").style.width = `${((quizIndex + 1) / quizQueue.length) * 100}%`;
+    });
+
+    document.getElementById("quiz-next").addEventListener("click", () => {
+      if (quizIndex < quizQueue.length - 1) {
+        quizIndex++;
+        renderQuizQuestion();
+      } else {
+        showResults();
+      }
+    });
+
+    document.getElementById("quiz-start").addEventListener("click", startQuiz);
+    document.getElementById("quiz-again").addEventListener("click", startQuiz);
+    document.getElementById("back-learn").addEventListener("click", () => {
+      document.querySelector('[data-tab="learn"]').click();
+    });
+
+    function showResults() {
+      document.getElementById("quiz-stage").style.display = "none";
+      document.getElementById("quiz-results").style.display = "block";
+      document.getElementById("final-score").textContent = `${quizScore} / ${quizQueue.length}`;
+
+      let stars = "⭐";
+      let msg = "Keep practicing — you've got this!";
+      if (quizScore >= 14) { stars = "⭐⭐⭐⭐⭐"; msg = "Incredible, Eva! Outback champion! 👑🦘"; burstConfetti(); }
+      else if (quizScore >= 11) { stars = "⭐⭐⭐⭐"; msg = "Brilliant! Almost perfect — try once more for 15/15!"; burstConfetti(); }
+      else if (quizScore >= 8) { stars = "⭐⭐⭐"; msg = "Good work! Flip a few more cards, then try again."; }
+      else { stars = "⭐⭐"; msg = "Nice start! Practise the animals and describing words."; }
+
+      document.getElementById("final-stars").textContent = stars;
+      document.getElementById("final-message").textContent = msg;
+
+      const missedEl = document.getElementById("missed-list");
+      if (missed.length) {
+        const unique = [...new Map(missed.map(m => [m.id, m])).values()];
+        missedEl.innerHTML = "Practice these again: " + unique.map(m => `<strong>${escapeHtml(m.en)}</strong>`).join(", ");
+      } else {
+        missedEl.textContent = "You got every word right. G’day legend!";
+      }
+    }
+
+    function burstConfetti() {
+      const layer = document.getElementById("confetti-layer");
+      const colors = ["#ff6f61", "#f4b942", "#3d9b5f", "#5eb7e0", "#fff", "#1aa6a0"];
+      for (let i = 0; i < 48; i++) {
+        const bit = document.createElement("div");
+        bit.className = "confetti";
+        bit.style.left = Math.random() * 100 + "vw";
+        bit.style.background = colors[i % colors.length];
+        bit.style.animationDelay = (Math.random() * 0.6) + "s";
+        bit.style.animationDuration = (2.2 + Math.random() * 1.4) + "s";
+        layer.appendChild(bit);
+        setTimeout(() => bit.remove(), 4000);
+      }
+    }
+  </script>
+</body>
+</html>
