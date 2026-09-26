@@ -21,6 +21,13 @@
 
 **Antwort:** Luft-Förderband über dem Pazifik: Osten – Luft sinkt (Hochdruck); Westen – Luft steigt (Tiefdruck/Regen). Passate am Boden Ost→West; oben fließt Luft zurück.
 
+### 3b. Humboldtströmung (3 P.)
+**Frage:** Was ist die Humboldtströmung? Wo fließt sie, warum viele Fische, was bei El Niño?
+
+**Antwort:** Kalte Meeresströmung vor Chile/Peru (nach Norden). Nährstoffreicher Auftrieb → viele Fische. Bei El Niño: warmes Wasser schwächt den kalten Auftrieb → weniger Fische (so entdeckten Fischer El Niño).
+
+**Merke:** Walker-Zelle = **Luft**. Humboldtströmung = **Meer**.
+
 ### 4. Beginn von El Niño (3 P.)
 **Frage:** Erkläre, wie El Niño beginnt.
 
@@ -61,3 +68,5 @@
 | B | Passate bei El Niño? | werden schwächer |
 | C | Walker-Zelle? | Luft-Förderband über dem Pazifik |
 | D | Warum kaltes Wasser vor Südamerika (normal)? | Auftrieb, weil Passate Warmwasser wegdrücken |
+| E | Humboldtströmung? | Kalte Meeresströmung vor Chile/Peru (nach Norden) |
+| F | Walker vs. Humboldt? | Walker = Luft · Humboldt = Meer |

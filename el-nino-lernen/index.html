@@ -768,6 +768,7 @@
         <span>El Niño Akademie</span>
       </a>
       <div class="hud">
+        <a class="pill" href="montag-abenteuer.html" title="Montag: Walker-Zelle & Humboldtströmung" style="text-decoration:none;color:var(--ocean-deep);">⭐ Montag-Abenteuer</a>
         <div class="pill stars" title="Sterne">⭐ <span id="starCount">0</span></div>
         <div class="pill score" title="Punkte">🏆 <span id="scoreCount">0</span></div>
         <div class="voice-panel">
@@ -791,6 +792,7 @@
           <div class="cta-row">
             <button type="button" class="btn btn-primary" id="startBtn">Los geht’s 🚀</button>
             <button type="button" class="btn btn-secondary" id="introVoice">Erzähl mir’s 🎤</button>
+            <a class="btn btn-ghost" href="montag-abenteuer.html" style="text-decoration:none;display:inline-block;">⭐ Montag-Test üben</a>
             <button type="button" class="btn btn-ghost" data-go="faq">Zuerst FAQ (für Einsteiger)</button>
           </div>
         </div>
@@ -930,6 +932,31 @@
               <text x="320" y="137" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="13" fill="white">Pazifik</text>
             </svg>
             <button type="button" class="btn btn-secondary speak-btn" data-speak="walkerIntro">Walker-Zelle vorlesen 🔊</button>
+          </div>
+
+          <div class="walker-box" style="margin-top:1rem;">
+            <h3>Und die Humboldtströmung? (Meer, nicht Luft!)</h3>
+            <p id="humboldtIntro" style="line-height:1.5;">
+              Die <strong>Humboldtströmung</strong> (auch Peru-Strom) ist eine <strong>kalte Meeresströmung</strong>
+              vor der Westküste Südamerikas (Chile → Peru, nach Norden).
+              Kaltes, nährstoffreiches Wasser steigt auf (<strong>Auftrieb</strong>) — deshalb gibt es hier so viele Fische.
+              Wenn bei El Niño warmes Wasser kommt, wird dieser kalte Effekt schwächer: weniger Fische.
+              Genau das haben Fischer um Weihnachten bemerkt und „El Niño“ genannt.
+            </p>
+            <div class="walker-steps">
+              <div class="walker-step">
+                <strong>Walker-Zelle</strong>
+                = Luft-Förderband über dem Pazifik (Hoch Osten, Tief Westen, Passate Ost→West).
+              </div>
+              <div class="walker-step">
+                <strong>Humboldtströmung</strong>
+                = kalte Meeresströmung vor Chile/Peru (viele Fische dank Auftrieb).
+              </div>
+            </div>
+            <div class="cta-row" style="margin-top:0.75rem;">
+              <button type="button" class="btn btn-secondary speak-btn" data-speak="humboldtIntro">Humboldt vorlesen 🔊</button>
+              <a class="btn btn-primary" href="montag-abenteuer.html" style="text-decoration:none;display:inline-block;">Montag-Abenteuer starten ⭐</a>
+            </div>
           </div>
 
           <h2>Pazifik-Simulator: Normaljahr ↔ El Niño</h2>
@@ -2426,6 +2453,28 @@
           ],
           a: 1,
           explain: "Auftrieb (Upwelling) von kaltem Tiefenwasser – wichtig auch für Fische."
+        },
+        {
+          q: "Was ist die Humboldtströmung?",
+          choices: [
+            "Ein Luft-Förderband über dem Pazifik",
+            "Eine kalte Meeresströmung vor Chile und Peru (nach Norden)",
+            "Ein warmer Golfstrom vor Florida",
+            "Der Name der Passatwinde"
+          ],
+          a: 1,
+          explain: "Humboldtströmung = kalter Meeresstrom vor der Westküste Südamerikas — nährstoffreich, viele Fische."
+        },
+        {
+          q: "Walker-Zelle vs. Humboldtströmung — was stimmt?",
+          choices: [
+            "Beide sind Meeresströmungen",
+            "Walker = Luft-Zirkulation, Humboldt = kalte Meeresströmung",
+            "Beide sind nur Windnamen",
+            "Humboldt ist ein Gebirge in Asien"
+          ],
+          a: 1,
+          explain: "Merke: Walker = Luft, Humboldt = Meer."
         }
       ];
 
@@ -2652,6 +2701,11 @@
           points: 3,
           q: "Was ist die Walker-Zelle? Erkläre sie in einfachen Worten (Hoch/Tief, Windrichtung).",
           a: "Die Walker-Zelle ist ein Luft-Förderband über dem Pazifik: Im Osten (kaltes Wasser) sinkt Luft ab (Hochdruck), im Westen steigt Luft auf (Tiefdruck/Regen). Am Boden wehen Passate von Ost nach West; oben fließt die Luft zurück."
+        },
+        {
+          points: 3,
+          q: "Was ist die Humboldtströmung? Wo fließt sie, und warum sind dort viele Fische? Was passiert damit bei El Niño?",
+          a: "Die Humboldtströmung (Peru-Strom) ist eine kalte Meeresströmung vor Chile/Peru, die nach Norden fließt. Kaltes, nährstoffreiches Auftriebswasser ernährt Plankton → viele Fische. Bei El Niño kommt warmes Wasser → der kalte Auftrieb-/Humboldt-Effekt schwächt sich ab → weniger Fische (so entdeckten Fischer El Niño)."
         },
         {
           points: 3,

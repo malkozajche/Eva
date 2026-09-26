@@ -1,19 +1,24 @@
-# El Niño Akademie
+# Eva’s Learning Pages
+
+## ⭐ Montag-Abenteuer (Walker-Zelle & Humboldtströmung)
+
+Joyful test-prep exploration for Eva’s Monday control work:
+
+- Walker-Zelle (Luft-Förderband)
+- Humboldtströmung (kalte Meeresströmung vor Peru/Chile)
+- How El Niño disrupts both
+- 10-question Test-Quest + cheat sheet
+
+**Live (after merge):** https://malkozajche.github.io/Eva/montag-abenteuer.html  
+**File:** [`el-nino-lernen/montag-abenteuer.html`](el-nino-lernen/montag-abenteuer.html)
+
+## El Niño Akademie
 
 Interactive German learning page for **„El Niño – und die Welt steht Kopf“**.
 
-## Open the site
-
-- **App:** [`el-nino-lernen/index.html`](el-nino-lernen/index.html)
+- **App:** [`el-nino-lernen/index.html`](el-nino-lernen/index.html) · https://malkozajche.github.io/Eva/
 - **Teacher test (Q&A):** [`el-nino-lernen/KLASSENARBEIT.md`](el-nino-lernen/KLASSENARBEIT.md)
-- In the app, open the tab **Klassenarbeit** for the same test with show/hide answers.
 
-## GitHub Pages (permanent link)
-
-After the repo is **public**:
-
-1. Go to **Settings → Pages**
-2. Source: **GitHub Actions**
-3. Site URL: **https://malkozajche.github.io/Eva/**
+## GitHub Pages
 
 The workflow in `.github/workflows/pages.yml` deploys `el-nino-lernen/` on every push to `main`.
