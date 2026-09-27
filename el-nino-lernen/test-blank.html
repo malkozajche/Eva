@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Klassenarbeit El Niño — Schülerblatt (blank)</title>
+  <style>
+    :root {
+      --ink: #111;
+      --line: #bbb;
+      --muted: #444;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Georgia", "Times New Roman", serif;
+      color: var(--ink);
+      background: #e8ecef;
+      line-height: 1.35;
+    }
+    .screen-bar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1rem;
+      background: #0b5f6c;
+      color: white;
+      font-family: system-ui, sans-serif;
+      font-size: 0.95rem;
+    }
+    .screen-bar a, .screen-bar button {
+      font: inherit;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 0.45rem 0.95rem;
+      text-decoration: none;
+      color: #0b5f6c;
+      background: white;
+    }
+    .screen-bar .ghost {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.55);
+    }
+    .sheet {
+      width: min(210mm, 96vw);
+      margin: 1.25rem auto 2rem;
+      background: white;
+      padding: 14mm 14mm 16mm;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+    }
+    h1 {
+      font-size: 1.35rem;
+      margin: 0 0 0.15rem;
+      text-align: center;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+    .meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.45rem 1rem;
+      font-size: 0.95rem;
+      margin-bottom: 0.85rem;
+      border: 1.5px solid #222;
+      padding: 0.65rem 0.75rem;
+    }
+    .meta .field {
+      display: flex;
+      gap: 0.4rem;
+      align-items: flex-end;
+    }
+    .meta .field span { white-space: nowrap; }
+    .meta .field .blank {
+      flex: 1;
+      border-bottom: 1px solid #333;
+      min-height: 1.1rem;
+    }
+    .info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      font-size: 0.9rem;
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 2px solid #222;
+    }
+    .task {
+      margin: 0.95rem 0 1.05rem;
+      break-inside: avoid;
+    }
+    .task h2 {
+      font-size: 1.02rem;
+      margin: 0 0 0.35rem;
+    }
+    .task .points {
+      float: right;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .task p, .task li { font-size: 0.95rem; }
+    .task ol, .task ul { margin: 0.3rem 0 0.4rem 1.2rem; }
+    .lines {
+      margin-top: 0.35rem;
+    }
+    .lines .line {
+      border-bottom: 1px solid var(--line);
+      height: 1.35rem;
+    }
+    table.compare {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.4rem;
+      font-size: 0.9rem;
+    }
+    table.compare th, table.compare td {
+      border: 1.5px solid #333;
+      padding: 0.45rem 0.5rem;
+      vertical-align: top;
+    }
+    table.compare th {
+      background: #f3f3f3;
+      text-align: left;
+    }
+    table.compare td {
+      height: 2.5rem;
+    }
+    table.compare td.write {
+      height: 2.8rem;
+    }
+    .hint {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 0.2rem;
+    }
+    .footer-note {
+      margin-top: 1.2rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid #999;
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .mc {
+      list-style: none;
+      margin: 0.35rem 0 0;
+      padding: 0;
+    }
+    .mc li {
+      margin: 0.25rem 0;
+      padding-left: 0.1rem;
+    }
+    .box {
+      display: inline-block;
+      width: 0.95rem;
+      height: 0.95rem;
+      border: 1.5px solid #222;
+      margin-right: 0.4rem;
+      vertical-align: -0.1rem;
+    }
+    @media print {
+      body { background: white; }
+      .screen-bar { display: none !important; }
+      .sheet {
+        width: auto;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+      @page { size: A4; margin: 12mm 12mm 14mm; }
+    }
+  </style>
+</head>
+<body>
+  <div class="screen-bar">
+    <strong>Schülerblatt — zum Ausdrucken</strong>
+    <button type="button" onclick="window.print()">🖨️ Drucken / PDF</button>
+    <a href="test-loesung.html">Musterlösung öffnen</a>
+    <a class="ghost" href="index.html">← Akademie</a>
+  </div>
+
+  <main class="sheet">
+    <h1>Klassenarbeit: El Niño – und die Welt steht Kopf</h1>
+    <p class="subtitle">Fach Geografie · Übungstest (wie in der Schule)</p>
+
+    <div class="meta">
+      <div class="field"><span>Name:</span><div class="blank"></div></div>
+      <div class="field"><span>Klasse:</span><div class="blank"></div></div>
+      <div class="field"><span>Datum:</span><div class="blank"></div></div>
+      <div class="field"><span>Punkte:</span><div class="blank"></div><span>/ 24</span></div>
+    </div>
+
+    <div class="info">
+      <span><strong>Zeit:</strong> ca. 25–30 Minuten</span>
+      <span><strong>Hilfsmittel:</strong> keine</span>
+      <span><strong>Hinweis:</strong> Bitte mit Kugelschreiber schreiben. Bei Tabellen Stichworte reichen.</span>
+    </div>
+
+    <section class="task">
+      <h2><span class="points">2 P.</span>1. Name und Häufigkeit</h2>
+      <p>Erkläre kurz, <strong>warum</strong> das Phänomen „El Niño“ heißt und <strong>wie oft</strong> es ungefähr auftritt.</p>
+      <div class="lines">
+        <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+      </div>
+    </section>
+
+    <section class="task">
+      <h2><span class="points">3 P.</span>2. Normaljahr im Pazifik</h2>
+      <p>Beschreibe die Situation in einem <strong>Normaljahr</strong>: Passatwinde, warmes Oberflächenwasser und kaltes Tiefenwasser (Auftrieb).</p>
+      <div class="lines">
+        <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+      </div>
+    </section>
+
+    <section class="task">
+      <h2><span class="points">5 P.</span>3. Fünf Ereignisse: Normaljahr ↔ El Niño</h2>
+      <p>Trage zu jedem Ereignis ein, ob es zum <strong>Normaljahr</strong> oder zu <strong>El Niño</strong> gehört — und ergänze kurz die passende Gegenseite.</p>
+      <p class="hint">Beispiel-Zeile 1 ist als Muster angedeutet. Vervollständige alle fünf Zeilen.</p>
+      <table class="compare">
+        <thead>
+          <tr>
+            <th style="width:8%">Nr.</th>
+            <th style="width:46%">Ereignis / Zustand</th>
+            <th style="width:23%">Normaljahr oder El Niño?</th>
+            <th style="width:23%">Was passiert jeweils anders?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Starke Passatwinde wehen von Ost nach West</td>
+            <td class="write"></td>
+            <td class="write"></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Warmes Oberflächenwasser vor der Küste Perus</td>
+            <td class="write"></td>
+            <td class="write"></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Viele Fische vor Peru (kaltes, nährstoffreiches Wasser)</td>
+            <td class="write"></td>
+            <td class="write"></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Schwere Regenfälle und Überschwemmungen in Peru/Ecuador</td>
+            <td class="write"></td>
+            <td class="write"></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Dürre, Hitze und trockene Reisfelder in SO-Asien / Philippinen</td>
+            <td class="write"></td>
+            <td class="write"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="task">
+      <h2><span class="points">3 P.</span>4. Walker-Zelle</h2>
+      <p>Was ist die <strong>Walker-Zelle</strong>? Erkläre sie in einfachen Worten (Hoch/Tief, Windrichtung).</p>
+      <div class="lines">
+        <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+      </div>
+    </section>
+
+    <section class="task">
+      <h2><span class="points">3 P.</span>5. Humboldtströmung</h2>
+      <p>Was ist die <strong>Humboldtströmung</strong>? Wo fließt sie? Warum gibt es dort viele Fische — und was ändert sich bei El Niño?</p>
+      <div class="lines">
+        <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+      </div>
+    </section>
+
+    <section class="task">
+      <h2><span class="points">3 P.</span>6. Wie beginnt El Niño?</h2>
+      <p>Erkläre in der richtigen Reihenfolge, wie El Niño entsteht (Passate → Wasser → Auftrieb → Walker-Zelle → Wetter).</p>
+      <div class="lines">
+        <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+      </div>
+    </section>
+
+    <section class="task">
+      <h2><span class="points">3 P.</span>7. Drei Regionen auf der Weltkarte</h2>
+      <p>Nenne <strong>drei Regionen</strong>. Schreibe jeweils, ob es bei El Niño <strong>nasser</strong> oder <strong>trockener</strong> als normal wird — und ein typisches Folgeproblem.</p>
+      <div class="lines">
+        <div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div>
+      </div>
+    </section>
+
+    <section class="task">
+      <h2><span class="points">2 P.</span>8. Kurzfragen (ankreuzen)</h2>
+      <ol class="mc">
+        <li>
+          <strong>a)</strong> Passatwinde im Normaljahr über dem Pazifik:<br />
+          <span class="box"></span> West → Ost &nbsp;&nbsp;
+          <span class="box"></span> Ost → West &nbsp;&nbsp;
+          <span class="box"></span> nur nach Norden
+        </li>
+        <li style="margin-top:0.55rem;">
+          <strong>b)</strong> Walker-Zelle ist … / Humboldtströmung ist …<br />
+          <span class="box"></span> Meer / Luft &nbsp;&nbsp;
+          <span class="box"></span> Luft / Meer &nbsp;&nbsp;
+          <span class="box"></span> beides nur Wind
+        </li>
+      </ol>
+    </section>
+
+    <div class="footer-note">
+      <span>Viel Erfolg!</span>
+      <span>Seite 1 · Schülerblatt (ohne Lösungen)</span>
+    </div>
+  </main>
+</body>
+</html>

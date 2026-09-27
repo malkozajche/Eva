@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Klassenarbeit El Niño — Musterlösung</title>
+  <style>
+    :root {
+      --ink: #111;
+      --ok: #0d5c3d;
+      --muted: #444;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Georgia", "Times New Roman", serif;
+      color: var(--ink);
+      background: #e8ecef;
+      line-height: 1.4;
+    }
+    .screen-bar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1rem;
+      background: #8a3d12;
+      color: white;
+      font-family: system-ui, sans-serif;
+      font-size: 0.95rem;
+    }
+    .screen-bar a, .screen-bar button {
+      font: inherit;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 0.45rem 0.95rem;
+      text-decoration: none;
+      color: #8a3d12;
+      background: white;
+    }
+    .screen-bar .ghost {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.55);
+    }
+    .sheet {
+      width: min(210mm, 96vw);
+      margin: 1.25rem auto 2rem;
+      background: white;
+      padding: 14mm 14mm 16mm;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+    }
+    h1 {
+      font-size: 1.35rem;
+      margin: 0 0 0.15rem;
+      text-align: center;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .badge {
+      display: inline-block;
+      background: #fff3d6;
+      border: 1.5px solid #c48900;
+      color: #6a4500;
+      font-family: system-ui, sans-serif;
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      margin: 0 auto 0.85rem;
+      display: block;
+      width: fit-content;
+    }
+    .info {
+      font-size: 0.9rem;
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 2px solid #222;
+    }
+    .task {
+      margin: 0.85rem 0 1rem;
+      break-inside: avoid;
+    }
+    .task h2 {
+      font-size: 1.02rem;
+      margin: 0 0 0.3rem;
+    }
+    .task .points {
+      float: right;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .answer {
+      background: #eef8f2;
+      border-left: 4px solid var(--ok);
+      padding: 0.55rem 0.7rem;
+      font-size: 0.95rem;
+      color: #123;
+    }
+    .answer strong.label {
+      color: var(--ok);
+      font-family: system-ui, sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    table.compare {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.35rem;
+      font-size: 0.88rem;
+    }
+    table.compare th, table.compare td {
+      border: 1.5px solid #333;
+      padding: 0.4rem 0.45rem;
+      vertical-align: top;
+    }
+    table.compare th { background: #f3f3f3; text-align: left; }
+    table.compare td.ok { background: #eef8f2; }
+    .footer-note {
+      margin-top: 1.1rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid #999;
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .cheat {
+      margin-top: 1rem;
+      padding: 0.7rem 0.8rem;
+      border: 1.5px dashed #8a5a00;
+      background: #fff8e0;
+      font-size: 0.9rem;
+    }
+    .cheat h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1rem;
+      color: #6a4500;
+    }
+    .cheat ul { margin: 0.2rem 0 0 1.1rem; }
+    @media print {
+      body { background: white; }
+      .screen-bar { display: none !important; }
+      .sheet {
+        width: auto;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+      @page { size: A4; margin: 12mm 12mm 14mm; }
+    }
+  </style>
+</head>
+<body>
+  <div class="screen-bar">
+    <strong>Musterlösung — für dich / zum Korrigieren</strong>
+    <button type="button" onclick="window.print()">🖨️ Drucken / PDF</button>
+    <a href="test-blank.html">Schülerblatt öffnen</a>
+    <a class="ghost" href="index.html">← Akademie</a>
+  </div>
+
+  <main class="sheet">
+    <h1>Klassenarbeit: El Niño – und die Welt steht Kopf</h1>
+    <p class="subtitle">Musterlösung · Fach Geografie · 24 Punkte</p>
+    <span class="badge">⚠️ NICHT an Eva während der Übung geben — erst danach zum Vergleichen</span>
+
+    <p class="info"><strong>Bewertungshinweis:</strong> Stichworte und sinngemäß richtige Antworten zählen. Rechtschreibung nicht überbewerten.</p>
+
+    <section class="task">
+      <h2><span class="points">2 P.</span>1. Name und Häufigkeit</h2>
+      <div class="answer">
+        <strong class="label">Musterlösung</strong>
+        Peruanische Fischer beobachteten die Erwärmung oft um Weihnachten und nannten die Strömung „Corriente del Niño“ (Christkind / „El Niño“).<br />
+        Es tritt ungefähr <strong>alle 2–7 Jahre</strong> auf.
+      </div>
+    </section>
+
+    <section class="task">
+      <h2><span class="points">3 P.</span>2. Normaljahr im Pazifik</h2>
+      <div class="answer">
+        <strong class="label">Musterlösung</strong>
+        Starke Passatwinde wehen von <strong>Ost nach West</strong>. Sie drücken warmes Oberflächenwasser nach Westen (SO-Asien). Vor Südamerika steigt kaltes Tiefenwasser auf (<strong>Auftrieb</strong>). Westen: eher Regen; Osten (Peru): eher trocken/kühl.
+      </div>
+    </section>
+
+    <section class="task">
+      <h2><span class="points">5 P.</span>3. Fünf Ereignisse: Normaljahr ↔ El Niño</h2>
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Nr.</th>
+            <th>Ereignis / Zustand</th>
+            <th>Zuordnung</th>
+            <th>Gegenseite / Anders</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Starke Passatwinde Ost → West</td>
+            <td class="ok"><strong>Normaljahr</strong></td>
+            <td class="ok">Bei El Niño: Passate werden <strong>schwächer</strong></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Warmes Oberflächenwasser vor Peru</td>
+            <td class="ok"><strong>El Niño</strong></td>
+            <td class="ok">Normal: eher <strong>kaltes</strong> Auftriebswasser vor Peru</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Viele Fische vor Peru (kalt/nährstoffreich)</td>
+            <td class="ok"><strong>Normaljahr</strong></td>
+            <td class="ok">El Niño: <strong>weniger Fische</strong> (Auftrieb/Humboldt-Effekt schwächer)</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Starkregen &amp; Überschwemmungen in Peru/Ecuador</td>
+            <td class="ok"><strong>El Niño</strong></td>
+            <td class="ok">Normal: Peru eher <strong>trocken</strong> (Wüstenküste)</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Dürre / trockene Reisfelder in SO-Asien</td>
+            <td class="ok"><strong>El Niño</strong></td>
+            <td class="ok">Normal: SO-Asien eher <strong>nass</strong> (Regen durch aufsteigende Luft)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.85rem;color:#444;margin-top:0.35rem;">Je Zeile ca. 1 Punkt (Zuordnung + sinnvolle Gegenseite).</p>
+    </section>
+
+    <section class="task">
+      <h2><span class="points">3 P.</span>4. Walker-Zelle</h2>
+      <div class="answer">
+        <strong class="label">Musterlösung</strong>
+        Die Walker-Zelle ist ein <strong>Luft-Förderband</strong> über dem Pazifik: Im Osten (kaltes Wasser) sinkt Luft ab (<strong>Hochdruck</strong>), im Westen steigt Luft auf (<strong>Tiefdruck / Regen</strong>). Am Boden wehen Passate von Ost nach West; oben fließt die Luft zurück nach Osten.
+      </div>
+    </section>
+
+    <section class="task">
+      <h2><span class="points">3 P.</span>5. Humboldtströmung</h2>
+      <div class="answer">
+        <strong class="label">Musterlösung</strong>
+        Kalte <strong>Meeresströmung</strong> vor Chile/Peru, die nach <strong>Norden</strong> fließt. Kaltes, nährstoffreiches Auftriebswasser → viele Fische. Bei El Niño: warmes Wasser schwächt den kalten Auftrieb → weniger Fische (so entdeckten Fischer El Niño).<br />
+        <em>Merke: Walker = Luft · Humboldt = Meer.</em>
+      </div>
+    </section>
+
+    <section class="task">
+      <h2><span class="points">3 P.</span>6. Wie beginnt El Niño?</h2>
+      <div class="answer">
+        <strong class="label">Musterlösung</strong>
+        Passatwinde werden schwächer → warmes Wasser fließt nach Osten → weniger Auftrieb vor Südamerika → Walker-Zelle gestört → Wetter kehrt sich um (z.&nbsp;B. Flut in Peru, Dürre in SO-Asien).
+      </div>
+    </section>
+
+    <section class="task">
+      <h2><span class="points">3 P.</span>7. Drei Regionen</h2>
+      <div class="answer">
+        <strong class="label">Musterlösung (Beispiele)</strong>
+        · Australien — trockener — Busch-/Waldbrände<br />
+        · Horn von Afrika — nasser — Überschwemmungen<br />
+        · Südostchina — nasser — Fluten / mehr Wirbelstürme<br />
+        · Südliches Afrika — trockener — Ernteausfälle<br />
+        · Neuseeland — nasser — Starkregen<br />
+        (Drei passende Paare reichen.)
+      </div>
+    </section>
+
+    <section class="task">
+      <h2><span class="points">2 P.</span>8. Kurzfragen</h2>
+      <div class="answer">
+        <strong class="label">Musterlösung</strong>
+        <strong>a)</strong> Ost → West<br />
+        <strong>b)</strong> Luft / Meer &nbsp;(Walker = Luft, Humboldt = Meer)
+      </div>
+    </section>
+
+    <div class="cheat">
+      <h3>Mini-Spickzettel zum Üben danach</h3>
+      <ul>
+        <li>Häufigkeit: alle <strong>2–7 Jahre</strong></li>
+        <li>Normal: starke Passate Ost→West, Auftrieb Osten, Regen Westen</li>
+        <li>El Niño: schwache Passate, warm Osten, Flut Peru, Dürre Asien</li>
+        <li>Walker-Zelle = Luft · Humboldtströmung = Meer</li>
+      </ul>
+    </div>
+
+    <div class="footer-note">
+      <span>Gesamt: 24 Punkte</span>
+      <span>Musterlösung · nicht während der Übung zeigen</span>
+    </div>
+  </main>
+</body>
+</html>
