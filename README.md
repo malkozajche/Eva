@@ -1,8 +1,8 @@
 # Eva’s Learning Pages
 
-## 🚗 Auto-Quiz (20 multiple choice)
+## 🚗 Auto-Quiz (20 multiple choice + HD voice)
 
-Tap-only mini quiz for the car ride to school:
+Tap-only mini quiz for the car. Default voice is **Microsoft Katja Neural** (pre-recorded HD), much clearer than robot browser TTS. You can still switch to device voices if you want.
 
 **https://malkozajche.github.io/Eva/auto-quiz.html**
 

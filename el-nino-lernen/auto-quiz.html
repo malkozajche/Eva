@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>El Niño Auto-Quiz — 20 Mini-Fragen</title>
-  <meta name="description" content="Schnelles Multiple-Choice-Quiz für unterwegs: 20 Mini-Fragen zu El Niño, Walker-Zelle und Humboldtströmung." />
+  <meta name="description" content="Schnelles Multiple-Choice-Quiz für unterwegs: 20 Mini-Fragen zu El Niño mit klarer HD-Stimme." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -50,6 +50,40 @@
     }
     .sub {
       text-align: center; font-weight: 700; color: #1f5a66; margin-bottom: 0.85rem; font-size: 0.95rem;
+    }
+    .voice-box {
+      background: rgba(255,253,248,0.95);
+      border-radius: 18px;
+      padding: 0.75rem 0.85rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 0.85rem;
+      border: 2px solid rgba(255,255,255,0.9);
+    }
+    .voice-box label {
+      display: block;
+      font-weight: 800;
+      font-size: 0.82rem;
+      color: #1f5a66;
+      margin-bottom: 0.3rem;
+    }
+    .voice-box select, .voice-box input[type="range"] {
+      width: 100%;
+      font: inherit;
+      font-weight: 700;
+      padding: 0.55rem 0.65rem;
+      border-radius: 12px;
+      border: 2px solid rgba(11,95,108,0.2);
+      background: white;
+      margin-bottom: 0.55rem;
+    }
+    .voice-row {
+      display: flex; gap: 0.45rem; flex-wrap: wrap; align-items: center;
+    }
+    .hint {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #3a6a75;
+      line-height: 1.35;
     }
     .hud {
       display: flex; gap: 0.45rem; flex-wrap: wrap; justify-content: center; margin-bottom: 0.75rem;
@@ -133,6 +167,11 @@
       background: linear-gradient(180deg, #ff6b5a, #e24a3a);
       box-shadow: 0 4px 0 #b83830;
     }
+    .btn.ghost {
+      background: #e8f3f2;
+      color: var(--ocean-deep);
+      box-shadow: none;
+    }
     .start, .done { text-align: center; }
     .start p, .done p { font-weight: 700; color: #1f5a66; margin: 0.5rem 0 1rem; line-height: 1.4; }
     .score {
@@ -164,7 +203,27 @@
       <a href="test-blank.html">🖨️ Schrift-Test</a>
     </div>
     <h1>🚗 Auto-Quiz</h1>
-    <p class="sub">20 Mini-Fragen · tippen · fertig · El Niño blitzschnell</p>
+    <p class="sub">20 Mini-Fragen · tippen · klare HD-Stimme</p>
+
+    <div class="voice-box">
+      <label for="engineSelect">Stimme</label>
+      <select id="engineSelect" aria-label="Stimm-Engine wählen">
+        <option value="hd">⭐ HD Katja (empfohlen — klar &amp; natürlich)</option>
+        <option value="browser">Browser-Stimme (Gerät)</option>
+        <option value="off">🔇 Aus</option>
+      </select>
+      <div id="browserVoiceWrap" style="display:none">
+        <label for="voiceSelect">Browser-Stimme wählen</label>
+        <select id="voiceSelect"></select>
+        <label for="rateRange">Tempo: <span id="rateLabel">langsam &amp; klar</span></label>
+        <input id="rateRange" type="range" min="0.7" max="1.1" step="0.05" value="0.88" />
+        <p class="hint">Tipp: Am besten <strong>Chrome/Edge</strong>. Auf dem iPhone: Einstellungen → Bedienungshilfen → Gesprochene Inhalte → Stimmen → Deutsch → erweiterte Stimme laden.</p>
+      </div>
+      <div class="voice-row">
+        <button type="button" class="btn sec" id="testVoice" style="flex:0 0 auto;padding:0.55rem 0.9rem;font-size:0.95rem;">🔊 Test</button>
+        <span class="hint" id="voiceStatus">HD-Stimme bereit (Microsoft Neural)</span>
+      </div>
+    </div>
 
     <div class="hud">
       <div class="pill" id="hudQ">Frage 0 / 20</div>
@@ -174,10 +233,9 @@
 
     <div class="card" id="panel">
       <div class="start" id="startPane">
-        <p>Kein Schreiben — nur antippen. Perfekt im Auto zur Schule. Los?</p>
+        <p>Kein Schreiben — nur antippen. HD-Stimme klingt viel klarer als die alte Roboterstimme.</p>
         <div class="row">
           <button type="button" class="btn coral" id="startBtn">Start! 🚀</button>
-          <button type="button" class="btn sec" id="voiceToggle">🔊 Stimme an</button>
         </div>
       </div>
 
@@ -233,35 +291,152 @@
       { q: "Mini-Merksatz: Normaljahr = …", choices: ["schwache Passate, Flut in Peru", "starke Passate Ost→West, Auftrieb Osten, Regen Westen", "kein Wind, überall gleich", "nur Humboldt, keine Luft"], a: 1, why: "Starke Passate, Auftrieb Osten, Regen Westen = Normal." }
     ];
 
+    const STORE = "eva-auto-quiz-voice-v2";
     let order = [];
     let idx = 0;
     let score = 0;
     let locked = false;
-    let voiceOn = true;
     let missed = [];
     let voices = [];
+    let audio = null;
+
+    const prefs = (() => {
+      try { return JSON.parse(localStorage.getItem(STORE) || "{}"); } catch { return {}; }
+    })();
+    let engine = prefs.engine || "hd";
+    let chosenURI = prefs.voiceURI || "";
+    let rate = prefs.rate != null ? +prefs.rate : 0.88;
 
     const $ = (id) => document.getElementById(id);
 
-    function loadVoices() {
-      voices = window.speechSynthesis ? speechSynthesis.getVoices() : [];
-    }
-    if (window.speechSynthesis) {
-      loadVoices();
-      speechSynthesis.onvoiceschanged = loadVoices;
+    function savePrefs() {
+      localStorage.setItem(STORE, JSON.stringify({ engine, voiceURI: chosenURI, rate }));
     }
 
-    function speak(text) {
-      if (!voiceOn || !window.speechSynthesis || !text) return;
-      speechSynthesis.cancel();
+    function pad(n) { return String(n).padStart(2, "0"); }
+    function hdUrl(name) { return `audio/auto-quiz/${name}.mp3`; }
+
+    function stopAll() {
+      if (window.speechSynthesis) speechSynthesis.cancel();
+      if (audio) { audio.pause(); audio = null; }
+    }
+
+    function playHd(name) {
+      return new Promise((resolve) => {
+        stopAll();
+        audio = new Audio(hdUrl(name));
+        audio.onended = () => resolve(true);
+        audio.onerror = () => resolve(false);
+        audio.play().catch(() => resolve(false));
+      });
+    }
+
+    function scoreVoice(v) {
+      const n = (v.name || "") + " " + (v.lang || "");
+      let s = 0;
+      if (/^de/i.test(v.lang)) s += 50;
+      if (/de-DE/i.test(v.lang)) s += 20;
+      if (/Natural|Neural|Online \(Natural\)|Premium|Enhanced|Google|Microsoft/i.test(n)) s += 50;
+      if (/Katja|Hedda|Amala|Conrad|Killian|Anna|Petra|Seraphina|Florian/i.test(n)) s += 30;
+      if (/Compact|Eloquence|eSpeak|Android|Sammy/i.test(n)) s -= 40;
+      return s;
+    }
+
+    function germanVoices() {
+      if (!window.speechSynthesis) return [];
+      return speechSynthesis.getVoices()
+        .filter(v => /^de/i.test(v.lang) || /german|deutsch/i.test(v.name))
+        .sort((a, b) => scoreVoice(b) - scoreVoice(a));
+    }
+
+    function fillBrowserVoices() {
+      const list = germanVoices();
+      const sel = $("voiceSelect");
+      sel.innerHTML = "";
+      if (!list.length) {
+        sel.innerHTML = '<option value="">Keine DE-Stimme auf diesem Gerät</option>';
+        return;
+      }
+      list.forEach(v => {
+        const o = document.createElement("option");
+        o.value = v.voiceURI;
+        const star = scoreVoice(v) >= 90 ? " ★" : "";
+        o.textContent = `${v.name}${star}`;
+        sel.appendChild(o);
+      });
+      if (chosenURI && list.some(v => v.voiceURI === chosenURI)) sel.value = chosenURI;
+      else {
+        sel.value = list[0].voiceURI;
+        chosenURI = list[0].voiceURI;
+      }
+    }
+
+    function speakBrowser(text) {
+      if (!window.speechSynthesis || !text) return;
+      stopAll();
       const u = new SpeechSynthesisUtterance(text);
       u.lang = "de-DE";
-      const de = voices.filter(v => v.lang.toLowerCase().startsWith("de"));
-      const v = de.find(x => /google|apple|microsoft|natural|enhanced/i.test(x.name)) || de[0];
-      if (v) u.voice = v;
-      u.rate = 0.95;
+      u.rate = rate;
+      u.pitch = 1;
+      const list = germanVoices();
+      const v = list.find(x => x.voiceURI === chosenURI) || list[0];
+      if (v) { u.voice = v; u.lang = v.lang || "de-DE"; }
       speechSynthesis.speak(u);
     }
+
+    async function speakClip(hdName, fallbackText) {
+      if (engine === "off") return;
+      if (engine === "hd") {
+        const ok = await playHd(hdName);
+        if (!ok && fallbackText) speakBrowser(fallbackText);
+        return;
+      }
+      if (fallbackText) speakBrowser(fallbackText);
+    }
+
+    function syncEngineUI() {
+      $("engineSelect").value = engine;
+      $("browserVoiceWrap").style.display = engine === "browser" ? "block" : "none";
+      $("rateRange").value = rate;
+      updateRateLabel();
+      const status = {
+        hd: "HD-Stimme bereit (Microsoft Katja Neural)",
+        browser: "Browser-Stimme — bitte die beste ★ wählen",
+        off: "Stimme aus"
+      };
+      $("voiceStatus").textContent = status[engine] || "";
+      savePrefs();
+    }
+
+    function updateRateLabel() {
+      const r = +$("rateRange").value;
+      rate = r;
+      $("rateLabel").textContent = r <= 0.8 ? "sehr langsam" : r <= 0.9 ? "langsam & klar" : r <= 1 ? "normal" : "schnell";
+      savePrefs();
+    }
+
+    if (window.speechSynthesis) {
+      fillBrowserVoices();
+      speechSynthesis.onvoiceschanged = fillBrowserVoices;
+    }
+    syncEngineUI();
+
+    $("engineSelect").onchange = () => {
+      engine = $("engineSelect").value;
+      syncEngineUI();
+      if (engine === "hd") speakClip("stimme", "So klingt die HD-Stimme.");
+      else if (engine === "browser") speakBrowser("So klingt die Browser-Stimme.");
+    };
+    $("voiceSelect").onchange = () => {
+      chosenURI = $("voiceSelect").value;
+      savePrefs();
+      speakBrowser("Neue Stimme ausgewählt.");
+    };
+    $("rateRange").oninput = updateRateLabel;
+    $("testVoice").onclick = () => {
+      if (engine === "hd") speakClip("intro", "Auto-Quiz. Zwanzig Mini-Fragen.");
+      else if (engine === "browser") speakBrowser("Test. So klingt diese Stimme. El Niño, Walker-Zelle, Humboldtströmung.");
+    };
 
     function shuffle(arr) {
       const a = [...arr];
@@ -284,12 +459,12 @@
       render();
     }
 
-    function current() {
-      return QUESTIONS[order[idx]];
-    }
+    function qid() { return order[idx]; }
+    function current() { return QUESTIONS[qid()]; }
 
     function render() {
       const item = current();
+      const id = qid();
       const total = order.length;
       locked = false;
       $("meta").textContent = `Frage ${idx + 1} / ${total}`;
@@ -306,7 +481,7 @@
         `<button type="button" class="choice" data-i="${i}"><strong>${letters[i]}.</strong> ${c}</button>`
       ).join("");
 
-      speak(`Frage ${idx + 1}. ${item.q}`);
+      speakClip(`q${pad(id)}`, `Frage ${idx + 1}. ${item.q}`);
     }
 
     $("choices").addEventListener("click", (e) => {
@@ -315,6 +490,7 @@
       locked = true;
       const pick = +btn.dataset.i;
       const item = current();
+      const id = qid();
       [...$("choices").querySelectorAll(".choice")].forEach((b, i) => {
         b.disabled = true;
         if (i === item.a) b.classList.add("right");
@@ -324,13 +500,13 @@
         score++;
         fb.textContent = "✅ Richtig! " + item.why;
         fb.className = "fb good";
-        speak("Richtig! " + item.why);
+        speakClip(`ok${pad(id)}`, "Richtig! " + item.why);
       } else {
         btn.classList.add("wrong");
         missed.push({ q: item.q, why: item.why, right: item.choices[item.a] });
         fb.textContent = "❌ " + item.why + " → " + item.choices[item.a];
         fb.className = "fb bad";
-        speak("Leider nein. " + item.why);
+        speakClip(`bad${pad(id)}`, "Leider nein. " + item.why);
       }
       $("hudScore").textContent = `✅ ${score}`;
       $("bar").style.width = `${((idx + 1) / order.length) * 100}%`;
@@ -347,11 +523,13 @@
     };
 
     $("speakBtn").onclick = () => {
+      const id = qid();
       const item = current();
-      if (item) speak(item.q);
+      if (item) speakClip(`q${pad(id)}`, item.q);
     };
 
     function finish() {
+      stopAll();
       $("quizPane").style.display = "none";
       $("donePane").style.display = "block";
       const total = order.length;
@@ -359,12 +537,13 @@
       $("hudQ").textContent = `Fertig`;
       let stars = "⭐⭐";
       let msg = "Noch eine Runde — du wirst schneller!";
-      if (score >= 18) { stars = "⭐⭐⭐⭐⭐"; msg = "Auto-Champion! Das sitzt. 👑"; }
-      else if (score >= 14) { stars = "⭐⭐⭐⭐"; msg = "Stark! Fast alles drin."; }
-      else if (score >= 10) { stars = "⭐⭐⭐"; msg = "Guter Stand — missings einmal lesen, dann nochmal."; }
+      let clip = "fertig_low";
+      if (score >= 18) { stars = "⭐⭐⭐⭐⭐"; msg = "Auto-Champion! Das sitzt. 👑"; clip = "fertig_top"; }
+      else if (score >= 14) { stars = "⭐⭐⭐⭐"; msg = "Stark! Fast alles drin."; clip = "fertig_good"; }
+      else if (score >= 10) { stars = "⭐⭐⭐"; msg = "Guter Stand — Fehler einmal lesen, dann nochmal."; clip = "fertig_ok"; }
       $("finalStars").textContent = stars;
       $("finalMsg").textContent = msg;
-      speak(`Fertig. ${score} von ${total}. ${msg}`);
+      speakClip(clip, `Fertig. ${score} von ${total}. ${msg}`);
 
       if (missed.length) {
         $("missBox").style.display = "block";
@@ -378,12 +557,6 @@
 
     $("startBtn").onclick = start;
     $("againBtn").onclick = start;
-    $("voiceToggle").onclick = () => {
-      voiceOn = !voiceOn;
-      $("voiceToggle").textContent = voiceOn ? "🔊 Stimme an" : "🔇 Stimme aus";
-      if (voiceOn) speak("Stimme an.");
-      else if (window.speechSynthesis) speechSynthesis.cancel();
-    };
   </script>
 </body>
 </html>
