@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>El Niño Auto-Quiz — 20 Mini-Fragen</title>
+  <meta name="description" content="Schnelles Multiple-Choice-Quiz für unterwegs: 20 Mini-Fragen zu El Niño, Walker-Zelle und Humboldtströmung." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #143844;
+      --ocean: #1a8fa0;
+      --ocean-deep: #0b5f6c;
+      --ok: #1c8a4a;
+      --bad: #d64545;
+      --sun: #ffc857;
+      --card: #fffdf8;
+      --shadow: 0 10px 28px rgba(11, 95, 108, 0.18);
+      --font-d: "Fredoka", system-ui, sans-serif;
+      --font-b: "Nunito", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100dvh;
+      font-family: var(--font-b);
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 100% 60% at 50% -10%, #ffe9a8 0%, transparent 50%),
+        linear-gradient(180deg, #8ed7ea 0%, #c8ebe4 45%, #ffe7b2 100%);
+      padding: 0.75rem 0.85rem 1.5rem;
+    }
+    .wrap { width: min(520px, 100%); margin: 0 auto; }
+    .top {
+      display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: space-between; align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    .top a {
+      font-weight: 800; font-size: 0.85rem; text-decoration: none; color: var(--ocean-deep);
+      background: rgba(255,255,255,0.75); padding: 0.35rem 0.7rem; border-radius: 999px;
+    }
+    h1 {
+      font-family: var(--font-d);
+      font-size: clamp(1.6rem, 6vw, 2.1rem);
+      color: var(--ocean-deep);
+      line-height: 1.1;
+      text-align: center;
+      margin-bottom: 0.25rem;
+    }
+    .sub {
+      text-align: center; font-weight: 700; color: #1f5a66; margin-bottom: 0.85rem; font-size: 0.95rem;
+    }
+    .hud {
+      display: flex; gap: 0.45rem; flex-wrap: wrap; justify-content: center; margin-bottom: 0.75rem;
+    }
+    .pill {
+      font-weight: 800; font-size: 0.85rem; background: white; border-radius: 999px;
+      padding: 0.35rem 0.75rem; box-shadow: var(--shadow); color: var(--ocean-deep);
+    }
+    .track {
+      height: 12px; background: rgba(11,95,108,0.12); border-radius: 999px; overflow: hidden; margin-bottom: 0.9rem;
+    }
+    .fill {
+      height: 100%; width: 0%; background: linear-gradient(90deg, var(--sun), var(--ok));
+      border-radius: 999px; transition: width 0.3s ease;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 22px;
+      padding: 1.1rem 1rem 1.2rem;
+      box-shadow: var(--shadow);
+      border: 3px solid rgba(255,255,255,0.9);
+    }
+    .meta { font-weight: 800; color: #3a6a75; font-size: 0.9rem; margin-bottom: 0.4rem; }
+    .q {
+      font-family: var(--font-d);
+      font-size: clamp(1.2rem, 4.5vw, 1.45rem);
+      color: var(--ocean-deep);
+      line-height: 1.25;
+      margin-bottom: 0.85rem;
+    }
+    .choices { display: grid; gap: 0.55rem; }
+    .choice {
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 1.05rem;
+      text-align: left;
+      padding: 0.95rem 1rem;
+      border-radius: 16px;
+      border: 3px solid transparent;
+      background: #eef8f6;
+      color: var(--ink);
+      cursor: pointer;
+      min-height: 3.2rem;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .choice:active:not(:disabled) { transform: scale(0.98); }
+    .choice.right { background: #d4f8de; border-color: var(--ok); }
+    .choice.wrong { background: #ffe0db; border-color: var(--bad); }
+    .choice:disabled { cursor: default; }
+    .fb {
+      min-height: 2.4rem;
+      margin-top: 0.75rem;
+      font-weight: 800;
+      font-size: 0.98rem;
+      line-height: 1.35;
+    }
+    .fb.good { color: var(--ok); }
+    .fb.bad { color: #a32a1d; }
+    .row {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.85rem;
+    }
+    .btn {
+      font-family: var(--font-d);
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 999px;
+      padding: 0.75rem 1.25rem;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(180deg, #2f9e6b, #1f7a52);
+      box-shadow: 0 4px 0 #145c3c;
+      flex: 1;
+      min-width: 120px;
+    }
+    .btn:disabled { opacity: 0.45; box-shadow: none; }
+    .btn.sec {
+      background: linear-gradient(180deg, var(--ocean), var(--ocean-deep));
+      box-shadow: 0 4px 0 #084852;
+    }
+    .btn.coral {
+      background: linear-gradient(180deg, #ff6b5a, #e24a3a);
+      box-shadow: 0 4px 0 #b83830;
+    }
+    .start, .done { text-align: center; }
+    .start p, .done p { font-weight: 700; color: #1f5a66; margin: 0.5rem 0 1rem; line-height: 1.4; }
+    .score {
+      font-family: var(--font-d);
+      font-size: 3rem;
+      color: #e24a3a;
+      line-height: 1;
+      margin: 0.4rem 0;
+    }
+    .stars { font-size: 1.8rem; letter-spacing: 0.1rem; margin-bottom: 0.75rem; }
+    .miss {
+      text-align: left;
+      background: #fff8e0;
+      border-radius: 14px;
+      padding: 0.75rem 0.85rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin: 0.75rem 0 1rem;
+      color: #5a3a10;
+    }
+    .miss h3 { font-family: var(--font-d); margin-bottom: 0.35rem; color: #8a5a00; }
+    .miss li { margin-left: 1.1rem; margin-bottom: 0.25rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <a href="index.html">← Akademie</a>
+      <a href="test-blank.html">🖨️ Schrift-Test</a>
+    </div>
+    <h1>🚗 Auto-Quiz</h1>
+    <p class="sub">20 Mini-Fragen · tippen · fertig · El Niño blitzschnell</p>
+
+    <div class="hud">
+      <div class="pill" id="hudQ">Frage 0 / 20</div>
+      <div class="pill" id="hudScore">✅ 0</div>
+    </div>
+    <div class="track"><div class="fill" id="bar"></div></div>
+
+    <div class="card" id="panel">
+      <div class="start" id="startPane">
+        <p>Kein Schreiben — nur antippen. Perfekt im Auto zur Schule. Los?</p>
+        <div class="row">
+          <button type="button" class="btn coral" id="startBtn">Start! 🚀</button>
+          <button type="button" class="btn sec" id="voiceToggle">🔊 Stimme an</button>
+        </div>
+      </div>
+
+      <div id="quizPane" style="display:none">
+        <p class="meta" id="meta">Frage 1 / 20</p>
+        <p class="q" id="question"></p>
+        <div class="choices" id="choices"></div>
+        <p class="fb" id="feedback"></p>
+        <div class="row">
+          <button type="button" class="btn sec" id="speakBtn">🔊 Nochmal</button>
+          <button type="button" class="btn" id="nextBtn" disabled>Weiter →</button>
+        </div>
+      </div>
+
+      <div class="done" id="donePane" style="display:none">
+        <p class="meta">Geschafft!</p>
+        <div class="score" id="finalScore">0 / 20</div>
+        <div class="stars" id="finalStars">⭐⭐⭐</div>
+        <p id="finalMsg"></p>
+        <div class="miss" id="missBox" style="display:none">
+          <h3>Nochmal anschauen</h3>
+          <ul id="missList"></ul>
+        </div>
+        <div class="row">
+          <button type="button" class="btn coral" id="againBtn">Nochmal 20</button>
+          <a class="btn sec" href="montag-abenteuer.html" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center;">Abenteuer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const QUESTIONS = [
+      { q: "Wie oft tritt El Niño ungefähr auf?", choices: ["Jedes Jahr", "Alle 2–7 Jahre", "Alle 50 Jahre", "Nur im Sommer"], a: 1, why: "Typisch alle zwei bis sieben Jahre." },
+      { q: "Warum heißt es „El Niño“?", choices: ["Weil es spanisch für Sturm ist", "Fischer sahen es oft um Weihnachten — „Christkind“", "Weil Humboldt es so nannte", "Weil die Walker-Zelle so heißt"], a: 1, why: "Corriente del Niño = Strömung des Christkinds." },
+      { q: "Wohin wehen die Passate im Normaljahr?", choices: ["West → Ost", "Ost → West", "Nur nach Norden", "Gar nicht"], a: 1, why: "Starke Passate: Ost nach West." },
+      { q: "Was passiert bei El Niño mit den Passaten?", choices: ["Sie werden stärker", "Sie werden schwächer", "Sie drehen auf Süd", "Nichts"], a: 1, why: "Schwächere Passate → warmes Wasser nach Osten." },
+      { q: "Was ist die Walker-Zelle?", choices: ["Kalte Meeresströmung", "Luft-Förderband über dem Pazifik", "Ein Fischschwarm", "Ein Vulkan"], a: 1, why: "Walker = Luft-Zirkulation über dem Pazifik." },
+      { q: "Im Osten der Walker-Zelle (vor Südamerika) …", choices: ["steigt Luft auf (Tief)", "sinkt Luft ab (Hoch)", "schneit es", "gibt es keinen Wind"], a: 1, why: "Kaltes Wasser → Luft sinkt → Hochdruck." },
+      { q: "Im Westen der Walker-Zelle (SO-Asien) …", choices: ["sinkt Luft ab", "steigt Luft auf (Regen)", "ist es immer eisig", "weht kein Wind"], a: 1, why: "Warmes Wasser → Luft steigt → Tief + Regen." },
+      { q: "Was ist die Humboldtströmung?", choices: ["Warme Strömung nach Asien", "Kalte Meeresströmung vor Chile/Peru (nach Norden)", "Ein Fluss in Deutschland", "Der Name der Passate"], a: 1, why: "Humboldt = kalter Meeresstrom vor Südamerika." },
+      { q: "Walker vs. Humboldt — was stimmt?", choices: ["Beide sind Meeresströmungen", "Walker = Luft, Humboldt = Meer", "Beide sind nur Wind", "Humboldt = Luft"], a: 1, why: "Merke: Walker Luft · Humboldt Meer." },
+      { q: "Warum viele Fische vor Peru (Normaljahr)?", choices: ["Weil das Wasser warm ist", "Kaltes, nährstoffreiches Auftriebswasser", "Weil Fischer füttern", "Weil es keine Haie gibt"], a: 1, why: "Auftrieb bringt Nährstoffe → Plankton → Fische." },
+      { q: "Bei El Niño vor Peru: Fische …", choices: ["werden mehr", "werden weniger", "bleiben gleich", "kommen aus dem Atlantik"], a: 1, why: "Warmes Wasser schwächt den kalten Auftrieb." },
+      { q: "Typisch El Niño in Peru/Ecuador?", choices: ["Extreme Dürre", "Starkregen & Überschwemmungen", "Mehr Eis", "Normale Wüste ohne Änderung"], a: 1, why: "Warmes Küstenwasser → schwere Regen/Fluten." },
+      { q: "Typisch El Niño in SO-Asien / Philippinen?", choices: ["Rekordregen überall", "Dürre, Hitze, trockene Reisfelder", "Schneefall", "Immer mehr Fische"], a: 1, why: "Westen wird ungewöhnlich trocken." },
+      { q: "Normaljahr: warmes Oberflächenwasser liegt eher …", choices: ["vor Peru", "im Westen (SO-Asien)", "nur am Nordpol", "nirgends"], a: 1, why: "Passate schieben Warmwasser nach Westen." },
+      { q: "El Niño: warmes Wasser liegt eher …", choices: ["nur vor Japan", "weiter im Osten (vor Südamerika)", "auf dem Mond", "nur im Atlantik"], a: 1, why: "Warmes Wasser fließt nach Osten zurück." },
+      { q: "Was bedeutet Auftrieb?", choices: ["Luft steigt in Asien", "Kaltes Tiefenwasser steigt an die Oberfläche", "Fische springen", "Wolken fallen herunter"], a: 1, why: "Tiefenwasser kommt nach oben — kalt & nährstoffreich." },
+      { q: "Erste Kette: El Niño beginnt, wenn …", choices: ["Passate stärker werden", "Passate schwächer werden", "die Sonne ausgeht", "Humboldt nach Süden dreht"], a: 1, why: "Schwache Passate starten die Kette." },
+      { q: "Australien bei El Niño oft …", choices: ["nasser", "trockener (Buschfeuer-Risiko)", "verschwindet", "voller Schnee"], a: 1, why: "Oft trockener — mehr Dürre/Brände." },
+      { q: "Walker-Zelle bei El Niño …", choices: ["läuft perfekt weiter", "ist gestört / aus dem Takt", "wird zu einem Hurrikan", "zieht nach Europa"], a: 1, why: "Gestörte Walker-Zelle = Wetter kehrt sich um." },
+      { q: "Mini-Merksatz: Normaljahr = …", choices: ["schwache Passate, Flut in Peru", "starke Passate Ost→West, Auftrieb Osten, Regen Westen", "kein Wind, überall gleich", "nur Humboldt, keine Luft"], a: 1, why: "Starke Passate, Auftrieb Osten, Regen Westen = Normal." }
+    ];
+
+    let order = [];
+    let idx = 0;
+    let score = 0;
+    let locked = false;
+    let voiceOn = true;
+    let missed = [];
+    let voices = [];
+
+    const $ = (id) => document.getElementById(id);
+
+    function loadVoices() {
+      voices = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+    }
+    if (window.speechSynthesis) {
+      loadVoices();
+      speechSynthesis.onvoiceschanged = loadVoices;
+    }
+
+    function speak(text) {
+      if (!voiceOn || !window.speechSynthesis || !text) return;
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = "de-DE";
+      const de = voices.filter(v => v.lang.toLowerCase().startsWith("de"));
+      const v = de.find(x => /google|apple|microsoft|natural|enhanced/i.test(x.name)) || de[0];
+      if (v) u.voice = v;
+      u.rate = 0.95;
+      speechSynthesis.speak(u);
+    }
+
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function start() {
+      order = shuffle(QUESTIONS.map((_, i) => i));
+      idx = 0;
+      score = 0;
+      missed = [];
+      locked = false;
+      $("startPane").style.display = "none";
+      $("donePane").style.display = "none";
+      $("quizPane").style.display = "block";
+      render();
+    }
+
+    function current() {
+      return QUESTIONS[order[idx]];
+    }
+
+    function render() {
+      const item = current();
+      const total = order.length;
+      locked = false;
+      $("meta").textContent = `Frage ${idx + 1} / ${total}`;
+      $("hudQ").textContent = `Frage ${idx + 1} / ${total}`;
+      $("hudScore").textContent = `✅ ${score}`;
+      $("bar").style.width = `${(idx / total) * 100}%`;
+      $("question").textContent = item.q;
+      $("feedback").textContent = "";
+      $("feedback").className = "fb";
+      $("nextBtn").disabled = true;
+
+      const letters = ["A", "B", "C", "D"];
+      $("choices").innerHTML = item.choices.map((c, i) =>
+        `<button type="button" class="choice" data-i="${i}"><strong>${letters[i]}.</strong> ${c}</button>`
+      ).join("");
+
+      speak(`Frage ${idx + 1}. ${item.q}`);
+    }
+
+    $("choices").addEventListener("click", (e) => {
+      const btn = e.target.closest(".choice");
+      if (!btn || locked) return;
+      locked = true;
+      const pick = +btn.dataset.i;
+      const item = current();
+      [...$("choices").querySelectorAll(".choice")].forEach((b, i) => {
+        b.disabled = true;
+        if (i === item.a) b.classList.add("right");
+      });
+      const fb = $("feedback");
+      if (pick === item.a) {
+        score++;
+        fb.textContent = "✅ Richtig! " + item.why;
+        fb.className = "fb good";
+        speak("Richtig! " + item.why);
+      } else {
+        btn.classList.add("wrong");
+        missed.push({ q: item.q, why: item.why, right: item.choices[item.a] });
+        fb.textContent = "❌ " + item.why + " → " + item.choices[item.a];
+        fb.className = "fb bad";
+        speak("Leider nein. " + item.why);
+      }
+      $("hudScore").textContent = `✅ ${score}`;
+      $("bar").style.width = `${((idx + 1) / order.length) * 100}%`;
+      $("nextBtn").disabled = false;
+    });
+
+    $("nextBtn").onclick = () => {
+      if (idx < order.length - 1) {
+        idx++;
+        render();
+      } else {
+        finish();
+      }
+    };
+
+    $("speakBtn").onclick = () => {
+      const item = current();
+      if (item) speak(item.q);
+    };
+
+    function finish() {
+      $("quizPane").style.display = "none";
+      $("donePane").style.display = "block";
+      const total = order.length;
+      $("finalScore").textContent = `${score} / ${total}`;
+      $("hudQ").textContent = `Fertig`;
+      let stars = "⭐⭐";
+      let msg = "Noch eine Runde — du wirst schneller!";
+      if (score >= 18) { stars = "⭐⭐⭐⭐⭐"; msg = "Auto-Champion! Das sitzt. 👑"; }
+      else if (score >= 14) { stars = "⭐⭐⭐⭐"; msg = "Stark! Fast alles drin."; }
+      else if (score >= 10) { stars = "⭐⭐⭐"; msg = "Guter Stand — missings einmal lesen, dann nochmal."; }
+      $("finalStars").textContent = stars;
+      $("finalMsg").textContent = msg;
+      speak(`Fertig. ${score} von ${total}. ${msg}`);
+
+      if (missed.length) {
+        $("missBox").style.display = "block";
+        $("missList").innerHTML = missed.map(m =>
+          `<li><strong>${m.q}</strong><br/>→ ${m.right} <em>(${m.why})</em></li>`
+        ).join("");
+      } else {
+        $("missBox").style.display = "none";
+      }
+    }
+
+    $("startBtn").onclick = start;
+    $("againBtn").onclick = start;
+    $("voiceToggle").onclick = () => {
+      voiceOn = !voiceOn;
+      $("voiceToggle").textContent = voiceOn ? "🔊 Stimme an" : "🔇 Stimme aus";
+      if (voiceOn) speak("Stimme an.");
+      else if (window.speechSynthesis) speechSynthesis.cancel();
+    };
+  </script>
+</body>
+</html>

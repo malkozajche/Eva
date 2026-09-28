@@ -1,25 +1,25 @@
 # Eva’s Learning Pages
 
-## 🖨️ Printable El Niño Klassenarbeit
+## 🚗 Auto-Quiz (20 multiple choice)
 
-German high-school style practice test (24 points, ~25–30 min):
+Tap-only mini quiz for the car ride to school:
+
+**https://malkozajche.github.io/Eva/auto-quiz.html**
+
+## 🖨️ Printable El Niño Klassenarbeit
 
 | Sheet | Link |
 |-------|------|
 | **Blank (for Eva to write)** | https://malkozajche.github.io/Eva/test-blank.html |
 | **Answer key (Musterlösung)** | https://malkozajche.github.io/Eva/test-loesung.html |
 
-Includes: how often El Niño occurs, Normaljahr, **5 events Normal vs El Niño**, Walker-Zelle, Humboldtströmung, onset, world regions, short MC.
-
-Print tip: open → **Drucken / PDF** → save or print A4.
-
-## ⭐ Montag-Abenteuer (Walker-Zelle & Humboldtströmung)
+## ⭐ Montag-Abenteuer
 
 https://malkozajche.github.io/Eva/montag-abenteuer.html
 
 ## El Niño Akademie
 
-https://malkozajche.github.io/Eva/ · [`el-nino-lernen/index.html`](el-nino-lernen/index.html)
+https://malkozajche.github.io/Eva/
 
 ## GitHub Pages
 
