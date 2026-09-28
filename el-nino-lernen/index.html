@@ -1779,8 +1779,8 @@
         window.speechSynthesis.cancel();
         const u = new SpeechSynthesisUtterance(text);
         u.lang = "de-DE";
-        u.rate = opts.rate || 0.98;
-        u.pitch = opts.pitch || 1.02;
+        u.rate = opts.rate || 0.9;
+        u.pitch = opts.pitch || 1;
         const v = pickVoice();
         if (v) { u.voice = v; u.lang = v.lang || "de-DE"; }
         speechSynthesis.speak(u);
