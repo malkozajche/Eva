@@ -1,8 +1,12 @@
 # Eva’s Learning Pages
 
-## 🚗 Auto-Quiz (20 multiple choice + HD voice)
+## 🏛️ Latein · Lektion 27 (Augustus)
 
-Tap-only mini quiz for the car. Default voice is **Microsoft Katja Neural** (pre-recorded HD), much clearer than robot browser TTS. You can still switch to device voices if you want.
+Vocab cards, examples, picture gallery, Match/Speed/Stammformen games, XP & quiz:
+
+**https://malkozajche.github.io/Eva/latein-27.html**
+
+## 🚗 Auto-Quiz (20 multiple choice + HD voice)
 
 **https://malkozajche.github.io/Eva/auto-quiz.html**
 
@@ -10,8 +14,8 @@ Tap-only mini quiz for the car. Default voice is **Microsoft Katja Neural** (pre
 
 | Sheet | Link |
 |-------|------|
-| **Blank (for Eva to write)** | https://malkozajche.github.io/Eva/test-blank.html |
-| **Answer key (Musterlösung)** | https://malkozajche.github.io/Eva/test-loesung.html |
+| **Blank** | https://malkozajche.github.io/Eva/test-blank.html |
+| **Answers** | https://malkozajche.github.io/Eva/test-loesung.html |
 
 ## ⭐ Montag-Abenteuer
 
