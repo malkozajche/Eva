@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lektion 28 — Nero – Künstler oder Kaiser? · Eva’s Latein</title>
+  <meta name="description" content="Latein Vokabeln Lektion 28: Nero — Karten, Beispiele, Quiz, Spiele und Spickzettel für Eva." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1c2a32;
+      --marble: #f7fafc;
+      --gold: #d4a017;
+      --gold-deep: #a67c00;
+      --laurel: #3d7a4a;
+      --laurel-deep: #2a5a35;
+      --wine: #8b2e4a;
+      --wine-deep: #6a1e35;
+      --sky: #3d7ea6;
+      --sky-deep: #255a7a;
+      --shadow: 0 12px 30px rgba(28, 42, 50, 0.14);
+      --font-d: "Baloo 2", "Trebuchet MS", sans-serif;
+      --font-latin: "Cormorant Garamond", "Times New Roman", serif;
+      --font-b: "Nunito", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      font-family: var(--font-b);
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 90% 50% at 50% -5%, rgba(212,160,23,0.28) 0%, transparent 50%),
+        radial-gradient(circle at 90% 15%, rgba(74,144,184,0.25) 0%, transparent 28%),
+        radial-gradient(circle at 8% 75%, rgba(61,122,74,0.18) 0%, transparent 32%),
+        linear-gradient(180deg, #b8d4e8 0%, #e8f2f0 40%, #f0e6c8 78%, #e0c878 100%);
+      background-attachment: fixed;
+    }
+    .wrap { width: min(1100px, 94vw); margin: 0 auto; padding: 1rem 0 3rem; position: relative; z-index: 1; }
+
+    .float-deco {
+      position: fixed; pointer-events: none; z-index: 0; opacity: 0.85;
+      animation: bob 5s ease-in-out infinite;
+      font-size: 2rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+    }
+    .float-deco.a { top: 12%; left: 3%; animation-delay: -1s; }
+    .float-deco.b { top: 55%; right: 3%; animation-delay: -2.5s; font-size: 1.7rem; }
+    .float-deco.c { bottom: 8%; left: 45%; animation-delay: -4s; font-size: 1.5rem; }
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes wiggle {
+      0%, 100% { transform: none; }
+      25% { transform: rotate(-3deg); }
+      75% { transform: rotate(3deg); }
+    }
+    @keyframes confetti-fall {
+      to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+    @keyframes pulse-soft {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .top-links {
+      display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center; margin-bottom: 0.7rem;
+    }
+    .top-links a {
+      font-weight: 800; text-decoration: none; color: var(--sky-deep);
+      background: rgba(255,255,255,0.75); padding: 0.4rem 0.85rem; border-radius: 999px;
+      border: 2px solid rgba(74,144,184,0.28);
+    }
+
+    header.hero { text-align: center; animation: rise 0.55s ease both; padding: 0.4rem 0.4rem 0.7rem; }
+    .brand {
+      font-family: var(--font-d);
+      font-size: clamp(2rem, 6vw, 3.1rem);
+      line-height: 1.05;
+      color: #1a3a4a;
+      text-shadow: 0 2px 0 rgba(255,255,255,0.4);
+    }
+    .brand span {
+      display: block; margin-top: 0.28rem; font-size: 0.38em;
+      letter-spacing: 0.05em; text-transform: uppercase; color: var(--wine-deep);
+    }
+    .tagline {
+      margin: 0.65rem auto 0; max-width: 38rem; font-weight: 700; color: #2a4a55; font-size: 1.02rem;
+    }
+
+    .hud {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0.5rem; max-width: 640px; margin: 0.9rem auto 0;
+    }
+    .hud-card {
+      background: rgba(255,255,255,0.92); border-radius: 14px; padding: 0.55rem 0.65rem;
+      box-shadow: var(--shadow); text-align: center; border: 2px solid white;
+    }
+    .hud-card .k { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; color: #5a7078; }
+    .hud-card .v { font-family: var(--font-d); font-size: 1.3rem; color: #1a3a4a; line-height: 1.1; }
+    .xp-wrap { max-width: 480px; margin: 0.7rem auto 0; text-align: left; }
+    .xp-label { display: flex; justify-content: space-between; font-weight: 800; font-size: 0.82rem; color: #2a4a55; margin-bottom: 0.25rem; }
+    .xp-track { height: 12px; background: rgba(28,42,50,0.12); border-radius: 999px; overflow: hidden; }
+    .xp-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--gold), var(--laurel) 70%, var(--sky)); border-radius: 999px; transition: width 0.4s ease; }
+
+    nav.tabs {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 1.15rem 0 1rem;
+    }
+    .tab-btn, .btn, .chip, .speak-btn, .choice, .match-item {
+      font-family: var(--font-b); cursor: pointer;
+    }
+    .tab-btn {
+      font-family: var(--font-d); font-size: 1.05rem; border: none;
+      padding: 0.6rem 1.1rem; border-radius: 999px;
+      background: rgba(255,255,255,0.6); color: var(--ink);
+      box-shadow: 0 4px 0 rgba(28,42,50,0.1);
+    }
+    .tab-btn.active {
+      background: linear-gradient(180deg, var(--wine), var(--wine-deep));
+      color: white; box-shadow: 0 5px 0 #5a1e18;
+    }
+
+    .panel { display: none; animation: rise 0.4s ease both; }
+    .panel.active { display: block; }
+
+    .howto {
+      background: rgba(247,250,252,0.92); border-radius: 18px; padding: 1rem 1.1rem;
+      margin: 0 auto 1rem; max-width: 720px; box-shadow: var(--shadow); border: 2px solid white;
+    }
+    .howto h2 { font-family: var(--font-d); color: #1a3a4a; font-size: 1.25rem; margin-bottom: 0.3rem; }
+    .howto ol { margin-left: 1.15rem; font-weight: 600; line-height: 1.5; }
+
+    .filter-row, .search-row {
+      display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; margin-bottom: 0.75rem;
+    }
+    .chip {
+      font-weight: 800; font-size: 0.8rem; border: none; border-radius: 999px;
+      padding: 0.38rem 0.8rem; background: rgba(255,255,255,0.7); color: var(--ink);
+    }
+    .chip.active { background: #1a3a4a; color: white; }
+    #search {
+      width: min(400px, 92vw); font: inherit; font-weight: 700;
+      padding: 0.6rem 1rem; border-radius: 999px; border: 2px solid rgba(61,122,74,0.3);
+      background: white; outline: none;
+    }
+    .count-label, .hint {
+      text-align: center; font-weight: 700; color: #2a4a55; margin-bottom: 0.7rem;
+    }
+    .count-label { color: var(--sky-deep); font-weight: 800; }
+
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.85rem;
+    }
+    .card {
+      background: rgba(247,250,252,0.95); border-radius: 20px; padding: 1rem 1.05rem 1.1rem;
+      box-shadow: var(--shadow); border: 3px solid white; cursor: pointer; text-align: left;
+      min-height: 160px; transition: transform 0.15s; position: relative;
+    }
+    .card:hover { transform: translateY(-3px) rotate(-0.3deg); }
+    .card.flipped {
+      background: linear-gradient(160deg, #fff 0%, #e8f4ec 100%);
+      border-color: #8fbf9a;
+    }
+    .card .icon {
+      font-size: 2.2rem; line-height: 1; margin-bottom: 0.35rem;
+      display: inline-block; animation: pulse-soft 3s ease-in-out infinite;
+    }
+    .card .la {
+      font-family: var(--font-latin); font-size: 1.55rem; font-weight: 700;
+      color: #1a3a4a; line-height: 1.15;
+    }
+    .card .forms {
+      font-size: 0.82rem; color: #5a7078; font-weight: 700; margin-top: 0.15rem;
+      font-family: var(--font-latin);
+    }
+    .card .reveal {
+      display: none; margin-top: 0.6rem; padding-top: 0.55rem;
+      border-top: 2px dashed rgba(61,122,74,0.25);
+    }
+    .card.flipped .reveal { display: block; }
+    .badge {
+      position: absolute; top: 0.6rem; right: 0.6rem; font-size: 0.65rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.04em; padding: 0.2rem 0.45rem;
+      border-radius: 999px; background: var(--gold); color: #5a3a00;
+    }
+    .badge.verbs { background: #ffd0c4; color: #7a2a20; }
+    .badge.adj { background: #c8e4f5; color: #1a4a6a; }
+    .badge.people { background: #e0d4f0; color: #4a2a6a; }
+    .badge.phrase { background: #d8f0d8; color: #1c5a2a; }
+
+    .lang-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.45rem; }
+    .speak-btn {
+      font-weight: 800; font-size: 0.75rem; border: none; border-radius: 999px;
+      padding: 0.32rem 0.65rem; display: inline-flex; align-items: center; gap: 0.25rem;
+    }
+    .speak-btn.la-btn { background: #ffe8b0; color: #6a4a00; }
+    .speak-btn.de-btn { background: #d4e8ff; color: #1a4f7a; }
+    .speak-btn.ex-btn { background: #e0f5e8; color: #1c6b3a; width: 100%; justify-content: center; margin-top: 0.3rem; }
+
+    .trans { font-size: 0.95rem; font-weight: 700; margin: 0.12rem 0; }
+    .trans .label {
+      display: inline-block; min-width: 2rem; font-size: 0.7rem; font-weight: 800;
+      text-transform: uppercase; opacity: 0.65; letter-spacing: 0.03em;
+    }
+    .example {
+      margin-top: 0.4rem; font-size: 0.88rem; line-height: 1.35; color: #2a4a55;
+      background: rgba(74,144,184,0.12); border-radius: 12px; padding: 0.5rem 0.6rem;
+    }
+    .example .de-ex { display: block; margin-top: 0.2rem; font-style: italic; color: #4a6570; }
+    .pic {
+      width: 100%; height: 72px; border-radius: 12px; margin-top: 0.45rem;
+      display: grid; place-items: center; font-size: 2rem;
+      background: linear-gradient(135deg, rgba(212,160,23,0.2), rgba(74,144,184,0.2));
+    }
+
+    .stage {
+      background: rgba(247,250,252,0.96); border-radius: 26px; padding: 1.35rem 1.2rem 1.55rem;
+      box-shadow: var(--shadow); border: 3px solid white; max-width: 640px; margin: 0 auto; text-align: center;
+    }
+    .progress-bar {
+      height: 12px; background: rgba(28,42,50,0.1); border-radius: 999px; overflow: hidden; margin: 0.75rem 0 1rem;
+    }
+    .progress-fill {
+      height: 100%; width: 0%; background: linear-gradient(90deg, var(--gold), var(--laurel));
+      border-radius: 999px; transition: width 0.3s ease;
+    }
+    .q-meta { font-weight: 800; color: #3a5a65; margin-bottom: 0.35rem; }
+    .q-prompt {
+      font-family: var(--font-d); font-size: clamp(1.35rem, 4vw, 1.85rem);
+      color: #1a3a4a; line-height: 1.2; margin: 0.4rem 0 0.7rem;
+    }
+    .q-latin {
+      font-family: var(--font-latin); font-size: clamp(1.6rem, 5vw, 2.2rem); font-weight: 700;
+      color: var(--wine-deep); margin: 0.3rem 0 0.8rem;
+    }
+    .choices { display: grid; gap: 0.5rem; margin-top: 0.7rem; }
+    .choice {
+      font-weight: 800; font-size: 1rem; text-align: left; padding: 0.85rem 1rem;
+      border-radius: 14px; border: 3px solid transparent; background: #eef5f2; color: var(--ink);
+    }
+    .choice:hover:not(:disabled) { background: #e2efe8; }
+    .choice.right { background: #d4f0dc; border-color: var(--laurel); animation: wiggle 0.35s ease; }
+    .choice.wrong { background: #ffe0db; border-color: var(--wine); }
+    .choice:disabled { cursor: default; }
+    .feedback { min-height: 1.4rem; margin-top: 0.7rem; font-weight: 800; }
+    .feedback.good { color: #1c6b3a; }
+    .feedback.bad { color: #a32a1d; }
+
+    .cta-row { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 0.9rem; }
+    .btn {
+      font-family: var(--font-d); font-size: 1.05rem; border: none; border-radius: 999px;
+      padding: 0.7rem 1.25rem; color: white;
+      background: linear-gradient(180deg, var(--laurel), var(--laurel-deep));
+      box-shadow: 0 5px 0 #1e4a28;
+    }
+    .btn.sec {
+      background: linear-gradient(180deg, var(--sky), var(--sky-deep));
+      box-shadow: 0 5px 0 #1e4a65;
+    }
+    .btn.wine {
+      background: linear-gradient(180deg, var(--wine), var(--wine-deep));
+      box-shadow: 0 5px 0 #5a1e18;
+    }
+    .btn.gold {
+      background: linear-gradient(180deg, var(--gold), var(--gold-deep));
+      box-shadow: 0 5px 0 #7a5a00; color: #2a1a00;
+    }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
+
+    .game-menu {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-bottom: 1rem;
+    }
+    .game-card {
+      background: rgba(247,250,252,0.95); border: 3px solid white; border-radius: 20px;
+      padding: 1rem; box-shadow: var(--shadow); text-align: left; cursor: pointer;
+    }
+    .game-card:hover { transform: translateY(-3px); }
+    .game-card h3 { font-family: var(--font-d); font-size: 1.25rem; color: #1a3a4a; margin-bottom: 0.2rem; }
+    .game-card p { font-weight: 700; color: #3a5a65; font-size: 0.9rem; margin-bottom: 0.6rem; }
+
+    .match-board { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+    @media (max-width: 560px) { .match-board { grid-template-columns: 1fr; } }
+    .match-col h4 { font-family: var(--font-d); margin-bottom: 0.4rem; color: #1a3a4a; }
+    .match-item {
+      display: block; width: 100%; text-align: left; margin-bottom: 0.35rem;
+      font-weight: 800; padding: 0.65rem 0.75rem; border-radius: 12px; border: 3px solid transparent;
+      background: #eef5f2;
+    }
+    .match-item.selected { border-color: var(--sky); background: #e0f0f8; }
+    .match-item.matched { opacity: 0.45; background: #d4f0dc; border-color: var(--laurel); pointer-events: none; }
+    .match-item.shake { animation: wiggle 0.35s ease; background: #ffe0db; border-color: var(--wine); }
+
+    .score-big {
+      font-family: var(--font-d); font-size: clamp(2.3rem, 7vw, 3.5rem);
+      color: var(--wine-deep); line-height: 1; margin: 0.4rem 0;
+    }
+    .stars { font-size: 1.8rem; letter-spacing: 0.1rem; margin: 0.35rem 0 0.7rem; }
+
+    .gallery {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem;
+      margin: 0 auto 1rem; max-width: 900px;
+    }
+    .gallery-card {
+      background: rgba(247,250,252,0.95); border-radius: 18px; overflow: hidden;
+      box-shadow: var(--shadow); border: 3px solid white; text-align: center;
+    }
+    .gallery-art {
+      height: 120px; display: grid; place-items: center; font-size: 3.2rem;
+      background: linear-gradient(160deg, #d4e8f5, #f5e8c0);
+    }
+    .gallery-card h3 { font-family: var(--font-d); padding: 0.55rem 0.7rem 0.15rem; color: #1a3a4a; }
+    .gallery-card p { padding: 0 0.7rem 0.85rem; font-weight: 700; font-size: 0.88rem; color: #3a5a65; }
+
+    .voice-note, footer {
+      text-align: center; font-weight: 700; margin-top: 1rem; color: #2a4a55; font-size: 0.9rem;
+    }
+    footer { color: rgba(255,255,255,0.95); text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+
+    #confetti-layer {
+      position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 40;
+    }
+    .confetti {
+      position: absolute; top: -12px; width: 9px; height: 13px; border-radius: 2px;
+      animation: confetti-fall 2.6s ease-in forwards;
+    }
+    .toast {
+      position: fixed; left: 50%; bottom: 1.3rem; transform: translateX(-50%) translateY(140%);
+      background: linear-gradient(135deg, #1a3a4a, var(--laurel-deep)); color: white;
+      padding: 0.8rem 1.15rem; border-radius: 14px; font-weight: 800; z-index: 50;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.25); transition: transform 0.35s ease;
+      max-width: 92vw; text-align: center;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+  </style>
+</head>
+<body>
+  <div class="float-deco a" aria-hidden="true">🎭</div>
+  <div class="float-deco b" aria-hidden="true">🎵</div>
+  <div class="float-deco c" aria-hidden="true">🔥</div>
+  <div id="confetti-layer" aria-hidden="true"></div>
+  <div class="toast" id="toast"></div>
+
+  <div class="wrap">
+    <div class="top-links">
+      <a href="latein-27.html">🏛️ Lekt. 27</a>
+      <a href="latein-28-spickzettel.html">📝 Spickzettel</a>
+      <a href="https://malkozajche.github.io/Eva/latein-28.html">🔗 Permanent</a>
+    </div>
+
+    <header class="hero">
+      <h1 class="brand">
+        Eva’s Latein · Nero
+        <span>Lektion 28 · Nero – Künstler oder Kaiser?</span>
+      </h1>
+      <p class="tagline">Vokabeln mit Beispielen, Bildern, Spielen — und einem winzigen Spickzettel für die Hand!</p>
+
+      <div class="hud">
+        <div class="hud-card"><div class="k">Sterne</div><div class="v">⭐ <span id="starCount">0</span></div></div>
+        <div class="hud-card"><div class="k">XP</div><div class="v"><span id="xpCount">0</span></div></div>
+        <div class="hud-card"><div class="k">Streak</div><div class="v">🔥 <span id="streakCount">0</span></div></div>
+        <div class="hud-card"><div class="k">Karten</div><div class="v"><span id="seenCount">0</span>/<span id="totalCount">40</span></div></div>
+      </div>
+      <div class="xp-wrap">
+        <div class="xp-label"><span>Level <span id="levelNum">1</span></span><span id="xpToNext">0 / 50 XP</span></div>
+        <div class="xp-track"><div class="xp-fill" id="xpFill"></div></div>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab-btn active" data-tab="learn" type="button">📚 Lernen</button>
+      <button class="tab-btn" data-tab="gallery" type="button">🖼️ Bilder</button>
+      <button class="tab-btn" data-tab="games" type="button">🎮 Spiele</button>
+      <button class="tab-btn" data-tab="quiz" type="button">⭐ Quiz</button>
+      <a class="tab-btn" href="latein-28-spickzettel.html" style="text-decoration:none;display:inline-block;background:linear-gradient(180deg,#d4a017,#a67c00);color:#2a1a00;box-shadow:0 5px 0 #7a5a00;">📝 Spickzettel</a>
+    </nav>
+
+    <!-- LEARN -->
+    <section id="panel-learn" class="panel active">
+      <div class="howto">
+        <h2>So lernst du</h2>
+        <ol>
+          <li>Karte antippen → Latein + Stammformen + Deutsch + Beispiel.</li>
+          <li><strong>LA</strong> / <strong>DE</strong> hören (Aussprache).</li>
+          <li>Sterne &amp; XP sammeln, dann Spiele + Quiz!</li>
+        </ol>
+      </div>
+      <div class="search-row">
+        <input id="search" type="search" placeholder="Suche Latein oder Deutsch…" />
+      </div>
+      <div class="filter-row">
+        <button class="chip active" data-filter="all" type="button">Alle</button>
+        <button class="chip" data-filter="review" type="button">🔁 Wiederholung</button>
+        <button class="chip" data-filter="nouns" type="button">📦 Nomen</button>
+        <button class="chip" data-filter="verbs" type="button">⚡ Verben</button>
+        <button class="chip" data-filter="adj" type="button">✨ Adj./Adv.</button>
+        <button class="chip" data-filter="people" type="button">👤 Personen</button>
+        <button class="chip" data-filter="phrase" type="button">💬 Wendungen</button>
+      </div>
+      <p class="count-label" id="countLabel">40 Wörter</p>
+      <div class="grid" id="vocabGrid"></div>
+      <p class="voice-note" id="voiceStatus">Stimmen werden geladen…</p>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="panel-gallery" class="panel">
+      <div class="howto">
+        <h2>Bilder zur Lektion</h2>
+        <p style="font-weight:700;color:#2a4a55;">Nero, Apoll, Wettkampf, Öffentlichkeit — merke dir die Szene!</p>
+      </div>
+      <div class="gallery" id="gallery"></div>
+    </section>
+
+    <!-- GAMES -->
+    <section id="panel-games" class="panel">
+      <div class="game-menu" id="gameMenu">
+        <button type="button" class="game-card" data-game="match">
+          <h3>🔗 Match</h3>
+          <p>Latein ↔ Deutsch verbinden</p>
+          <span class="btn gold" style="display:inline-block;padding:0.4rem 0.85rem;font-size:0.95rem;">Spielen</span>
+        </button>
+        <button type="button" class="game-card" data-game="speed">
+          <h3>⚡ Speed</h3>
+          <p>10 schnelle DE → LA Fragen</p>
+          <span class="btn gold" style="display:inline-block;padding:0.4rem 0.85rem;font-size:0.95rem;">Spielen</span>
+        </button>
+        <button type="button" class="game-card" data-game="forms">
+          <h3>📜 Stammformen</h3>
+          <p>Welche Form gehört zum Verb?</p>
+          <span class="btn gold" style="display:inline-block;padding:0.4rem 0.85rem;font-size:0.95rem;">Spielen</span>
+        </button>
+      </div>
+      <div class="stage" id="gameStage" style="display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.7rem;">
+          <h2 class="q-prompt" id="gameTitle" style="margin:0;font-size:1.4rem;">Spiel</h2>
+          <button type="button" class="btn sec" id="gameBack" style="flex:0;padding:0.45rem 0.9rem;font-size:0.95rem;">← Menü</button>
+        </div>
+        <p class="q-meta" id="gameMeta"></p>
+        <div class="progress-bar"><div class="progress-fill" id="gameBar"></div></div>
+        <div id="gameBody"></div>
+        <p class="feedback" id="gameFeedback"></p>
+        <div class="cta-row">
+          <button type="button" class="btn" id="gameNext" disabled>Weiter →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="panel-quiz" class="panel">
+      <div class="stage" id="quizStage">
+        <p class="q-meta" id="quizMeta">15-Fragen-Quiz · Lektion 27</p>
+        <div class="progress-bar"><div class="progress-fill" id="quizBar"></div></div>
+        <p class="q-prompt" id="quizPrompt">Bereit für Nero?</p>
+        <p class="q-latin" id="quizLatin" style="display:none"></p>
+        <div class="choices" id="quizChoices"></div>
+        <p class="feedback" id="quizFeedback"></p>
+        <div class="cta-row">
+          <button type="button" class="btn wine" id="quizStart">Quiz starten!</button>
+          <button type="button" class="btn" id="quizNext" disabled style="display:none">Weiter →</button>
+        </div>
+      </div>
+      <div class="stage" id="quizResults" style="display:none">
+        <p class="q-meta">Quiz fertig!</p>
+        <div class="score-big" id="quizScore">0 / 15</div>
+        <div class="stars" id="quizStars">⭐⭐⭐</div>
+        <p id="quizMsg" style="font-weight:800;margin-bottom:0.75rem;"></p>
+        <div class="cta-row">
+          <button type="button" class="btn wine" id="quizAgain">Nochmal</button>
+          <button type="button" class="btn sec" id="quizLearn">Zurück zu Lernen</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>Ave Eva! Künstler oder Kaiser? Du entscheidest in Latein. 🎭</footer>
+  </div>
+
+  <script>
+    const VOCAB = [
+      /* Wiederholung */
+      { id: "metus", cat: "nouns", review: true, la: "metus", forms: "metūs m.", de: "Furcht", icon: "😨",
+        exampleLa: "Metus populum tenet.", exampleDe: "Furcht hält das Volk fest." },
+      { id: "ignorare", cat: "verbs", review: true, la: "ignōrāre", forms: "ignōrō", de: "nicht kennen, nicht wissen", icon: "🤷",
+        exampleLa: "Nerō populi īram ignōrat.", exampleDe: "Nero kennt den Zorn des Volkes nicht." },
+      { id: "sermo", cat: "nouns", review: true, la: "sermō", forms: "sermōnis m.", de: "Gespräch", icon: "💬",
+        exampleLa: "Sermō dē Nerōne fit.", exampleDe: "Es entsteht ein Gespräch über Nero." },
+      { id: "scilicet", cat: "adj", review: true, la: "scīlicet", forms: "Adv.", de: "selbstverständlich, nämlich", icon: "💡",
+        exampleLa: "Scīlicet Nerō cantāre vult.", exampleDe: "Selbstverständlich will Nero singen." },
+      { id: "accidere", cat: "verbs", review: true, la: "accidere", forms: "accidit, accidit", de: "geschehen, zustoßen", icon: "⚡",
+        exampleLa: "Quid accidit?", exampleDe: "Was ist geschehen?" },
+      { id: "effugere", cat: "verbs", review: true, la: "effugere", forms: "effugiō, effūgī, —", de: "entfliehen, entkommen", icon: "🏃",
+        exampleLa: "Nēmō īrae Nerōnis effugit.", exampleDe: "Niemand entkommt Neros Zorn." },
+      { id: "licet", cat: "verbs", review: true, la: "licet", forms: "licuit", de: "es ist erlaubt", icon: "✅",
+        exampleLa: "Licetne cantāre?", exampleDe: "Ist es erlaubt zu singen?" },
+      { id: "desinere", cat: "verbs", review: true, la: "dēsinere", forms: "dēsinō, dēsiī, dēsitum", de: "aufhören", icon: "🛑",
+        exampleLa: "Dēsine clamāre!", exampleDe: "Hör auf zu schreien!" },
+      /* Lektionstext */
+      { id: "nero", cat: "people", la: "Nerō", forms: "Nerōnis m.", de: "Nero", icon: "👑",
+        exampleLa: "Nerō cantāre amat.", exampleDe: "Nero liebt es zu singen.",
+        art: "👑", artTitle: "Nero", artBlurb: "Kaiser — Künstler oder Tyrann?" },
+      { id: "certamen", cat: "nouns", la: "certāmen", forms: "certāminis n.", de: "Wettkampf, Wettstreit", icon: "🏆",
+        exampleLa: "Certāmen musicum in theātrō est.", exampleDe: "Im Theater ist ein musikalischer Wettkampf.",
+        art: "🏆", artTitle: "certāmen", artBlurb: "Wettkampf um Ruhm" },
+      { id: "iudex", cat: "nouns", la: "iūdex", forms: "iūdicis m.", de: "Richter", icon: "⚖️",
+        exampleLa: "Iūdicēs Nerōnem laudant.", exampleDe: "Die Richter loben Nero.",
+        note: "E: judge" },
+      { id: "etiam", cat: "adj", la: "etiam", forms: "Konj.", de: "auch, sogar", icon: "➕",
+        exampleLa: "Etiam Apollō victus est.", exampleDe: "Sogar Apoll ist besiegt." },
+      { id: "apollo", cat: "people", la: "Apollō", forms: "Apollinis m.", de: "Apoll", icon: "🎵",
+        exampleLa: "Apollō deus artis est.", exampleDe: "Apoll ist der Gott der Kunst.",
+        art: "🎵", artTitle: "Apoll", artBlurb: "Gott der Musik und der Künste" },
+      { id: "praestare", cat: "verbs", la: "praestāre", forms: "praestō, praestitī, —", de: "sich hervortun, besser sein; zeigen; + Dat.: übertreffen", icon: "⭐",
+        exampleLa: "Nerō omnibus cantōribus praestat.", exampleDe: "Nero überragt alle Sänger." },
+      { id: "merito", cat: "adj", la: "meritō", forms: "Adv.", de: "mit Recht, aus gutem Grund", icon: "👌",
+        exampleLa: "Meritō laudātur.", exampleDe: "Er wird mit Recht gelobt." },
+      { id: "credere", cat: "verbs", la: "crēdere", forms: "crēdō, crēdidī, crēditum", de: "vertrauen, Glauben schenken; glauben", icon: "🤝",
+        exampleLa: "Populus Nerōnī nōn crēdit.", exampleDe: "Das Volk glaubt Nero nicht." },
+      { id: "publicus", cat: "adj", la: "pūblicus", forms: "-a, -um", de: "öffentlich", icon: "📢",
+        exampleLa: "In pūblicō cantat.", exampleDe: "Er singt in der Öffentlichkeit.",
+        note: "in pūblicō = in der Öffentlichkeit", phrase: true },
+      { id: "necesse", cat: "phrase", la: "necesse est", forms: "", de: "es ist nötig, man muss", icon: "❗",
+        exampleLa: "Necesse est discere.", exampleDe: "Man muss lernen." },
+      { id: "declarare", cat: "verbs", la: "dēclārāre", forms: "dēclārō", de: "jdn. (öffentlich) zu etwas erklären, ausrufen", icon: "📣",
+        exampleLa: "Senātus eum hostem dēclārat.", exampleDe: "Der Senat erklärt ihn zum Feind.",
+        note: "E: to declare" },
+      { id: "respublica", cat: "nouns", la: "rēs pūblica", forms: "reī pūblicae f.", de: "Staat, Gemeinwesen", icon: "🏛️",
+        exampleLa: "Rēs pūblica in perīculō est.", exampleDe: "Der Staat ist in Gefahr.",
+        art: "🏛️", artTitle: "rēs pūblica", artBlurb: "Staat — auch in der Kaiserzeit so genannt", phrase: true },
+      { id: "pertinere", cat: "verbs", la: "pertinēre", forms: "pertineō, pertinuī, —", de: "sich erstrecken; sich beziehen", icon: "📍",
+        exampleLa: "Hoc ad tē pertinet.", exampleDe: "Das bezieht sich auf dich.",
+        note: "pertinēre ad + Akk." },
+      { id: "diligere", cat: "verbs", la: "dīligere", forms: "dīligō, dīlēxī, dīlēctum", de: "lieben, wertschätzen", icon: "❤️",
+        exampleLa: "Populus pācem dīligit.", exampleDe: "Das Volk schätzt den Frieden." },
+      { id: "nescire", cat: "verbs", la: "nescīre", forms: "nesciō", de: "nicht wissen, nicht kennen", icon: "🙈",
+        exampleLa: "Nesciō quid faciam.", exampleDe: "Ich weiß nicht, was ich tun soll." },
+      { id: "scire", cat: "verbs", la: "scīre", forms: "sciō", de: "wissen, kennen", icon: "🧠",
+        exampleLa: "Scīsne, quis sit Nerō?", exampleDe: "Weißt du, wer Nero ist?" },
+      { id: "reprehendere", cat: "verbs", la: "reprehendere", forms: "reprehendō, reprehendī, reprehēnsum", de: "tadeln", icon: "☝️",
+        exampleLa: "Senātōrēs eum reprehendunt.", exampleDe: "Die Senatoren tadeln ihn." },
+      { id: "oppidum", cat: "nouns", la: "oppidum", forms: "oppidī n.", de: "(Land-) Stadt", icon: "🏘️",
+        exampleLa: "Oppidum mūrīs clauditur.", exampleDe: "Die Stadt wird mit Mauern verschlossen.",
+        art: "🏘️", artTitle: "oppidum", artBlurb: "Eine römische Landstadt" },
+      { id: "claudere", cat: "verbs", la: "claudere", forms: "claudō, clausī, clausum", de: "schließen, verschließen", icon: "🔒",
+        exampleLa: "Portās claudunt.", exampleDe: "Sie schließen die Tore." },
+      { id: "consulere", cat: "verbs", la: "cōnsulere", forms: "cōnsulō, cōnsuluī, cōnsultum", de: "sich beraten, beratschlagen", icon: "🗣️",
+        exampleLa: "Senātus cōnsulit.", exampleDe: "Der Senat berät sich." },
+      { id: "quomodo", cat: "phrase", la: "quōmodo?", forms: "", de: "wie?, auf welche Weise?", icon: "❔",
+        exampleLa: "Quōmodo hoc fierī potest?", exampleDe: "Wie kann das geschehen?" },
+      { id: "clam", cat: "adj", la: "clam", forms: "Adv.", de: "heimlich", icon: "🤫",
+        exampleLa: "Clam ex urbe effugit.", exampleDe: "Heimlich entfloh er aus der Stadt." },
+      { id: "altus", cat: "adj", la: "altus", forms: "-a, -um", de: "1. hoch; 2. tief", icon: "🏔️",
+        exampleLa: "Mūrī altī sunt.", exampleDe: "Die Mauern sind hoch." },
+      { id: "simulare", cat: "verbs", la: "simulāre", forms: "simulō", de: "vortäuschen; so tun, als ob", icon: "🎭",
+        exampleLa: "Nerō amīcum sē simulat.", exampleDe: "Nero tut so, als sei er ein Freund.",
+        note: "D: simulieren" },
+      { id: "dubitare", cat: "verbs", la: "dubitāre", forms: "dubitō", de: "zögern", icon: "⏸️",
+        exampleLa: "Nōn dubitat cantāre.", exampleDe: "Er zögert nicht zu singen." },
+      { id: "tamquam", cat: "adj", la: "tamquam", forms: "Adv.", de: "wie, als ob", icon: "🪞",
+        exampleLa: "Tamquam deus cantat.", exampleDe: "Er singt wie ein Gott." },
+      { id: "deportare", cat: "verbs", la: "dēportāre", forms: "dēportō", de: "wegtragen, fortschaffen", icon: "📦",
+        exampleLa: "Statuās dēportant.", exampleDe: "Sie schaffen die Statuen weg." },
+      { id: "quin-etiam", cat: "phrase", la: "quīn etiam", forms: "", de: "ja sogar, ja vielmehr", icon: "‼️",
+        exampleLa: "Quīn etiam Apollinem superat.", exampleDe: "Ja sogar Apoll übertrifft er." },
+      { id: "evenire", cat: "verbs", la: "ēvenīre", forms: "ēveniō, ēvēnī, ēventum", de: "sich ereignen", icon: "📰",
+        exampleLa: "Quid ēvēnit?", exampleDe: "Was hat sich ereignet?",
+        note: "E: event" },
+      { id: "parere", cat: "verbs", la: "parere", forms: "pariō, peperī, partum", de: "hervorbringen, gebären", icon: "🌱",
+        exampleLa: "Terra frūctūs parit.", exampleDe: "Die Erde bringt Früchte hervor.",
+        note: "⚠️ nicht pārēre (gehorchen)!" },
+      { id: "concedere", cat: "verbs", la: "concēdere", forms: "concēdō, concessī, concessum", de: "erlauben, zugestehen", icon: "🤝",
+        exampleLa: "Senātus nihil concēdit.", exampleDe: "Der Senat gestattet nichts." },
+      { id: "offendere", cat: "verbs", la: "offendere", forms: "offendō, offendī, offēnsum", de: "beleidigen", icon: "💢",
+        exampleLa: "Nerō senātōrēs offendit.", exampleDe: "Nero beleidigt die Senatoren.",
+        note: "E: to offend" }
+    ];
+
+    const CAT_LABEL = { nouns: "Nomen", verbs: "Verben", adj: "Adj./Adv.", people: "Personen", phrase: "Wendung" };
+    const STORE = "eva-latin-28-v1";
+
+    const state = loadState();
+    let filter = "all";
+    let searchQ = "";
+    let voices = [];
+
+    function loadState() {
+      try {
+        return Object.assign({ xp: 0, stars: 0, streak: 0, seen: [], badges: [] }, JSON.parse(localStorage.getItem(STORE) || "{}"));
+      } catch { return { xp: 0, stars: 0, streak: 0, seen: [], badges: [] }; }
+    }
+    function saveState() { localStorage.setItem(STORE, JSON.stringify(state)); }
+
+    const $ = (id) => document.getElementById(id);
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+    }
+    function escapeAttr(s) { return escapeHtml(s).replace(/'/g, "&#39;"); }
+
+    function levelOf(xp) { return Math.floor(xp / 50) + 1; }
+    function xpInLevel(xp) { return xp % 50; }
+
+    function toast(msg) {
+      const t = $("toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      setTimeout(() => t.classList.remove("show"), 2000);
+    }
+
+    function confetti() {
+      const layer = $("confetti-layer");
+      const colors = ["#d4a017", "#a33b2d", "#3d7a4a", "#4a90b8", "#fff", "#f0e6c8"];
+      for (let i = 0; i < 40; i++) {
+        const b = document.createElement("div");
+        b.className = "confetti";
+        b.style.left = Math.random() * 100 + "vw";
+        b.style.background = colors[i % colors.length];
+        b.style.animationDelay = (Math.random() * 0.5) + "s";
+        b.style.animationDuration = (2.1 + Math.random() * 1.2) + "s";
+        layer.appendChild(b);
+        setTimeout(() => b.remove(), 3600);
+      }
+    }
+
+    function addXP(n, label) {
+      state.xp += n;
+      if (n >= 12) {
+        state.stars += 1;
+        toast("⭐ " + (label || ("+" + n + " XP")));
+        confetti();
+      } else if (label) toast(label);
+      saveState();
+      renderHUD();
+    }
+
+    function markSeen(id) {
+      if (!state.seen.includes(id)) {
+        state.seen.push(id);
+        addXP(3);
+        saveState();
+        renderHUD();
+      }
+    }
+
+    function renderHUD() {
+      $("starCount").textContent = state.stars;
+      $("xpCount").textContent = state.xp;
+      $("streakCount").textContent = state.streak;
+      $("seenCount").textContent = state.seen.length;
+      $("totalCount").textContent = VOCAB.length;
+      const lvl = levelOf(state.xp);
+      const cur = xpInLevel(state.xp);
+      $("levelNum").textContent = lvl;
+      $("xpToNext").textContent = `${cur} / 50 XP`;
+      $("xpFill").style.width = `${(cur / 50) * 100}%`;
+    }
+
+    /* speech */
+    function loadVoices() {
+      voices = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+      const la = pickVoice(["la", "it", "la-VA"]);
+      const de = pickVoice(["de"]);
+      $("voiceStatus").textContent = window.speechSynthesis
+        ? `Aussprache bereit · LA: ${la?.name || "Italienisch/Latein"} · DE: ${de?.name || "default"}`
+        : "Keine Sprachausgabe — aber Karten & Spiele gehen!";
+    }
+    function pickVoice(prefixes) {
+      const list = voices.filter(v => prefixes.some(p => v.lang.toLowerCase().startsWith(p)));
+      if (!list.length && prefixes.includes("it")) {
+        return voices.find(v => /italian|italiano/i.test(v.name)) || null;
+      }
+      if (!list.length) return null;
+      return list.find(v => /google|apple|microsoft|natural|neural|premium/i.test(v.name)) || list[0];
+    }
+    function speak(text, lang) {
+      if (!window.speechSynthesis || !text) return;
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      const isLa = lang === "la";
+      u.lang = isLa ? "it-IT" : "de-DE"; // Latin ≈ Italian phonetics for TTS
+      u.rate = isLa ? 0.85 : 0.92;
+      const v = isLa ? (pickVoice(["it", "la"]) || pickVoice(["en"])) : pickVoice(["de"]);
+      if (v) u.voice = v;
+      speechSynthesis.speak(u);
+    }
+    if (window.speechSynthesis) {
+      loadVoices();
+      speechSynthesis.onvoiceschanged = loadVoices;
+    } else loadVoices();
+
+    /* cards */
+    function filtered() {
+      const q = searchQ.trim().toLowerCase();
+      return VOCAB.filter(v => {
+        const catOk = filter === "all"
+          || (filter === "review" && !!v.review)
+          || (filter === "phrase" && (v.cat === "phrase" || v.phrase))
+          || (["nouns","verbs","adj","people"].includes(filter) && v.cat === filter);
+        if (!catOk) return false;
+        if (!q) return true;
+        return [v.la, v.forms, v.de, v.exampleLa, v.exampleDe, v.note || ""].join(" ").toLowerCase().includes(q);
+      });
+    }
+
+    function renderCards() {
+      const items = filtered();
+      $("countLabel").textContent = `${items.length} Wort${items.length === 1 ? "" : "e"}`;
+      $("vocabGrid").innerHTML = items.map(v => `
+        <article class="card" data-id="${v.id}" tabindex="0" role="button" aria-expanded="false">
+          <span class="badge ${v.cat}">${CAT_LABEL[v.cat] || v.cat}</span>
+          <div class="icon">${v.icon}</div>
+          <div class="la">${escapeHtml(v.la)}</div>
+          <div class="forms">${escapeHtml(v.forms)}</div>
+          <div class="reveal">
+            <div class="lang-row">
+              <button type="button" class="speak-btn la-btn" data-speak="la" data-text="${escapeAttr(v.la)}">🔊 LA</button>
+              <button type="button" class="speak-btn de-btn" data-speak="de" data-text="${escapeAttr(v.de)}">🔊 DE</button>
+            </div>
+            <p class="trans"><span class="label">DE</span> ${escapeHtml(v.de)}</p>
+            ${v.note ? `<p class="trans" style="color:#8a5a00;font-size:0.85rem;">💡 ${escapeHtml(v.note)}</p>` : ""}
+            <div class="example">
+              <strong>LA:</strong> <span style="font-family:var(--font-latin)">${escapeHtml(v.exampleLa)}</span>
+              <span class="de-ex"><strong>DE:</strong> ${escapeHtml(v.exampleDe)}</span>
+            </div>
+            <div class="pic" aria-hidden="true">${v.icon}</div>
+            <button type="button" class="speak-btn ex-btn" data-speak="la" data-text="${escapeAttr(v.exampleLa)}">🔊 Beispielsatz hören</button>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    $("vocabGrid").addEventListener("click", (e) => {
+      const speakBtn = e.target.closest("[data-speak]");
+      if (speakBtn) {
+        e.stopPropagation();
+        speak(speakBtn.dataset.text, speakBtn.dataset.speak);
+        return;
+      }
+      const card = e.target.closest(".card");
+      if (!card) return;
+      const open = card.classList.toggle("flipped");
+      card.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) {
+        const w = VOCAB.find(x => x.id === card.dataset.id);
+        if (w) {
+          markSeen(w.id);
+          speak(w.la, "la");
+        }
+      }
+    });
+
+    document.querySelectorAll(".chip").forEach(chip => {
+      chip.addEventListener("click", () => {
+        document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+        filter = chip.dataset.filter;
+        renderCards();
+      });
+    });
+    $("search").addEventListener("input", (e) => { searchQ = e.target.value; renderCards(); });
+
+    /* gallery */
+    function renderGallery() {
+      const arts = VOCAB.filter(v => v.art);
+      // add Augustus hero tile
+      const tiles = [
+        { art: "🎭", artTitle: "Nero", artBlurb: "Kaiser — Künstler oder Tyrann?" },
+        ...arts
+      ];
+      $("gallery").innerHTML = tiles.map(t => `
+        <div class="gallery-card">
+          <div class="gallery-art">${t.art}</div>
+          <h3>${escapeHtml(t.artTitle)}</h3>
+          <p>${escapeHtml(t.artBlurb)}</p>
+        </div>
+      `).join("");
+    }
+
+    /* tabs */
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+        btn.classList.add("active");
+        const id = btn.dataset.tab === "game" ? "games" : btn.dataset.tab;
+        $("panel-" + (id === "game" ? "games" : id)).classList.add("active");
+        if (btn.dataset.tab === "quiz") resetQuizUI();
+      });
+    });
+
+    /* helpers */
+    function shuffle(a) {
+      const x = [...a];
+      for (let i = x.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [x[i], x[j]] = [x[j], x[i]];
+      }
+      return x;
+    }
+    function wrongs(correct, n = 3) {
+      return shuffle(VOCAB.filter(v => v.id !== correct.id)).slice(0, n);
+    }
+
+    /* GAMES */
+    let gameMode = null;
+    let gameQueue = [];
+    let gameIdx = 0;
+    let gameScore = 0;
+    let gameLocked = false;
+    let matchLeft = [];
+    let matchRight = [];
+    let matchSel = null;
+    let matchPairs = 0;
+
+    document.getElementById("gameMenu").addEventListener("click", (e) => {
+      const card = e.target.closest("[data-game]");
+      if (!card) return;
+      startGame(card.dataset.game);
+    });
+    $("gameBack").onclick = () => {
+      $("gameStage").style.display = "none";
+      $("gameMenu").style.display = "grid";
+    };
+
+    function startGame(mode) {
+      gameMode = mode;
+      gameIdx = 0;
+      gameScore = 0;
+      gameLocked = false;
+      $("gameMenu").style.display = "none";
+      $("gameStage").style.display = "block";
+      $("gameNext").disabled = true;
+      $("gameFeedback").textContent = "";
+      if (mode === "match") startMatch();
+      else if (mode === "speed") {
+        $("gameTitle").textContent = "⚡ Speed";
+        gameQueue = shuffle(VOCAB).slice(0, 10);
+        renderSpeed();
+      } else {
+        $("gameTitle").textContent = "📜 Stammformen";
+        gameQueue = shuffle(VOCAB.filter(v => v.cat === "verbs"));
+        renderForms();
+      }
+    }
+
+    function startMatch() {
+      $("gameTitle").textContent = "🔗 Match";
+      const pair = shuffle(VOCAB).slice(0, 6);
+      matchLeft = shuffle(pair);
+      matchRight = shuffle(pair);
+      matchSel = null;
+      matchPairs = 0;
+      $("gameMeta").textContent = `Paare: 0 / ${pair.length}`;
+      $("gameBar").style.width = "0%";
+      $("gameBody").innerHTML = `
+        <div class="match-board">
+          <div class="match-col">
+            <h4>Latein</h4>
+            ${matchLeft.map(v => `<button type="button" class="match-item" data-side="la" data-id="${v.id}">${v.icon} <span style="font-family:var(--font-latin)">${escapeHtml(v.la)}</span></button>`).join("")}
+          </div>
+          <div class="match-col">
+            <h4>Deutsch</h4>
+            ${matchRight.map(v => `<button type="button" class="match-item" data-side="de" data-id="${v.id}">${escapeHtml(v.de.split(";")[0].split(",")[0])}</button>`).join("")}
+          </div>
+        </div>`;
+      $("gameNext").style.display = "none";
+    }
+
+    $("gameBody").addEventListener("click", (e) => {
+      if (gameMode !== "match") return;
+      const item = e.target.closest(".match-item");
+      if (!item || item.classList.contains("matched")) return;
+      if (!matchSel) {
+        matchSel = item;
+        item.classList.add("selected");
+        return;
+      }
+      if (matchSel === item) {
+        item.classList.remove("selected");
+        matchSel = null;
+        return;
+      }
+      if (matchSel.dataset.side === item.dataset.side) {
+        matchSel.classList.remove("selected");
+        matchSel = item;
+        item.classList.add("selected");
+        return;
+      }
+      const a = matchSel, b = item;
+      a.classList.remove("selected");
+      if (a.dataset.id === b.dataset.id) {
+        a.classList.add("matched");
+        b.classList.add("matched");
+        matchPairs++;
+        addXP(4);
+        $("gameMeta").textContent = `Paare: ${matchPairs} / 6`;
+        $("gameBar").style.width = `${(matchPairs / 6) * 100}%`;
+        speak(VOCAB.find(v => v.id === a.dataset.id).la, "la");
+        if (matchPairs >= 6) {
+          state.streak += 1;
+          addXP(15, "Match geschafft! ⭐");
+          $("gameFeedback").textContent = "Alle Paare gefunden — Ave!";
+          $("gameFeedback").className = "feedback good";
+          saveState();
+        }
+      } else {
+        a.classList.add("shake");
+        b.classList.add("shake");
+        setTimeout(() => { a.classList.remove("shake"); b.classList.remove("shake"); }, 400);
+        state.streak = 0;
+        saveState();
+        renderHUD();
+      }
+      matchSel = null;
+    });
+
+    function renderSpeed() {
+      if (gameIdx >= gameQueue.length) {
+        $("gameBody").innerHTML = "";
+        $("gameFeedback").textContent = `Speed fertig: ${gameScore}/${gameQueue.length}`;
+        $("gameFeedback").className = "feedback good";
+        $("gameNext").disabled = true;
+        addXP(gameScore >= 8 ? 18 : 8, "Speed geschafft!");
+        if (gameScore >= 8) state.streak++; else state.streak = 0;
+        saveState(); renderHUD();
+        return;
+      }
+      gameLocked = false;
+      const w = gameQueue[gameIdx];
+      $("gameMeta").textContent = `Frage ${gameIdx + 1} / ${gameQueue.length}`;
+      $("gameBar").style.width = `${(gameIdx / gameQueue.length) * 100}%`;
+      $("gameFeedback").textContent = "";
+      $("gameNext").disabled = true;
+      $("gameNext").style.display = "inline-block";
+      const opts = shuffle([w, ...wrongs(w)]);
+      $("gameBody").innerHTML = `
+        <p class="q-prompt" style="font-size:1.2rem;">Was heißt auf Latein?</p>
+        <p style="font-weight:800;font-size:1.15rem;margin-bottom:0.6rem;">${escapeHtml(w.de.split(";")[0])}</p>
+        <div class="choices">${opts.map(o => `<button type="button" class="choice" data-id="${o.id}"><span style="font-family:var(--font-latin)">${escapeHtml(o.la)}</span></button>`).join("")}</div>`;
+    }
+
+    function renderForms() {
+      if (gameIdx >= gameQueue.length) {
+        $("gameBody").innerHTML = "";
+        $("gameFeedback").textContent = `Stammformen: ${gameScore}/${gameQueue.length}`;
+        $("gameFeedback").className = "feedback good";
+        $("gameNext").disabled = true;
+        addXP(gameScore >= 5 ? 16 : 8, "Stammformen-Runde fertig!");
+        return;
+      }
+      gameLocked = false;
+      const w = gameQueue[gameIdx];
+      $("gameMeta").textContent = `Verb ${gameIdx + 1} / ${gameQueue.length}`;
+      $("gameBar").style.width = `${(gameIdx / gameQueue.length) * 100}%`;
+      $("gameFeedback").textContent = "";
+      $("gameNext").disabled = true;
+      $("gameNext").style.display = "inline-block";
+      const distractors = shuffle(VOCAB.filter(v => v.cat === "verbs" && v.id !== w.id)).slice(0, 3).map(v => v.forms);
+      const opts = shuffle([w.forms, ...distractors]);
+      $("gameBody").innerHTML = `
+        <p class="q-prompt" style="font-size:1.2rem;">Stammformen von</p>
+        <p class="q-latin">${escapeHtml(w.la)}</p>
+        <div class="choices">${opts.map(o => `<button type="button" class="choice" data-forms="${escapeAttr(o)}" style="font-family:var(--font-latin)">${escapeHtml(o)}</button>`).join("")}</div>`;
+    }
+
+    $("gameBody").addEventListener("click", (e) => {
+      if (gameMode === "match" || gameLocked) return;
+      const btn = e.target.closest(".choice");
+      if (!btn) return;
+      gameLocked = true;
+      const w = gameQueue[gameIdx];
+      const buttons = [...$("gameBody").querySelectorAll(".choice")];
+      let correct = false;
+      if (gameMode === "speed") {
+        correct = btn.dataset.id === w.id;
+        buttons.forEach(b => { b.disabled = true; if (b.dataset.id === w.id) b.classList.add("right"); });
+      } else {
+        correct = btn.dataset.forms === w.forms;
+        buttons.forEach(b => { b.disabled = true; if (b.dataset.forms === w.forms) b.classList.add("right"); });
+      }
+      if (!correct) btn.classList.add("wrong");
+      const fb = $("gameFeedback");
+      if (correct) {
+        gameScore++;
+        fb.textContent = "Richtig! ✅";
+        fb.className = "feedback good";
+        addXP(3);
+        speak(w.la, "la");
+      } else {
+        fb.textContent = `→ ${w.la} · ${w.forms}`;
+        fb.className = "feedback bad";
+        speak(w.la, "la");
+      }
+      $("gameNext").disabled = false;
+      $("gameBar").style.width = `${((gameIdx + 1) / gameQueue.length) * 100}%`;
+    });
+
+    $("gameNext").onclick = () => {
+      gameIdx++;
+      if (gameMode === "speed") renderSpeed();
+      else if (gameMode === "forms") renderForms();
+    };
+
+    /* QUIZ */
+    let quizQ = [];
+    let quizIdx = 0;
+    let quizScore = 0;
+    let quizLocked = false;
+
+    function resetQuizUI() {
+      $("quizStage").style.display = "block";
+      $("quizResults").style.display = "none";
+      $("quizStart").style.display = "inline-block";
+      $("quizNext").style.display = "none";
+      $("quizChoices").innerHTML = "";
+      $("quizFeedback").textContent = "";
+      $("quizPrompt").textContent = "Bereit für Nero?";
+      $("quizLatin").style.display = "none";
+      $("quizBar").style.width = "0%";
+    }
+
+    function startQuiz() {
+      quizQ = shuffle(VOCAB).slice(0, 15).map((w, i) => {
+        const styles = ["deToLa", "laToDe", "example"];
+        return { w, style: styles[i % 3] };
+      });
+      quizIdx = 0;
+      quizScore = 0;
+      $("quizStart").style.display = "none";
+      $("quizNext").style.display = "inline-block";
+      $("quizResults").style.display = "none";
+      $("quizStage").style.display = "block";
+      renderQuiz();
+    }
+
+    function renderQuiz() {
+      const { w, style } = quizQ[quizIdx];
+      quizLocked = false;
+      $("quizMeta").textContent = `Frage ${quizIdx + 1} / ${quizQ.length}`;
+      $("quizBar").style.width = `${(quizIdx / quizQ.length) * 100}%`;
+      $("quizFeedback").textContent = "";
+      $("quizNext").disabled = true;
+      let prompt = "", opts = [], labelFn = x => x.la;
+      if (style === "deToLa") {
+        prompt = `Latein für: „${w.de.split(";")[0].split(",")[0].trim()}“?`;
+        opts = shuffle([w, ...wrongs(w)]);
+        labelFn = x => x.la;
+        $("quizLatin").style.display = "none";
+      } else if (style === "laToDe") {
+        prompt = "Was bedeutet…";
+        $("quizLatin").style.display = "block";
+        $("quizLatin").textContent = w.la;
+        opts = shuffle([w, ...wrongs(w)]);
+        labelFn = x => x.de.split(";")[0].split(",")[0].trim();
+        speak(w.la, "la");
+      } else {
+        prompt = "Welches Wort passt zum Beispiel?";
+        $("quizLatin").style.display = "block";
+        $("quizLatin").textContent = w.exampleLa;
+        opts = shuffle([w, ...wrongs(w)]);
+        labelFn = x => x.la;
+      }
+      $("quizPrompt").textContent = prompt;
+      $("quizChoices").innerHTML = opts.map(o =>
+        `<button type="button" class="choice" data-id="${o.id}">${o.icon} <span style="font-family:${style === "laToDe" ? "inherit" : "var(--font-latin)"}">${escapeHtml(labelFn(o))}</span></button>`
+      ).join("");
+    }
+
+    $("quizChoices").addEventListener("click", (e) => {
+      const btn = e.target.closest(".choice");
+      if (!btn || quizLocked || !quizQ.length) return;
+      quizLocked = true;
+      const { w } = quizQ[quizIdx];
+      [...$("quizChoices").querySelectorAll(".choice")].forEach(b => {
+        b.disabled = true;
+        if (b.dataset.id === w.id) b.classList.add("right");
+      });
+      const fb = $("quizFeedback");
+      if (btn.dataset.id === w.id) {
+        quizScore++;
+        fb.textContent = `Super! ✅ ${w.la} — ${w.de.split(";")[0]}`;
+        fb.className = "feedback good";
+        addXP(4);
+        speak(w.la, "la");
+      } else {
+        btn.classList.add("wrong");
+        fb.textContent = `→ ${w.la} = ${w.de}`;
+        fb.className = "feedback bad";
+        speak(w.la, "la");
+      }
+      $("quizNext").disabled = false;
+      $("quizBar").style.width = `${((quizIdx + 1) / quizQ.length) * 100}%`;
+    });
+
+    $("quizNext").onclick = () => {
+      if (quizIdx < quizQ.length - 1) { quizIdx++; renderQuiz(); }
+      else showQuizResults();
+    };
+    $("quizStart").onclick = startQuiz;
+    $("quizAgain").onclick = startQuiz;
+    $("quizLearn").onclick = () => document.querySelector('[data-tab="learn"]').click();
+
+    function showQuizResults() {
+      $("quizStage").style.display = "none";
+      $("quizResults").style.display = "block";
+      $("quizScore").textContent = `${quizScore} / ${quizQ.length}`;
+      let stars = "⭐⭐", msg = "Noch üben — du schaffst das!";
+      if (quizScore >= 13) { stars = "⭐⭐⭐⭐⭐"; msg = "Ave Eva! Lektion 28 sitzt. 👑🏛️"; confetti(); state.streak++; }
+      else if (quizScore >= 10) { stars = "⭐⭐⭐⭐"; msg = "Sehr stark — fast Kaiserin-Niveau!"; confetti(); state.streak++; }
+      else if (quizScore >= 7) { stars = "⭐⭐⭐"; msg = "Guter Stand — Match + Karten nochmal."; state.streak = 0; }
+      else state.streak = 0;
+      addXP(quizScore >= 10 ? 20 : 10);
+      $("quizStars").textContent = stars;
+      $("quizMsg").textContent = msg;
+      saveState(); renderHUD();
+      speak(msg, "de");
+    }
+
+    /* boot */
+    renderHUD();
+    renderCards();
+    renderGallery();
+  </script>
+</body>
+</html>

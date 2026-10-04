@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spickzettel Lektion 28 · Nero (Handfalz)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: #dfe6ea;
+      color: #111;
+    }
+    .bar {
+      position: sticky; top: 0; z-index: 5;
+      display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; align-items: center;
+      padding: 0.7rem 1rem; background: #6a1e35; color: #fff;
+      font-family: system-ui, sans-serif; font-size: 0.92rem;
+    }
+    .bar button, .bar a {
+      font: inherit; font-weight: 700; border: none; cursor: pointer;
+      border-radius: 999px; padding: 0.4rem 0.9rem; text-decoration: none;
+      background: #fff; color: #6a1e35;
+    }
+    .bar .ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.55); }
+    .hint-screen {
+      max-width: 720px; margin: 0.85rem auto; padding: 0 1rem;
+      font-family: system-ui, sans-serif; font-size: 0.92rem; font-weight: 600; color: #333;
+      text-align: center; line-height: 1.4;
+    }
+
+    /* One A4 page → fold twice → palm size */
+    .sheet {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0.8rem auto 1.5rem;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      padding: 6mm 7mm 7mm;
+      position: relative;
+    }
+    .fold-h, .fold-v {
+      position: absolute; pointer-events: none; border: none;
+    }
+    .fold-h {
+      left: 4mm; right: 4mm; top: 50%;
+      border-top: 1px dashed #bbb;
+    }
+    .fold-v {
+      top: 4mm; bottom: 4mm; left: 50%;
+      border-left: 1px dashed #bbb;
+    }
+    .fold-label {
+      position: absolute; font-size: 7pt; color: #999; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .fold-label.t { top: 2mm; left: 50%; transform: translateX(-50%); }
+    .fold-label.b { bottom: 2mm; left: 50%; transform: translateX(-50%); }
+    .fold-label.l { left: 1.5mm; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+    .fold-label.r { right: 1.5mm; top: 50%; transform: translateY(-50%) rotate(90deg); }
+
+    .panel {
+      width: 50%;
+      height: 50%;
+      float: left;
+      padding: 3.5mm 3.5mm 3mm;
+      overflow: hidden;
+    }
+    .panel h1 {
+      font-size: 9.5pt; line-height: 1.15; margin-bottom: 1.2mm;
+      text-align: center;
+    }
+    .panel .sub {
+      font-size: 6.5pt; text-align: center; color: #444; margin-bottom: 2mm; font-weight: 700;
+    }
+    .panel h2 {
+      font-size: 7pt; background: #111; color: #fff; padding: 0.8mm 1.5mm;
+      margin: 1.5mm 0 1mm; border-radius: 1mm;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 6.2pt;
+      line-height: 1.18;
+    }
+    td {
+      vertical-align: top;
+      padding: 0.35mm 0.8mm 0.35mm 0;
+      border-bottom: 0.3pt solid #e5e5e5;
+    }
+    td.la {
+      font-family: "Times New Roman", Georgia, serif;
+      font-weight: 700;
+      width: 42%;
+      white-space: nowrap;
+    }
+    td.de { color: #222; }
+    .tiny {
+      font-size: 5.6pt; color: #555; font-style: italic; display: block;
+    }
+    .warn { color: #8b1e1e; font-weight: 800; }
+    .foot {
+      clear: both; text-align: center; font-size: 6pt; color: #888; padding-top: 1mm;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .bar, .hint-screen { display: none !important; }
+      .sheet {
+        margin: 0; box-shadow: none; width: auto; min-height: auto;
+        padding: 5mm 6mm;
+      }
+      @page { size: A4 portrait; margin: 0; }
+      .fold-h, .fold-v, .fold-label { /* keep fold guides faint for folding */ }
+    }
+  </style>
+</head>
+<body>
+  <div class="bar">
+    <strong>Spickzettel Lekt. 28 — Handfalz</strong>
+    <button type="button" onclick="window.print()">🖨️ Drucken / PDF</button>
+    <a href="latein-28.html">← Lernen</a>
+    <a class="ghost" href="index.html">Akademie</a>
+  </div>
+  <p class="hint-screen">
+    Auf <strong>A4</strong> drucken → <strong>1× längs + 1× quer falten</strong> (entlang der gestrichelten Linien).<br />
+    Ergebnis: vier kleine Karten, passen in eine Hand. Alle Viertel haben denselben Inhalt.
+  </p>
+
+  <main class="sheet">
+    <div class="fold-h" aria-hidden="true"></div>
+    <div class="fold-v" aria-hidden="true"></div>
+    <span class="fold-label t">falten</span>
+    <span class="fold-label b">falten</span>
+    <span class="fold-label l">falten</span>
+    <span class="fold-label r">falten</span>
+
+    <!-- 4 identical palm panels -->
+    <script>
+      const BLOCKS = [
+        { h: "Wiederholung", rows: [
+          ["metus, metūs m.", "Furcht"],
+          ["ignōrāre", "nicht kennen/wissen"],
+          ["sermō, -ōnis m.", "Gespräch"],
+          ["scīlicet", "selbstverständlich"],
+          ["accidere", "geschehen"],
+          ["effugere", "entfliehen"],
+          ["licet", "es ist erlaubt"],
+          ["dēsinere", "aufhören"],
+        ]},
+        { h: "Personen & Kern", rows: [
+          ["Nerō, -ōnis m.", "Nero"],
+          ["Apollō, -inis m.", "Apoll"],
+          ["certāmen, -inis n.", "Wettkampf"],
+          ["iūdex, iūdicis m.", "Richter"],
+          ["rēs pūblica", "Staat"],
+          ["oppidum, -ī n.", "(Land-)Stadt"],
+          ["etiam", "auch, sogar"],
+          ["necesse est", "es ist nötig / man muss"],
+        ]},
+        { h: "Verben", rows: [
+          ["praestāre", "sich auszeichnen; +Dat. übertreffen"],
+          ["crēdere", "vertrauen / glauben"],
+          ["dēclārāre", "öffentlich erklären"],
+          ["pertinēre (ad+Akk.)", "sich beziehen auf"],
+          ["dīligere", "lieben, wertschätzen"],
+          ["scīre / nescīre", "wissen / nicht wissen"],
+          ["reprehendere", "tadeln"],
+          ["claudere", "schließen"],
+          ["cōnsulere", "sich beraten"],
+          ["simulāre", "vortäuschen"],
+          ["dubitāre", "zögern"],
+          ["dēportāre", "wegtragen"],
+          ["ēvenīre", "sich ereignen"],
+          ["parere ⚠️", "hervorbringen (≠ pārēre!)"],
+          ["concēdere", "erlauben, zugestehen"],
+          ["offendere", "beleidigen"],
+        ]},
+        { h: "Adv. / Wendungen", rows: [
+          ["meritō", "mit Recht"],
+          ["pūblicus / in pūblicō", "öffentlich / in der Öffentlichkeit"],
+          ["quōmodo?", "wie?"],
+          ["clam", "heimlich"],
+          ["altus", "hoch / tief"],
+          ["tamquam", "wie, als ob"],
+          ["quīn etiam", "ja sogar"],
+        ]},
+      ];
+
+      function panelHTML() {
+        let html = `<h1>Lekt. 28 · Nero</h1><div class="sub">Künstler oder Kaiser? · Hand-Spickzettel</div>`;
+        for (const b of BLOCKS) {
+          html += `<h2>${b.h}</h2><table>`;
+          for (const [la, de] of b.rows) {
+            const warn = la.includes("⚠️") ? ' class="warn"' : "";
+            html += `<tr><td class="la"${warn}>${la.replace("⚠️","")}</td><td class="de">${de}</td></tr>`;
+          }
+          html += `</table>`;
+        }
+        html += `<div class="tiny" style="margin-top:1.5mm;">⚠️ parere ≠ pārēre (gehorchen) · pertinēre ad + Akk.</div>`;
+        return html;
+      }
+
+      document.write(
+        `<div class="panel">${panelHTML()}</div>` +
+        `<div class="panel">${panelHTML()}</div>` +
+        `<div class="panel">${panelHTML()}</div>` +
+        `<div class="panel">${panelHTML()}</div>`
+      );
+    </script>
+    <div class="foot">Eva · Latein Lektion 28 · nach dem Falten: eine Karte abreißen/nutzen</div>
+  </main>
+</body>
+</html>
