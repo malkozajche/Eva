@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Spickzettel Lektion 28 · Nero (exakt wie im Buch)</title>
+  <title>Spickzettel Lektion 28 · Nero (dünn · Buchtext)</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; background: #dfe6ea; color: #111; }
@@ -20,7 +20,7 @@
     }
     .bar .ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.55); }
     .hint-screen {
-      max-width: 760px; margin: 0.75rem auto; padding: 0 1rem;
+      max-width: 780px; margin: 0.75rem auto; padding: 0 1rem;
       font-family: system-ui, sans-serif; font-size: 0.9rem; font-weight: 600;
       text-align: center; color: #333; line-height: 1.4;
     }
@@ -31,183 +31,192 @@
       margin: 0.7rem auto 1.4rem;
       background: #fff;
       box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-      padding: 5mm 5.5mm 5mm;
+      padding: 0;
       position: relative;
-    }
-    .fold-h { position: absolute; left: 3mm; right: 3mm; top: 50%; border-top: 1px dashed #c8c8c8; pointer-events: none; }
-    .fold-v { position: absolute; top: 3mm; bottom: 3mm; left: 50%; border-left: 1px dashed #c8c8c8; pointer-events: none; }
-    .fold-label {
-      position: absolute; font-size: 6.5pt; color: #aaa; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.03em; pointer-events: none;
-    }
-    .fold-label.t { top: 1.5mm; left: 50%; transform: translateX(-50%); }
-    .fold-label.b { bottom: 1.5mm; left: 50%; transform: translateX(-50%); }
-
-    .panel {
-      width: 50%;
-      height: 50%;
-      float: left;
-      padding: 2.5mm 2.8mm 2mm;
+      display: flex;
       overflow: hidden;
     }
-    .panel-title {
-      font-size: 7.8pt; font-weight: 800; text-align: center; line-height: 1.1; margin-bottom: 0.4mm;
+    .cut {
+      position: absolute; top: 0; bottom: 0; width: 0;
+      border-left: 1px dashed #b8b8b8; pointer-events: none; z-index: 2;
     }
-    .panel-sub {
-      font-size: 5.3pt; text-align: center; color: #444; font-weight: 700; margin-bottom: 1mm;
+    .cut.c1 { left: 33.333%; }
+    .cut.c2 { left: 66.666%; }
+    .cut-label {
+      position: absolute; top: 1.5mm; z-index: 3;
+      font-size: 5.5pt; color: #999; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.04em;
+      pointer-events: none; transform: translateX(-50%);
+      background: #fff; padding: 0 1mm;
+    }
+    .cut-label.l1 { left: 33.333%; }
+    .cut-label.l2 { left: 66.666%; }
+
+    .strip {
+      width: 33.333%;
+      height: 297mm;
+      padding: 4mm 2.8mm 3.5mm;
+      overflow: hidden;
+      border-right: none;
+    }
+    .strip-title {
+      font-size: 7pt; font-weight: 800; text-align: center; line-height: 1.15; margin-bottom: 0.3mm;
+    }
+    .strip-sub {
+      font-size: 5pt; text-align: center; color: #555; font-weight: 700; margin-bottom: 1.2mm;
     }
     .sec {
-      font-size: 5.6pt; font-weight: 800; background: #1a4a6a; color: #fff;
-      padding: 0.45mm 1mm; margin: 0.9mm 0 0.5mm; border-radius: 1mm;
+      font-size: 5.4pt; font-weight: 800; background: #1a4a6a; color: #fff;
+      padding: 0.5mm 1mm; margin: 1mm 0 0.55mm; border-radius: 1mm;
       letter-spacing: 0.02em;
     }
     table.v {
       width: 100%;
       border-collapse: collapse;
-      font-size: 4.85pt;
-      line-height: 1.12;
-    }
-    table.v th {
-      text-align: left; font-size: 4.5pt; color: #555; font-weight: 800;
-      border-bottom: 0.5pt solid #999; padding: 0 0.4mm 0.3mm 0;
-      text-transform: uppercase; letter-spacing: 0.02em;
+      font-size: 5pt;
+      line-height: 1.14;
     }
     table.v td {
       vertical-align: top;
-      padding: 0.18mm 0.5mm 0.18mm 0;
+      padding: 0.35mm 0.4mm 0.35mm 0;
       border-bottom: 0.2pt solid #ececec;
     }
     table.v td.la {
       font-family: "Times New Roman", "Liberation Serif", Georgia, serif;
       font-weight: 700;
-      width: 24%;
+      width: 38%;
+      padding-right: 0.6mm;
     }
-    table.v td.sf {
-      font-family: "Times New Roman", "Liberation Serif", Georgia, serif;
-      font-size: 4.6pt;
-      color: #222;
-      width: 30%;
+    table.v td.la .sf {
+      display: block;
+      font-weight: 400;
+      font-size: 4.4pt;
+      color: #333;
+      line-height: 1.1;
+      margin-top: 0.1mm;
     }
-    table.v td.de { width: 46%; }
+    table.v td.de { width: 62%; }
     .note {
-      font-size: 4.5pt; color: #333; margin-top: 0.55mm; line-height: 1.15;
-      padding: 0.55mm 0.8mm; background: #f4f7f9; border-left: 1pt solid #1a4a6a;
+      font-size: 4.4pt; color: #333; margin-top: 0.7mm; line-height: 1.15;
+      padding: 0.55mm 0.7mm; background: #f4f7f9; border-left: 1pt solid #1a4a6a;
     }
     .note strong { font-weight: 800; }
     .warn {
-      font-size: 4.5pt; color: #7a1515; margin-top: 0.45mm; line-height: 1.15;
-      padding: 0.5mm 0.8mm; background: #fff3f0; border-left: 1pt solid #a33;
+      font-size: 4.4pt; color: #7a1515; margin-top: 0.5mm; line-height: 1.15;
+      padding: 0.5mm 0.7mm; background: #fff3f0; border-left: 1pt solid #a33;
       font-weight: 700;
     }
 
     @media print {
       body { background: #fff; }
       .bar, .hint-screen { display: none !important; }
-      .sheet { margin: 0; box-shadow: none; width: auto; min-height: auto; padding: 4mm 5mm; }
+      .sheet { margin: 0; box-shadow: none; width: auto; min-height: auto; }
       @page { size: A4 portrait; margin: 0; }
     }
   </style>
 </head>
 <body>
   <div class="bar">
-    <strong>Spickzettel = Buchtext 1:1</strong>
+    <strong>Spickzettel · 3 dünne Streifen</strong>
     <button type="button" onclick="window.print()">🖨️ Drucken / PDF</button>
     <a href="latein-28.html">← Lernen</a>
     <a class="ghost" href="index.html">Akademie</a>
   </div>
   <p class="hint-screen">
-    A4 drucken → <strong>1× längs + 1× quer falten</strong> → passt in eine Hand.<br />
-    Text und Stammformen exakt wie im Schulbuch (Lektion 28).
+    A4 drucken → <strong>entlang der Linien in 3 lange Streifen schneiden</strong> → ein Streifen passt in die Hand.<br />
+    Nur Lektionsvokabeln (keine Wiederholung) · Text wie im Buch · nach Wortarten sortiert.
   </p>
 
   <main class="sheet" id="sheet"></main>
 
   <script>
-    /* Exact textbook wording from Pontes 3 Lektion 28 pages (photos) */
-    const WIEDERHOLUNG = [
-      ["metus", "metūs m.", "Furcht"],
-      ["ignōrāre", "ignōrō", "nicht kennen, nicht wissen"],
-      ["sermō", "sermōnis m.", "Gespräch"],
-      ["scīlicet", "Adv.", "selbstverständlich, natürlich"],
-      ["accidere", "accidit, accidit", "geschehen, zustoßen"],
-      ["effugere", "effugiō, effūgī, -", "entfliehen, entkommen"],
-      ["licet", "licuit, -", "es ist erlaubt"],
-      ["dēsinere", "dēsinō, dēsiī, dēsitum", "aufhören"],
-    ];
-
-    const LEKTION = [
-      ["Nerō", "Nerōnis m.", "Nero"],
-      ["certāmen", "certāminis n.", "Wettkampf, Wettstreit"],
-      ["iūdex", "iūdicis m.", "Richter"],
-      ["etiam", "Konj.", "auch, sogar"],
-      ["Apollō", "Apollinis m.", "Apoll"],
-      ["praestāre", "praestō, praestitī, -", "sich hervortun, sich auszeichnen, besser sein; zeigen, erweisen; + Dat.: jdn. überragen, übertreffen"],
-      ["meritō", "Adv.", "mit Recht, aus gutem Grund"],
-      ["crēdere", "crēdō, crēdidī, crēditum", "vertrauen, Glauben schenken; glauben"],
-      ["pūblicus", "-a, -um", "öffentlich"],
-      ["necesse est", "", "es ist nötig, man muss"],
-      ["dēclārāre", "dēclārō", "jdn. (öffentlich) zu etwas erklären, ausrufen"],
-      ["rēs pūblica", "reī pūblicae f.", "Staat, Gemeinwesen"],
-      ["pertinēre", "pertineō, pertinuī, -", "sich erstrecken; sich beziehen"],
-      ["dīligere", "dīligō, dīlēxī, dīlēctum", "lieben, wertschätzen"],
-      ["nescīre", "nesciō", "nicht wissen, nicht kennen"],
-      ["scīre", "sciō", "wissen, kennen"],
-      ["reprehendere", "reprehendō, reprehendī, reprehēnsum", "tadeln"],
-      ["oppidum", "oppidī n.", "(Land-) Stadt"],
-      ["claudere", "claudō, clausī, clausum", "schließen, verschließen"],
-      ["cōnsulere", "cōnsulō, cōnsuluī, cōnsultum", "sich beraten, beratschlagen"],
-      ["quōmodo?", "", "wie?, auf welche Weise?"],
-      ["clam", "Adv.", "heimlich"],
-      ["altus", "-a, -um", "1. hoch; 2. tief"],
-      ["simulāre", "simulō", "vortäuschen; so tun, als ob"],
-      ["dubitāre", "dubitō", "zögern"],
-      ["tamquam", "Adv.", "wie, als ob"],
-      ["dēportāre", "dēportō", "wegtragen, fortschaffen"],
-      ["quīn etiam", "", "ja sogar, ja vielmehr"],
-      ["ēvenīre", "ēveniō, ēvēnī, ēventum", "sich ereignen"],
-      ["parere", "pariō, peperī, partum", "hervorbringen, gebären"],
-      ["concēdere", "concēdō, concessī, concessum", "erlauben, zugestehen"],
-      ["offendere", "offendō, offendī, offēnsum", "beleidigen"],
+    /* Lektion 28 only — no Wiederholung (not in the test). Exact Pontes 3 wording. */
+    const SECTIONS = [
+      {
+        h: "Personen",
+        rows: [
+          ["Nerō", "Nerōnis m.", "Nero"],
+          ["Apollō", "Apollinis m.", "Apoll"],
+        ],
+      },
+      {
+        h: "Nomen",
+        rows: [
+          ["certāmen", "certāminis n.", "Wettkampf, Wettstreit"],
+          ["iūdex", "iūdicis m.", "Richter"],
+          ["rēs pūblica", "reī pūblicae f.", "Staat, Gemeinwesen"],
+          ["oppidum", "oppidī n.", "(Land-) Stadt"],
+        ],
+      },
+      {
+        h: "Verben",
+        rows: [
+          ["praestāre", "praestō, praestitī, -", "sich hervortun, sich auszeichnen, besser sein; zeigen, erweisen; + Dat.: jdn. überragen, übertreffen"],
+          ["crēdere", "crēdō, crēdidī, crēditum", "vertrauen, Glauben schenken; glauben"],
+          ["dēclārāre", "dēclārō", "jdn. (öffentlich) zu etwas erklären, ausrufen"],
+          ["pertinēre", "pertineō, pertinuī, -", "sich erstrecken; sich beziehen"],
+          ["dīligere", "dīligō, dīlēxī, dīlēctum", "lieben, wertschätzen"],
+          ["nescīre", "nesciō", "nicht wissen, nicht kennen"],
+          ["scīre", "sciō", "wissen, kennen"],
+          ["reprehendere", "reprehendō, reprehendī, reprehēnsum", "tadeln"],
+          ["claudere", "claudō, clausī, clausum", "schließen, verschließen"],
+          ["cōnsulere", "cōnsulō, cōnsuluī, cōnsultum", "sich beraten, beratschlagen"],
+          ["simulāre", "simulō", "vortäuschen; so tun, als ob"],
+          ["dubitāre", "dubitō", "zögern"],
+          ["dēportāre", "dēportō", "wegtragen, fortschaffen"],
+          ["ēvenīre", "ēveniō, ēvēnī, ēventum", "sich ereignen"],
+          ["parere", "pariō, peperī, partum", "hervorbringen, gebären"],
+          ["concēdere", "concēdō, concessī, concessum", "erlauben, zugestehen"],
+          ["offendere", "offendō, offendī, offēnsum", "beleidigen"],
+        ],
+      },
+      {
+        h: "Adj. / Adv. / Wendungen",
+        rows: [
+          ["etiam", "Konj.", "auch, sogar"],
+          ["meritō", "Adv.", "mit Recht, aus gutem Grund"],
+          ["pūblicus", "-a, -um", "öffentlich"],
+          ["necesse est", "", "es ist nötig, man muss"],
+          ["quōmodo?", "", "wie?, auf welche Weise?"],
+          ["clam", "Adv.", "heimlich"],
+          ["altus", "-a, -um", "1. hoch; 2. tief"],
+          ["tamquam", "Adv.", "wie, als ob"],
+          ["quīn etiam", "", "ja sogar, ja vielmehr"],
+        ],
+      },
     ];
 
     function rows(list) {
-      return list.map(([la, sf, de]) =>
-        `<tr><td class="la">${la}</td><td class="sf">${sf}</td><td class="de">${de}</td></tr>`
-      ).join("");
+      return list.map(([la, sf, de]) => {
+        const forms = sf ? `<span class="sf">${sf}</span>` : "";
+        return `<tr><td class="la">${la}${forms}</td><td class="de">${de}</td></tr>`;
+      }).join("");
     }
 
-    function panel() {
-      return `
-        <div class="panel-title">Lektion 28 · Nero – Künstler oder Kaiser?</div>
-        <div class="panel-sub">Spickzettel · Text wie im Buch · Handfalz</div>
-
-        <div class="sec">Wiederholung</div>
-        <table class="v">
-          <tr><th>Latein</th><th>Stammformen</th><th>Deutsch</th></tr>
-          ${rows(WIEDERHOLUNG)}
-        </table>
-
-        <div class="sec">Lektionstext / Vokabular</div>
-        <table class="v">
-          <tr><th>Latein</th><th>Stammformen</th><th>Deutsch</th></tr>
-          ${rows(LEKTION)}
-        </table>
-
+    function stripHTML() {
+      let html = `
+        <div class="strip-title">Lekt. 28 · Nero</div>
+        <div class="strip-sub">Künstler oder Kaiser? · Hand-Streifen</div>
+      `;
+      for (const s of SECTIONS) {
+        html += `<div class="sec">${s.h}</div><table class="v">${rows(s.rows)}</table>`;
+      }
+      html += `
         <div class="note"><strong>in pūblicō:</strong> in der Öffentlichkeit</div>
         <div class="note"><strong>pertinēre ad</strong> + Akk.: sich beziehen auf</div>
-        <div class="warn">Vorsicht! Unterscheide <strong>pārēre</strong> (gehorchen) und <strong>parere</strong> (hervorbringen, gebären).</div>
+        <div class="warn">Vorsicht! <strong>pārēre</strong> (gehorchen) ≠ <strong>parere</strong> (hervorbringen, gebären).</div>
       `;
+      return html;
     }
 
     document.getElementById("sheet").innerHTML = `
-      <div class="fold-h" aria-hidden="true"></div>
-      <div class="fold-v" aria-hidden="true"></div>
-      <span class="fold-label t">falten</span>
-      <span class="fold-label b">falten</span>
-      <div class="panel">${panel()}</div>
-      <div class="panel">${panel()}</div>
-      <div class="panel">${panel()}</div>
-      <div class="panel">${panel()}</div>
+      <div class="cut c1" aria-hidden="true"></div>
+      <div class="cut c2" aria-hidden="true"></div>
+      <span class="cut-label l1">schneiden</span>
+      <span class="cut-label l2">schneiden</span>
+      <div class="strip">${stripHTML()}</div>
+      <div class="strip">${stripHTML()}</div>
+      <div class="strip">${stripHTML()}</div>
     `;
   </script>
 </body>
