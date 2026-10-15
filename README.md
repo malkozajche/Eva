@@ -2,7 +2,8 @@
 
 ## 🎭 Latein · Lektion 28 (Nero)
 
-**Learn:** https://malkozajche.github.io/Eva/latein-28.html  
+**Vokabeln:** https://malkozajche.github.io/Eva/latein-28.html  
+**Text Satz-für-Satz + Sachinfo + Übungen:** https://malkozajche.github.io/Eva/latein-28-text.html  
 **Spickzettel (fold to fit in one hand):** https://malkozajche.github.io/Eva/latein-28-spickzettel.html  
 
 Print Spickzettel on A4 → fold once lengthwise + once crosswise.

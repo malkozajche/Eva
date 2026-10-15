@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lektion 28 Text — Nero für Dummies · Eva’s Latein</title>
+  <meta name="description" content="Lektion 28 Nero: Lektionstext Satz für Satz, Sachinfo mit Vorlesen & Quiz, Übungen erklärt." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1c2a32;
+      --gold: #d4a017;
+      --gold-deep: #a67c00;
+      --laurel: #3d7a4a;
+      --laurel-deep: #2a5a35;
+      --wine: #8b2e4a;
+      --wine-deep: #6a1e35;
+      --sky: #3d7ea6;
+      --sky-deep: #255a7a;
+      --shadow: 0 12px 30px rgba(28, 42, 50, 0.14);
+      --font-d: "Baloo 2", "Trebuchet MS", sans-serif;
+      --font-latin: "Cormorant Garamond", "Times New Roman", serif;
+      --font-b: "Nunito", system-ui, sans-serif;
+      --nero: #8b2e4a;
+      --nym: #255a7a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      font-family: var(--font-b);
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse 90% 50% at 50% -5%, rgba(212,160,23,0.28) 0%, transparent 50%),
+        radial-gradient(circle at 90% 15%, rgba(74,144,184,0.25) 0%, transparent 28%),
+        radial-gradient(circle at 8% 75%, rgba(139,46,74,0.16) 0%, transparent 32%),
+        linear-gradient(180deg, #b8d4e8 0%, #e8f2f0 40%, #f0e6c8 78%, #e0c878 100%);
+      background-attachment: fixed;
+    }
+    .wrap { width: min(920px, 94vw); margin: 0 auto; padding: 1rem 0 3.5rem; position: relative; z-index: 1; }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+    @keyframes wiggle {
+      0%, 100% { transform: none; }
+      25% { transform: rotate(-2deg); }
+      75% { transform: rotate(2deg); }
+    }
+    @keyframes confetti-fall {
+      to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    }
+    @keyframes pulse-soft {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    .float-deco {
+      position: fixed; pointer-events: none; z-index: 0; opacity: 0.8;
+      animation: bob 5s ease-in-out infinite; font-size: 2rem;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+    }
+    .float-deco.a { top: 10%; left: 2%; }
+    .float-deco.b { top: 48%; right: 2%; animation-delay: -2s; font-size: 1.6rem; }
+    .float-deco.c { bottom: 10%; left: 40%; animation-delay: -3.5s; font-size: 1.4rem; }
+
+    .top-links {
+      display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center; margin-bottom: 0.7rem;
+    }
+    .top-links a {
+      font-weight: 800; text-decoration: none; color: var(--sky-deep);
+      background: rgba(255,255,255,0.75); padding: 0.4rem 0.85rem; border-radius: 999px;
+      border: 2px solid rgba(74,144,184,0.28);
+    }
+
+    header.hero { text-align: center; animation: rise 0.55s ease both; padding: 0.3rem 0.4rem 0.5rem; }
+    .brand {
+      font-family: var(--font-d);
+      font-size: clamp(1.9rem, 5.5vw, 2.9rem);
+      line-height: 1.05; color: #1a3a4a;
+      text-shadow: 0 2px 0 rgba(255,255,255,0.4);
+    }
+    .brand span {
+      display: block; margin-top: 0.25rem; font-size: 0.38em;
+      letter-spacing: 0.05em; text-transform: uppercase; color: var(--wine-deep);
+    }
+    .tagline {
+      margin: 0.55rem auto 0; max-width: 36rem; font-weight: 700; color: #2a4a55; font-size: 1rem;
+    }
+
+    nav.tabs {
+      display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center; margin: 1rem 0 1rem;
+    }
+    .tab-btn, .btn, .chip, .speak-btn, .choice, .word, .reveal-btn {
+      font-family: var(--font-b); cursor: pointer;
+    }
+    .tab-btn {
+      font-family: var(--font-d); font-size: 1.02rem; border: none;
+      padding: 0.55rem 1rem; border-radius: 999px;
+      background: rgba(255,255,255,0.6); color: var(--ink);
+      box-shadow: 0 4px 0 rgba(28,42,50,0.1);
+    }
+    .tab-btn.active {
+      background: linear-gradient(180deg, var(--wine), var(--wine-deep));
+      color: white; box-shadow: 0 5px 0 #5a1e18;
+    }
+    .tab-btn.linkish {
+      text-decoration: none; display: inline-block;
+      background: linear-gradient(180deg, var(--gold), var(--gold-deep));
+      color: #2a1a00; box-shadow: 0 5px 0 #7a5a00;
+    }
+
+    .panel { display: none; animation: rise 0.4s ease both; }
+    .panel.active { display: block; }
+
+    .howto {
+      background: rgba(247,250,252,0.92); border-radius: 18px; padding: 1rem 1.1rem;
+      margin: 0 auto 1rem; box-shadow: var(--shadow); border: 2px solid white;
+    }
+    .howto h2 { font-family: var(--font-d); color: #1a3a4a; font-size: 1.25rem; margin-bottom: 0.3rem; }
+    .howto p, .howto li { font-weight: 700; line-height: 1.45; color: #2a4a55; }
+    .howto ol, .howto ul { margin-left: 1.15rem; }
+
+    .btn {
+      font-family: var(--font-d); font-size: 1.02rem; border: none; border-radius: 999px;
+      padding: 0.65rem 1.15rem; color: white;
+      background: linear-gradient(180deg, var(--laurel), var(--laurel-deep));
+      box-shadow: 0 5px 0 #1e4a28;
+    }
+    .btn.sec {
+      background: linear-gradient(180deg, var(--sky), var(--sky-deep));
+      box-shadow: 0 5px 0 #1e4a65;
+    }
+    .btn.wine {
+      background: linear-gradient(180deg, var(--wine), var(--wine-deep));
+      box-shadow: 0 5px 0 #5a1e18;
+    }
+    .btn.gold {
+      background: linear-gradient(180deg, var(--gold), var(--gold-deep));
+      box-shadow: 0 5px 0 #7a5a00; color: #2a1a00;
+    }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 0.8rem 0; }
+
+    .sent {
+      background: rgba(247,250,252,0.96); border-radius: 20px; padding: 1rem 1.05rem 1.1rem;
+      margin-bottom: 0.85rem; box-shadow: var(--shadow); border: 3px solid white;
+      border-left: 8px solid var(--sky);
+    }
+    .sent.nero { border-left-color: var(--nero); }
+    .sent.nym { border-left-color: var(--nym); }
+    .sent.tip { border-left-color: var(--gold); }
+    .sent.narr { border-left-color: var(--laurel); }
+    .who {
+      font-family: var(--font-d); font-size: 0.95rem; margin-bottom: 0.35rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap;
+    }
+    .who .badge {
+      display: inline-block; padding: 0.2rem 0.55rem; border-radius: 999px;
+      font-size: 0.78rem; font-weight: 800; color: white;
+    }
+    .badge.nero { background: var(--nero); }
+    .badge.nym { background: var(--nym); }
+    .badge.narr { background: var(--laurel); }
+    .badge.tip { background: var(--gold-deep); color: #fff8e0; }
+    .la-line {
+      font-family: var(--font-latin); font-size: clamp(1.25rem, 3.5vw, 1.65rem);
+      font-weight: 700; color: #1a3a4a; line-height: 1.25; margin-bottom: 0.55rem;
+    }
+    .words {
+      display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.55rem;
+    }
+    .word {
+      border: none; border-radius: 12px; padding: 0.35rem 0.55rem;
+      background: #eef5f2; font-weight: 800; font-size: 0.82rem; color: #1a3a4a;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .word:hover, .word.open { background: #ffe8b0; transform: translateY(-1px); }
+    .word .g {
+      display: none; margin-top: 0.2rem; font-size: 0.75rem; font-weight: 700;
+      color: #5a3a00; max-width: 12rem; text-align: left;
+    }
+    .word.open .g { display: block; }
+    .de-line {
+      font-weight: 800; color: #1c5a2a; background: rgba(61,122,74,0.12);
+      border-radius: 12px; padding: 0.55rem 0.7rem; margin-bottom: 0.4rem; line-height: 1.35;
+    }
+    .fun {
+      font-weight: 700; color: #3a5a65; font-size: 0.92rem; line-height: 1.4;
+      border-top: 2px dashed rgba(61,122,74,0.22); padding-top: 0.45rem; margin-top: 0.2rem;
+    }
+    .speak-btn {
+      font-weight: 800; font-size: 0.75rem; border: none; border-radius: 999px;
+      padding: 0.32rem 0.65rem; background: #ffe8b0; color: #6a4a00;
+    }
+    .speak-btn.de { background: #d4e8ff; color: #1a4f7a; }
+
+    .section-title {
+      font-family: var(--font-d); font-size: 1.45rem; color: #1a3a4a;
+      margin: 1.2rem 0 0.55rem; text-align: center;
+    }
+    .subnote {
+      text-align: center; font-weight: 700; color: #3a5a65; margin-bottom: 0.8rem; font-size: 0.92rem;
+    }
+
+    /* Sachinfo story */
+    .story-card {
+      background: rgba(247,250,252,0.96); border-radius: 22px; padding: 1.15rem 1.2rem;
+      margin-bottom: 0.9rem; box-shadow: var(--shadow); border: 3px solid white;
+      position: relative; overflow: hidden;
+    }
+    .story-card::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+      background: linear-gradient(90deg, var(--wine), var(--gold), var(--sky));
+    }
+    .story-card h3 {
+      font-family: var(--font-d); font-size: 1.35rem; color: var(--wine-deep); margin: 0.2rem 0 0.45rem;
+    }
+    .story-card .drama {
+      font-weight: 700; line-height: 1.5; color: #2a4a55; font-size: 1.02rem;
+    }
+    .story-card .drama em {
+      font-family: var(--font-latin); font-style: italic; color: var(--wine-deep); font-weight: 700;
+    }
+    .story-nav {
+      display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; margin-bottom: 0.85rem;
+    }
+    .story-nav .chip {
+      font-weight: 800; font-size: 0.8rem; border: none; border-radius: 999px;
+      padding: 0.38rem 0.75rem; background: rgba(255,255,255,0.7); color: var(--ink);
+    }
+    .story-nav .chip.active { background: #1a3a4a; color: white; }
+    .story-card.hidden { display: none; }
+
+    .stage {
+      background: rgba(247,250,252,0.96); border-radius: 26px; padding: 1.35rem 1.2rem 1.55rem;
+      box-shadow: var(--shadow); border: 3px solid white; max-width: 640px; margin: 0 auto; text-align: center;
+    }
+    .progress-bar {
+      height: 12px; background: rgba(28,42,50,0.1); border-radius: 999px; overflow: hidden; margin: 0.75rem 0 1rem;
+    }
+    .progress-fill {
+      height: 100%; width: 0%; background: linear-gradient(90deg, var(--gold), var(--laurel));
+      border-radius: 999px; transition: width 0.3s ease;
+    }
+    .q-meta { font-weight: 800; color: #3a5a65; margin-bottom: 0.35rem; }
+    .q-prompt {
+      font-family: var(--font-d); font-size: clamp(1.25rem, 4vw, 1.7rem);
+      color: #1a3a4a; line-height: 1.2; margin: 0.4rem 0 0.7rem;
+    }
+    .choices { display: grid; gap: 0.5rem; margin-top: 0.7rem; text-align: left; }
+    .choice {
+      font-weight: 800; font-size: 1rem; text-align: left; padding: 0.85rem 1rem;
+      border-radius: 14px; border: 3px solid transparent; background: #eef5f2; color: var(--ink);
+    }
+    .choice:hover:not(:disabled) { background: #e2efe8; }
+    .choice.right { background: #d4f0dc; border-color: var(--laurel); animation: wiggle 0.35s ease; }
+    .choice.wrong { background: #ffe0db; border-color: var(--wine); }
+    .choice:disabled { cursor: default; }
+    .feedback { min-height: 1.4rem; margin-top: 0.7rem; font-weight: 800; }
+    .feedback.good { color: #1c6b3a; }
+    .feedback.bad { color: #a32a1d; }
+    .score-big {
+      font-family: var(--font-d); font-size: clamp(2.3rem, 7vw, 3.5rem);
+      color: var(--wine-deep); line-height: 1; margin: 0.4rem 0;
+    }
+
+    /* Exercises */
+    .ex {
+      background: rgba(247,250,252,0.96); border-radius: 18px; margin-bottom: 0.75rem;
+      box-shadow: var(--shadow); border: 3px solid white; overflow: hidden;
+    }
+    .ex-head {
+      width: 100%; text-align: left; border: none; background: transparent;
+      padding: 0.95rem 1.05rem; cursor: pointer; display: flex; gap: 0.6rem; align-items: flex-start;
+      font-family: var(--font-b);
+    }
+    .ex-head:hover { background: rgba(61,122,74,0.06); }
+    .ex-num {
+      flex: 0 0 auto; width: 2rem; height: 2rem; border-radius: 50%;
+      background: linear-gradient(180deg, var(--wine), var(--wine-deep));
+      color: white; font-family: var(--font-d); display: grid; place-items: center;
+    }
+    .ex-head h3 { font-family: var(--font-d); font-size: 1.15rem; color: #1a3a4a; }
+    .ex-head p { font-weight: 700; color: #3a5a65; font-size: 0.88rem; margin-top: 0.1rem; }
+    .ex-body {
+      display: none; padding: 0 1.05rem 1.1rem; border-top: 2px dashed rgba(28,42,50,0.1);
+    }
+    .ex.open .ex-body { display: block; padding-top: 0.85rem; }
+    .ex.open .ex-head { background: rgba(61,122,74,0.08); }
+    .answer-box {
+      background: #eef8f0; border-radius: 14px; padding: 0.75rem 0.85rem; margin-top: 0.55rem;
+      font-weight: 700; line-height: 1.45; color: #1c4a2a;
+    }
+    .answer-box .label {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em;
+      color: var(--laurel-deep); font-weight: 800; margin-bottom: 0.25rem;
+    }
+    .hint-box {
+      background: #fff6df; border-radius: 14px; padding: 0.75rem 0.85rem; margin-top: 0.45rem;
+      font-weight: 700; line-height: 1.45; color: #5a3a00;
+    }
+    .lat-mini {
+      font-family: var(--font-latin); font-weight: 700; font-size: 1.1rem; color: var(--wine-deep);
+      margin: 0.35rem 0;
+    }
+    .reveal-btn {
+      margin-top: 0.45rem; font-weight: 800; border: none; border-radius: 999px;
+      padding: 0.4rem 0.85rem; background: #1a3a4a; color: white; font-size: 0.85rem;
+    }
+    .ghost { display: none; }
+    .ghost.show { display: block; }
+
+    .form-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.4rem;
+      margin: 0.6rem 0;
+    }
+    .form-chip {
+      border: 3px solid transparent; border-radius: 12px; padding: 0.55rem 0.5rem;
+      background: #eef5f2; font-weight: 800; font-size: 0.85rem; cursor: pointer;
+      font-family: var(--font-latin); text-align: center;
+    }
+    .form-chip.picked { border-color: var(--sky); background: #e0f0f8; }
+    .form-chip.yes { border-color: var(--laurel); background: #d4f0dc; }
+    .form-chip.no { border-color: var(--wine); background: #ffe0db; opacity: 0.7; }
+
+    footer {
+      text-align: center; font-weight: 700; margin-top: 1.4rem;
+      color: rgba(255,255,255,0.95); text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    #confetti-layer {
+      position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 40;
+    }
+    .confetti {
+      position: absolute; top: -12px; width: 9px; height: 13px; border-radius: 2px;
+      animation: confetti-fall 2.6s ease-in forwards;
+    }
+    .toast {
+      position: fixed; left: 50%; bottom: 1.3rem; transform: translateX(-50%) translateY(140%);
+      background: linear-gradient(135deg, #1a3a4a, var(--laurel-deep)); color: white;
+      padding: 0.8rem 1.15rem; border-radius: 14px; font-weight: 800; z-index: 50;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.25); transition: transform 0.35s ease;
+      max-width: 92vw; text-align: center;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+    .reading-dot {
+      display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--wine); margin-right: 0.35rem; animation: pulse-soft 1s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="float-deco a" aria-hidden="true">🎭</div>
+  <div class="float-deco b" aria-hidden="true">📜</div>
+  <div class="float-deco c" aria-hidden="true">🔥</div>
+  <div id="confetti-layer" aria-hidden="true"></div>
+  <div class="toast" id="toast"></div>
+
+  <div class="wrap">
+    <div class="top-links">
+      <a href="latein-28.html">📚 Vokabeln</a>
+      <a href="latein-28-spickzettel.html">📝 Spickzettel</a>
+      <a href="latein-27.html">🏛️ Lekt. 27</a>
+      <a href="index.html">🌊 Akademie</a>
+    </div>
+
+    <header class="hero">
+      <h1 class="brand">
+        Eva’s Latein · Nero-Text
+        <span>Lektion 28 · für Dummies, aber mit Style</span>
+      </h1>
+      <p class="tagline">Satz für Satz übersetzen · Sachinfo laut vorlesen · Übungen entzaubern. Kein monotones Schulbuch-Geflüster.</p>
+    </header>
+
+    <nav class="tabs" role="tablist">
+      <button class="tab-btn active" data-tab="text" type="button">📖 Text</button>
+      <button class="tab-btn" data-tab="sach" type="button">🎬 Sachinfo</button>
+      <button class="tab-btn" data-tab="ueb" type="button">💪 Übungen</button>
+      <a class="tab-btn linkish" href="latein-28.html">📚 Vokabeln</a>
+    </nav>
+
+    <!-- TEXT -->
+    <section id="panel-text" class="panel active">
+      <div class="howto">
+        <h2>So liest du den Text</h2>
+        <ol>
+          <li>Tippe ein <strong>Wort</strong> → Bedeutung poppt auf.</li>
+          <li><strong>LA</strong> / <strong>DE</strong> = vorlesen lassen.</li>
+          <li>Grüne Zeile = Übersetzung. Darunter = „Was soll das heißen, bitte normal?“</li>
+        </ol>
+      </div>
+
+      <h2 class="section-title">🎬 Einstieg · praeparatio</h2>
+      <p class="subnote">Zwei Zuschauer beim <em>carmen saeculāre</em> — und schon knallt die Grammatik.</p>
+      <div id="einstieg"></div>
+
+      <h2 class="section-title">🎭 Lektionstext · Geliebt, gelobt, bewundert?</h2>
+      <p class="subnote">Nero will Applaus. Nymphidius will Politik. Spoiler: Das endet laut.</p>
+      <div class="cta-row">
+        <button type="button" class="btn wine" id="playAllLa">🔊 Text Latein vorlesen</button>
+        <button type="button" class="btn sec" id="stopSpeech">⏹ Stop</button>
+      </div>
+      <div id="lektionstext"></div>
+    </section>
+
+    <!-- SACHINFO -->
+    <section id="panel-sach" class="panel">
+      <div class="howto">
+        <h2>Sachinfo (= „Zachphisen“ 😉)</h2>
+        <p>Das ist die Hintergrund-Story zu Nero — kein trockenes Lexikon. Tippe eine Szene, lass sie <strong>mit Drama</strong> vorlesen, dann knacke das Quiz.</p>
+      </div>
+      <div class="story-nav" id="storyNav"></div>
+      <div id="storyCards"></div>
+      <div class="cta-row">
+        <button type="button" class="btn wine" id="readStoryAll">🎙️ Ganze Story vorlesen</button>
+        <button type="button" class="btn sec" id="stopStory">⏹ Stop</button>
+        <button type="button" class="btn gold" id="startSachQuiz">⭐ Sachinfo-Quiz</button>
+      </div>
+
+      <div class="stage" id="sachQuiz" style="display:none;margin-top:1rem;">
+        <p class="q-meta" id="sachMeta">Sachinfo-Quiz</p>
+        <div class="progress-bar"><div class="progress-fill" id="sachBar"></div></div>
+        <p class="q-prompt" id="sachPrompt"></p>
+        <div class="choices" id="sachChoices"></div>
+        <p class="feedback" id="sachFeedback"></p>
+        <div class="cta-row">
+          <button type="button" class="btn" id="sachNext" disabled>Weiter →</button>
+        </div>
+      </div>
+      <div class="stage" id="sachResults" style="display:none;margin-top:1rem;">
+        <p class="q-meta">Quiz fertig!</p>
+        <div class="score-big" id="sachScore">0</div>
+        <p id="sachMsg" style="font-weight:800;margin-bottom:0.75rem;"></p>
+        <div class="cta-row">
+          <button type="button" class="btn wine" id="sachAgain">Nochmal</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÜBUNGEN -->
+    <section id="panel-ueb" class="panel">
+      <div class="howto">
+        <h2>Übungen — aber verständlich</h2>
+        <p>Aufklappen → Trick erklären → Lösung freischalten. Kein „schau in den Anhang“-Mystizismus.</p>
+      </div>
+      <div id="exercises"></div>
+    </section>
+
+    <footer>Ave Eva! Qualis artifex — du lernst Latein. 🎭</footer>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    let voices = [];
+
+    function loadVoices() {
+      voices = speechSynthesis.getVoices();
+    }
+    loadVoices();
+    speechSynthesis.onvoiceschanged = loadVoices;
+
+    function pickVoice(langPrefix) {
+      const list = voices.length ? voices : speechSynthesis.getVoices();
+      const pref = list.filter(v => v.lang && v.lang.toLowerCase().startsWith(langPrefix));
+      const good = pref.find(v => /google|natural|premium|enhanced|samantha|anna|petra|helena|markus/i.test(v.name))
+        || pref[0]
+        || list.find(v => (v.lang || "").toLowerCase().startsWith(langPrefix));
+      return good || null;
+    }
+
+    function speak(text, lang, opts = {}) {
+      if (!window.speechSynthesis) return;
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = lang;
+      const v = pickVoice(lang.slice(0, 2));
+      if (v) u.voice = v;
+      u.rate = opts.rate ?? (lang.startsWith("la") || lang.startsWith("it") ? 0.88 : 1.02);
+      u.pitch = opts.pitch ?? 1;
+      u.volume = opts.volume ?? 1;
+      if (opts.onend) u.onend = opts.onend;
+      speechSynthesis.speak(u);
+      return u;
+    }
+
+    function stopSpeak() {
+      speechSynthesis.cancel();
+    }
+
+    function toast(msg) {
+      const t = $("toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      clearTimeout(toast._t);
+      toast._t = setTimeout(() => t.classList.remove("show"), 2200);
+    }
+
+    function confetti() {
+      const layer = $("confetti-layer");
+      const colors = ["#d4a017", "#8b2e4a", "#3d7a4a", "#3d7ea6", "#fff"];
+      for (let i = 0; i < 36; i++) {
+        const el = document.createElement("div");
+        el.className = "confetti";
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.background = colors[i % colors.length];
+        el.style.animationDelay = (Math.random() * 0.4) + "s";
+        layer.appendChild(el);
+        setTimeout(() => el.remove(), 2800);
+      }
+    }
+
+    function w(la, de, extra = "") {
+      return { la, de, extra };
+    }
+
+    function renderSentence(s, host) {
+      const el = document.createElement("article");
+      el.className = "sent " + (s.whoClass || "narr");
+      const badgeClass = s.whoClass || "narr";
+      const badgeLabel = s.who || "Tipp";
+      el.innerHTML = `
+        <div class="who">
+          <span><span class="badge ${badgeClass}">${badgeLabel}</span></span>
+          <span>
+            <button type="button" class="speak-btn" data-la>🔊 LA</button>
+            <button type="button" class="speak-btn de" data-de>🔊 DE</button>
+          </span>
+        </div>
+        <p class="la-line">${s.la}</p>
+        <div class="words"></div>
+        <p class="de-line">🇩🇪 ${s.de}</p>
+        ${s.fun ? `<p class="fun">${s.fun}</p>` : ""}
+      `;
+      const wordsBox = el.querySelector(".words");
+      (s.words || []).forEach(item => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "word";
+        btn.innerHTML = `${item.la}<span class="g">${item.de}${item.extra ? "<br>" + item.extra : ""}</span>`;
+        btn.addEventListener("click", () => {
+          const open = btn.classList.contains("open");
+          wordsBox.querySelectorAll(".word").forEach(w => w.classList.remove("open"));
+          if (!open) btn.classList.add("open");
+        });
+        wordsBox.appendChild(btn);
+      });
+      el.querySelector("[data-la]").onclick = () => { stopSpeak(); speak(s.la.replace(/[¹²³⁴⁵⁶⁷]/g, ""), "it-IT", { rate: 0.86, pitch: s.whoClass === "nero" ? 1.15 : s.whoClass === "nym" ? 0.9 : 1 }); };
+      el.querySelector("[data-de]").onclick = () => { stopSpeak(); speak(s.de, "de-DE", { rate: 1.05, pitch: s.whoClass === "nero" ? 1.12 : 0.95 }); };
+      host.appendChild(el);
+    }
+
+    /* ========== EINSTIEG ========== */
+    const EINSTIEG = [
+      {
+        who: "Zuschauer 1", whoClass: "nero",
+        la: "Quis poēta illīus carminis est?",
+        de: "Wer ist der Dichter jenes Liedes?",
+        fun: "Direkte Frage → Indikativ <em>est</em>. Er fragt einfach rein.",
+        words: [
+          w("quis", "wer?"),
+          w("poēta", "Dichter (poētae m.)"),
+          w("illīus", "jenes / von jenem (Gen. Sg. von ille)"),
+          w("carminis", "des Liedes (carmen, carminis n.)"),
+          w("est", "ist (Indikativ!)")
+        ]
+      },
+      {
+        who: "Zuschauer 2", whoClass: "nym",
+        la: "Ignōrō, quis poēta illīus carminis sit.",
+        de: "Ich weiß nicht, wer der Dichter jenes Liedes ist.",
+        fun: "Indirekte Frage nach <em>ignōrō</em> → Konjunktiv <em>sit</em>. Gleicher Inhalt, andere Grammatik-Welt.",
+        words: [
+          w("ignōrō", "ich weiß nicht / kenne nicht"),
+          w("quis … sit", "wer … sei", "indirekte Frage → Konjunktiv"),
+          w("poēta illīus carminis", "der Dichter jenes Liedes")
+        ]
+      },
+      {
+        who: "Aufgabe B — Trick", whoClass: "tip",
+        la: "est vs. sit",
+        de: "Warum der Unterschied?",
+        fun: "Zuschauer 1 fragt <strong>direkt</strong> → Indikativ. Zuschauer 2 steckt die Frage in einen Nebensatz („ich weiß nicht, wer…“) → <strong>Konjunktiv</strong>. Das ist genau der Übergang zu den Konjunktiv-Nebensätzen dieser Lektion.",
+        words: [
+          w("direkte Frage", "Indikativ (est)"),
+          w("indirekte Frage", "Konjunktiv (sit)")
+        ]
+      }
+    ];
+
+    /* ========== LEKTIONSTEXT ========== */
+    const TEXT = [
+      {
+        who: "Nerō", whoClass: "nero",
+        la: "Iterum certāmine mūsicō victor fuī!",
+        de: "Wieder bin ich im musikalischen Wettkampf Sieger gewesen!",
+        fun: "Nero betritt die Bühne wie ein Popstar. <em>Iterum</em> = schon wieder. Er ist süchtig nach Siegen.",
+        words: [
+          w("iterum", "wieder, erneut"),
+          w("certāmine", "im Wettkampf (Abl. von certāmen)"),
+          w("mūsicō", "musikalisch / Musik-"),
+          w("victor", "Sieger"),
+          w("fuī", "ich bin gewesen / ich war (Perf. von esse)")
+        ]
+      },
+      {
+        who: "Nerō", whoClass: "nero",
+        la: "Iūdicēs mē etiam Apollinī praestāre meritō dīxērunt.",
+        de: "Die Richter haben mit Recht gesagt, dass ich sogar Apoll übertreffe.",
+        fun: "Apoll = Gott der Musik. Nero sagt quasi: „Die Jury findet, ich bin besser als der Gott.“ Ego-Level: 11/10.",
+        words: [
+          w("iūdicēs", "die Richter (Nom. Pl.)"),
+          w("mē", "mich (Akk.)"),
+          w("etiam", "sogar / auch"),
+          w("Apollinī", "dem Apoll (Dat. — bei praestāre)"),
+          w("praestāre", "übertreffen / sich auszeichnen"),
+          w("meritō", "mit Recht"),
+          w("dīxērunt", "sie haben gesagt (Perf.)")
+        ]
+      },
+      {
+        who: "Nerō", whoClass: "nero",
+        la: "Tē autem rogō, cūr semper iūdicium eōrum timeam.",
+        de: "Dich aber frage ich, warum ich immer ihr Urteil fürchten soll.",
+        fun: "<em>timeam</em> = Konjunktiv in der indirekten Frage nach <em>rogō</em>. Nero will Bestätigung: „Sag schon, dass ich cool bin.“",
+        words: [
+          w("tē", "dich"),
+          w("autem", "aber / hingegen"),
+          w("rogō", "ich frage"),
+          w("cūr", "warum"),
+          w("semper", "immer"),
+          w("iūdicium", "Urteil"),
+          w("eōrum", "ihr / von ihnen (Gen.)"),
+          w("timeam", "ich fürchten soll (Konj. Präs.)")
+        ]
+      },
+      {
+        who: "Nerō", whoClass: "nero",
+        la: "Vix crēdī potest, quantō metū herī in pūblicō cantāverim.",
+        de: "Kaum kann man glauben, mit welcher Furcht ich gestern in der Öffentlichkeit gesungen habe.",
+        fun: "<em>cantāverim</em> = Konj. Perfekt → Vorzeitigkeit zur Gegenwart („ich habe gesungen“). Nero gibt Lampenfieber zu — süß und peinlich zugleich.",
+        words: [
+          w("vix", "kaum"),
+          w("crēdī potest", "man kann glauben (Passiv + potest)"),
+          w("quantō metū", "mit wie großer Furcht (Abl.)"),
+          w("herī", "gestern"),
+          w("in pūblicō", "in der Öffentlichkeit"),
+          w("cantāverim", "ich gesungen habe (Konj. Perf.)")
+        ]
+      },
+      {
+        who: "Nymphidius", whoClass: "nym",
+        la: "Tē, ō Nerō, iūdicēs timēre necesse nōn est.",
+        de: "Dich, o Nero, brauchen die Richter nicht zu fürchten. / Du brauchst die Richter nicht zu fürchten.",
+        fun: "AcI-Vibes mit <em>necesse est</em>: „Es ist nicht nötig, dass du die Richter fürchtest.“ Nymphidius streichelt erst das Ego — dann kommt der Hammer.",
+        words: [
+          w("tē … timēre", "dich fürchten / dass du fürchtest"),
+          w("ō Nerō", "o Nero (Anruf)"),
+          w("iūdicēs", "die Richter (Akk. Objekt)"),
+          w("necesse nōn est", "es ist nicht nötig")
+        ]
+      },
+      {
+        who: "Nymphidius", whoClass: "nym",
+        la: "Nam quis ignōrat eōs tē omnibus certāminibus victōrem dēclārāre?",
+        de: "Denn wer weiß nicht, dass sie dich bei allen Wettkämpfen zum Sieger erklären?",
+        fun: "AcI: <em>eōs … dēclārāre</em>. Übersetzung: Alle wissen, die Jury ist gekauft (oder eingeschüchtert).",
+        words: [
+          w("nam", "denn"),
+          w("quis ignōrat", "wer weiß nicht"),
+          w("eōs", "sie (Akk. Subjekt im AcI)"),
+          w("tē … victōrem", "dich zum Sieger"),
+          w("omnibus certāminibus", "bei allen Wettkämpfen (Abl.)"),
+          w("dēclārāre", "erklären / ausrufen")
+        ]
+      },
+      {
+        who: "Nymphidius", whoClass: "nym",
+        la: "At nunc tēcum sermōnem habēre dēbeō dē eīs rēbus, quae ad rem pūblicam pertinent.",
+        de: "Aber jetzt muss ich mit dir ein Gespräch führen über die Dinge, die den Staat betreffen.",
+        fun: "Plot-Twist: „Genug Karaoke — wir müssen über Politik reden.“ Relativsatz mit Indikativ <em>pertinent</em>.",
+        words: [
+          w("at", "aber"),
+          w("nunc", "jetzt"),
+          w("tēcum", "mit dir (= cum tē)"),
+          w("sermōnem habēre", "ein Gespräch führen"),
+          w("dēbeō", "ich muss / soll"),
+          w("dē eīs rēbus", "über diese Dinge"),
+          w("quae … pertinent", "die sich beziehen"),
+          w("ad rem pūblicam", "auf den Staat")
+        ]
+      },
+      {
+        who: "Nerō", whoClass: "nero",
+        la: "Eīs rēbus nōn dēlector.",
+        de: "An diesen Dingen habe ich keine Freude.",
+        fun: "Kurz. Barsche. Teenager-Kaiser-Energie.",
+        words: [
+          w("eīs rēbus", "an diesen Dingen (Abl. bei dēlector)"),
+          w("nōn dēlector", "ich freue mich nicht / habe keine Freude")
+        ]
+      },
+      {
+        who: "Nerō", whoClass: "nero",
+        la: "Hominēs mē dīligunt, quia artifex sum.",
+        de: "Die Menschen lieben mich, weil ich Künstler bin.",
+        fun: "Seine ganze Identität in einem Satz. Spoiler aus der Sachinfo: Am Ende sagt er <em>Qualis artifex pereo</em>.",
+        words: [
+          w("hominēs", "die Menschen"),
+          w("mē dīligunt", "lieben mich"),
+          w("quia", "weil"),
+          w("artifex", "Künstler"),
+          w("sum", "ich bin")
+        ]
+      },
+      {
+        who: "Nerō", whoClass: "nero",
+        la: "An nescīs, quotiēns nūper in Graeciā victor fuerim?",
+        de: "Oder weißt du nicht, wie oft ich neulich in Griechenland Sieger gewesen bin?",
+        fun: "<em>An</em> = „oder etwa?“ Rhetorische Frage. <em>fuerim</em> = Konj. Perf. in indirekter Frage.",
+        words: [
+          w("an", "oder etwa?"),
+          w("nescīs", "weißt du nicht"),
+          w("quotiēns", "wie oft"),
+          w("nūper", "neulich / kürzlich"),
+          w("in Graeciā", "in Griechenland"),
+          w("victor fuerim", "ich Sieger gewesen bin")
+        ]
+      },
+      {
+        who: "Nerō", whoClass: "nero",
+        la: "Nōnne scīs, quantō plausū ab hominibus Rōmae salūtātus sim?",
+        de: "Weißt du nicht, mit wie großem Beifall ich von den Menschen in Rom begrüßt worden bin?",
+        fun: "<em>Nōnne</em> erwartet „doch“. <em>salūtātus sim</em> = Konj. Perf. Passiv. Nero will Hörbeweise für seinen Ruhm.",
+        words: [
+          w("nōnne scīs", "weißt du nicht? (doch!)"),
+          w("quantō plausū", "mit wie großem Beifall"),
+          w("ab hominibus", "von den Menschen"),
+          w("Rōmae", "in Rom (Lokativ)"),
+          w("salūtātus sim", "ich begrüßt worden bin")
+        ]
+      },
+      {
+        who: "Nymphidius", whoClass: "nym",
+        la: "Haec nōn ignōrō, cum dē illō triumphō saepe mihi narrāverīs.",
+        de: "Das weiß ich nicht nicht (= das weiß ich sehr wohl), da du mir oft von jenem Triumph erzählt hast.",
+        fun: "<em>cum</em> + Konj. Perf. <em>narrāverīs</em> = kausal/vorzeitig. Nymphidius: „Ja ja, ich hab’s schon tausendmal gehört.“",
+        words: [
+          w("haec nōn ignōrō", "das weiß ich sehr wohl"),
+          w("cum", "da / weil / als"),
+          w("dē illō triumphō", "von jenem Triumph"),
+          w("saepe", "oft"),
+          w("mihi", "mir"),
+          w("narrāverīs", "du erzählt hast (Konj. Perf.)")
+        ]
+      },
+      {
+        who: "Nymphidius", whoClass: "nym",
+        la: "Tē scīlicet populus dīligit, sed reprehenduntur facinora tua.",
+        de: "Dich liebt das Volk selbstverständlich — aber deine Taten werden getadelt.",
+        fun: "Wortstellung: <em>Tē</em> ganz vorne = Fokus. „DICH liebt man — deine Taten eher nicht.“ Mic-drop-Anfang.",
+        words: [
+          w("tē", "dich (betont am Satzanfang!)"),
+          w("scīlicet", "selbstverständlich"),
+          w("populus dīligit", "das Volk liebt"),
+          w("sed", "aber"),
+          w("reprehenduntur", "werden getadelt"),
+          w("facinora tua", "deine Taten / Missetaten")
+        ]
+      },
+      {
+        who: "Nymphidius", whoClass: "nym",
+        la: "Audī, quae rēs anteā acciderint:",
+        de: "Hör zu, welche Dinge früher geschehen sind:",
+        fun: "Indirekte Frage / Relativsatz mit Konj. Perf. — Storytime beginnt. Und sie ist wild.",
+        words: [
+          w("audī", "hör zu! (Imperativ)"),
+          w("quae rēs", "welche Dinge"),
+          w("anteā", "früher / vorher"),
+          w("acciderint", "geschehen sind (Konj. Perf.)")
+        ]
+      },
+      {
+        who: "Nymphidius", whoClass: "nym",
+        la: "Cūnctīs in oppidīs iussistī omnēs in theātra convenīre, ut carmina tua audīrent.",
+        de: "In allen Städten hast du befohlen, dass alle in die Theater kommen, damit sie deine Lieder hörten.",
+        fun: "<em>Cūnctīs in oppidīs</em> — Attribut vorgezogen = „in ALLEN Städten“. Zwangskonzert-Tour. <em>ut … audīrent</em> = Finalsatz.",
+        words: [
+          w("cūnctīs in oppidīs", "in allen Städten (betont!)"),
+          w("iussistī", "du hast befohlen"),
+          w("omnēs … convenīre", "dass alle zusammenkommen (AcI)"),
+          w("in theātra", "in die Theater"),
+          w("ut … audīrent", "damit sie hörten (Finalsatz)")
+        ]
+      },
+      {
+        who: "Nymphidius", whoClass: "nym",
+        la: "Tē cantante portae clausae erant.",
+        de: "Während du sangst, waren die Tore geschlossen.",
+        fun: "ABLATIVUS ABSOLUTUS: <em>tē cantante</em> = „während du sangst“. Türen zu. Kein Escape-Room — Escape-Theater.",
+        words: [
+          w("tē cantante", "während du sangst (Abl. abs.)"),
+          w("portae", "die Tore"),
+          w("clausae erant", "waren geschlossen")
+        ]
+      },
+      {
+        who: "Nymphidius", whoClass: "nym",
+        la: "Itaque iī, quī tē laudāre nōn cupiēbant, cōnsuluērunt, quōmodo ē theātrō effugere possent.",
+        de: "Deshalb beratschlagten die, die dich nicht loben wollten, wie sie aus dem Theater entkommen könnten.",
+        fun: "Fanclub: 0. Escape-Planung: 100. <em>possent</em> = Konj. in indirekter Frage.",
+        words: [
+          w("itaque", "deshalb"),
+          w("iī, quī", "diejenigen, die"),
+          w("laudāre nōn cupiēbant", "nicht loben wollten"),
+          w("cōnsuluērunt", "beratschlagten"),
+          w("quōmodo … possent", "wie sie könnten")
+        ]
+      },
+      {
+        who: "Nymphidius", whoClass: "nym",
+        la: "Aliī clam dē mūrīs altīs dēsilīre cōnstituērunt, aliī mortem simulāre nōn dubitāvērunt, ut tamquam mortuī ē theātrō dēportārentur.",
+        de: "Die einen beschlossen, heimlich von hohen Mauern herabzuspringen, die anderen zögerten nicht, den Tod vorzutäuschen, damit sie wie Tote aus dem Theater hinausgetragen würden.",
+        fun: "Leute springen von Mauern oder spielen tot, nur um Neros Gesang zu entkommen. Das ist historische Roast-Comedy.",
+        words: [
+          w("aliī … aliī", "die einen … die anderen"),
+          w("clam", "heimlich"),
+          w("dē mūrīs altīs", "von hohen Mauern"),
+          w("dēsilīre", "herabspringen"),
+          w("cōnstituērunt", "beschlossen"),
+          w("mortem simulāre", "den Tod vortäuschen"),
+          w("nōn dubitāvērunt", "zögerten nicht"),
+          w("ut … dēportārentur", "damit sie hinausgetragen würden"),
+          w("tamquam mortuī", "wie Tote / als wären sie tot")
+        ]
+      },
+      {
+        who: "Nymphidius", whoClass: "nym",
+        la: "Quīn etiam in oppidō quōdam hoc ēvēnit: Cum nēminī tē cantante ē theātrō excēdere licēret, fēmina quaedam ante oculōs multōrum spectātōrum puerum peperit.",
+        de: "Ja sogar in einer gewissen Stadt geschah Folgendes: Weil niemandem erlaubt war, während du sangst aus dem Theater hinauszugehen, gebar eine Frau vor den Augen vieler Zuschauer einen Jungen.",
+        fun: "Ja. Eine Frau hat mitten im Konzert ein Kind bekommen, weil niemand raus durfte. Sueton/Cassius Dio Mode: maximal dramatisch.",
+        words: [
+          w("quīn etiam", "ja sogar"),
+          w("in oppidō quōdam", "in einer gewissen Stadt"),
+          w("hoc ēvēnit", "dies geschah"),
+          w("cum … licēret", "weil es erlaubt war / da es erlaubt war"),
+          w("nēminī", "niemandem"),
+          w("tē cantante", "während du sangst"),
+          w("excēdere", "hinausgehen"),
+          w("fēmina quaedam", "eine gewisse Frau"),
+          w("ante oculōs", "vor den Augen"),
+          w("spectātōrum", "der Zuschauer"),
+          w("puerum peperit", "gebärte einen Jungen")
+        ]
+      },
+      {
+        who: "Nymphidius", whoClass: "nym",
+        la: "Nerō prīnceps permittere nōn dēbet, ut tālia accidant.",
+        de: "Nero als Princeps darf nicht zulassen, dass solches geschieht.",
+        fun: "Jetzt wird’s politisch: Du bist Kaiser, nicht Reality-Star.",
+        words: [
+          w("prīnceps", "als Princeps / der Kaiser"),
+          w("permittere nōn dēbet", "darf nicht zulassen"),
+          w("ut … accidant", "dass … geschehen (Konsekutiv/Final-artig)")
+        ]
+      },
+      {
+        who: "Nymphidius", whoClass: "nym",
+        la: "Nunc iam mihi concēdē, ut dē rē pūblicā cūrēmus.",
+        de: "Gestatte mir jetzt endlich, dass wir uns um den Staat kümmern.",
+        fun: "<em>concēdē</em> = Imperativ. Bitte um Erlaubnis, endlich Politik zu machen.",
+        words: [
+          w("nunc iam", "jetzt endlich"),
+          w("mihi concēdē", "gestatte mir"),
+          w("ut … cūrēmus", "dass wir uns kümmern"),
+          w("dē rē pūblicā", "um den Staat")
+        ]
+      },
+      {
+        who: "Nerō", whoClass: "nero",
+        la: "Dēsine, Nymphidī, aurēs meās offendere!",
+        de: "Hör auf, Nymphidius, meine Ohren zu beleidigen!",
+        fun: "Endboss-Reaktion. Kritik = Ohrenbeleidigung. Gespräch beendet. Mikrofon fallen lassen.",
+        words: [
+          w("dēsine", "hör auf!"),
+          w("Nymphidī", "Nymphidius! (Vokativ)"),
+          w("aurēs meās", "meine Ohren"),
+          w("offendere", "beleidigen / verletzen")
+        ]
+      }
+    ];
+
+    const einstiegHost = $("einstieg");
+    EINSTIEG.forEach(s => renderSentence(s, einstiegHost));
+    const textHost = $("lektionstext");
+    TEXT.forEach(s => renderSentence(s, textHost));
+
+    $("stopSpeech").onclick = stopSpeak;
+    $("playAllLa").onclick = () => {
+      stopSpeak();
+      let i = 0;
+      const lines = TEXT.map(s => s.la.replace(/[¹²³⁴⁵⁶⁷]/g, ""));
+      function next() {
+        if (i >= lines.length) { toast("Text durch! 🎭"); confetti(); return; }
+        speak(lines[i], "it-IT", {
+          rate: TEXT[i].whoClass === "nero" ? 0.95 : 0.84,
+          pitch: TEXT[i].whoClass === "nero" ? 1.18 : 0.88,
+          onend: () => { i++; setTimeout(next, 280); }
+        });
+      }
+      next();
+    };
+
+    /* ========== SACHINFO ========== */
+    const STORIES = [
+      {
+        id: "start",
+        title: "🎬 Cold Open: Qualis artifex pereo",
+        speak: "Stell dir vor: Der mächtigste Mann der Welt liegt im Sterben — und sein letzter Gedanke ist nicht Politik, nicht Rom, nicht mal seine Feinde. Sein letzter Satz lautet: Qualis artifex pereo — Welch ein Künstler geht mit mir zugrunde! Das ist Nero. Nicht: Welch ein Kaiser. Ein Künstler. Und genau dieses Ego ist die ganze Lektion.",
+        html: `<p class="drama">Stell dir vor: Der mächtigste Mann der Welt liegt im Sterben — und sein letzter Gedanke ist nicht Politik, nicht Rom, nicht mal seine Feinde.<br><br>Sein letzter Satz lautet: <em>„Qualis artifex pereō!“</em> — „Welch ein Künstler geht mit mir zugrunde!“<br><br>Das ist Nero. Nicht: Welch ein Kaiser. <strong>Ein Künstler.</strong> Und genau dieses Ego ist die ganze Lektion.</p>`
+      },
+      {
+        id: "teen",
+        title: "👑 Teenager auf dem Thron",
+        speak: "54 nach Christus. Nero wird Kaiser — und ist noch nicht mal siebzehn. Seine Mutter Agrippina schiebt ihn auf den Thron. Sein Lehrer ist Seneca, der Philosoph. Am Anfang läuft’s sogar: Der Senat ist relativ happy, Rom atmet auf. Spoiler: Das hält nicht.",
+        html: `<p class="drama">Jahr <strong>54 n. Chr.</strong> Nero wird Kaiser — und ist noch nicht mal <strong>17</strong>.<br><br>Seine Mutter <strong>Agrippina</strong> schiebt ihn auf den Thron. Sein Coach: <strong>Seneca</strong>, der Philosoph.<br><br>Am Anfang? Relativ gut. Senat freundlich, Rom atmet auf.<br><br>Spoiler: Das hält nicht. Teenager + Absolute Macht = schlechte Serie mit zu vielen Staffeln.</p>`
+      },
+      {
+        id: "traum",
+        title: "🎵 Vom Traum zum Alptraum",
+        speak: "Was Nero wirklich will? Nicht Akten. Nicht Senat. Musik. Kunst. Pferde. Auf der Bühne singen. Die normalen Leute finden den Künstler-Kaiser erst mal spannend. Die Elite rollt mit den Augen. Dann eskaliert’s: Streit mit Mutter Agrippina. Seneca soll sich umbringen. Aus Traumjob Kaiser wird Horrorfilm.",
+        html: `<p class="drama">Was Nero wirklich will? Nicht Akten. Nicht Senat.<br><br><strong>Musik. Kunst. Pferde. Auf der Bühne singen.</strong><br><br>Das Volk: „Okay, weird flex, but go off.“<br>Die Elite: Augenrollen Level Senator.<br><br>Dann eskaliert’s: Konflikt mit <strong>Agrippina</strong>. <strong>Seneca</strong> muss in den Tod.<br>Aus Traumjob Kaiser wird Horrorfilm.</p>`
+      },
+      {
+        id: "feuer",
+        title: "🔥 Rom in Flammen!",
+        speak: "Juli 64. Rom brennt. Gerücht Nummer eins: Nero hat das Feuer gelegt, damit er sich eine neue Traumstadt bauen kann — Neropolis. Heute sagen Historiker: Wahrscheinlich unschuldig am Brand. Damals? Er braucht einen Sündenbock — und findet die Christen. Verfolgung. Drama. Propaganda.",
+        html: `<p class="drama"><strong>Juli 64.</strong> Rom brennt.<br><br>Gerücht: Nero hat gezündelt, damit Platz ist für seine Mega-Bauprojekte — Stichwort <strong>Neropolis</strong>.<br><br>Heute: Historiker sagen eher „unschuldig am Brand“.<br>Damals: Nero braucht einen Sündenbock → <strong>die Christen</strong>.<br><br>Verfolgung. Propaganda. Sehr dunkles Kapitel.</p>`
+      },
+      {
+        id: "palast",
+        title: "🏛️ Domus Aurea — Goldenes Haus",
+        speak: "Nach dem Brand baut Nero die Domus Aurea — ein riesiges Palastgelände mit Gärten und See mitten in Rom. Als es fertig ist, sagt er laut Sueton: Jetzt erst fange ich an, wie ein Mensch zu wohnen. Übersetzung: Vorher war alles zu klein für meinen Main-Character-Energy.",
+        html: `<p class="drama">Nach dem Brand: die <strong>Domus Aurea</strong> — das Goldene Haus.<br>Riesiges Palastgelände, Gärten, See, mitten in Rom.<br><br>Sueton zitiert Nero sinngemäß: <em>„Jetzt erst fange ich an, wie ein Mensch zu wohnen.“</em><br><br>Übersetzung: Vorher war alles zu klein für seine Main-Character-Energy.</p>`
+      },
+      {
+        id: "ende",
+        title: "💀 Hostis — und Schluss",
+        speak: "Der Senat hat irgendwann genug und erklärt Nero zum hostis — Feind des Staates. Nero flieht. Und nimmt sich das Leben. Letzte Worte: Qualis artifex pereo. Ende einer Ära, Anfang unendlich vieler Geschichten, Filme und Lateinlektüren.",
+        html: `<p class="drama">Der Senat hat genug → Nero wird <em>hostis</em> erklärt (Staatsfeind).<br><br>Flucht. Selbstmord.<br>Letzte Worte: <em>Qualis artifex pereō.</em><br><br>Ende einer Ära — und Anfang unendlich vieler Filme, Memes und Lateinprüfungen.</p>`
+      },
+      {
+        id: "vergleich",
+        title: "⚖️ Bonus: Augustus vs. Nero",
+        speak: "Kurzvergleich für die Aufgabe: Augustus spielt den bescheidenen Retter des Staates, baut Frieden, Ara Pacis, Image: seriös. Nero spielt den Künstler-Kaiser, will Bühne und Applaus, Image: Skandal. Beide haben Macht — aber Augustus verkauft Pflicht, Nero verkauft Show.",
+        html: `<p class="drama"><strong>Augustus:</strong> Image „Ich diene dem Staat“. Frieden, Bauwerke, Ara Pacis, Kontrolle der Öffentlichkeit.<br><br><strong>Nero:</strong> Image „Ich bin der Star“. Bühne, Gesang, Wagenrennen, Domus Aurea.<br><br>Beide = absolute Macht. Aber Augustus verkauft <strong>Pflicht</strong>, Nero verkauft <strong>Show</strong>. Das will die Vergleichsaufgabe hören.</p>`
+      }
+    ];
+
+    const storyNav = $("storyNav");
+    const storyCards = $("storyCards");
+    let activeStory = "start";
+
+    STORIES.forEach((s, idx) => {
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.className = "chip" + (idx === 0 ? " active" : "");
+      chip.textContent = (idx + 1) + " · " + s.title.replace(/^[^ ]+ /, "").slice(0, 18);
+      chip.dataset.id = s.id;
+      chip.onclick = () => showStory(s.id);
+      storyNav.appendChild(chip);
+
+      const card = document.createElement("article");
+      card.className = "story-card" + (idx === 0 ? "" : " hidden");
+      card.dataset.id = s.id;
+      card.innerHTML = `
+        <h3>${s.title}</h3>
+        ${s.html}
+        <div class="cta-row" style="justify-content:flex-start;margin-top:0.7rem;">
+          <button type="button" class="btn wine read-one">🎙️ Mit Drama vorlesen</button>
+        </div>
+      `;
+      card.querySelector(".read-one").onclick = () => readStoryDramatic([s]);
+      storyCards.appendChild(card);
+    });
+
+    function showStory(id) {
+      activeStory = id;
+      storyNav.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c.dataset.id === id));
+      storyCards.querySelectorAll(".story-card").forEach(c => c.classList.toggle("hidden", c.dataset.id !== id));
+    }
+
+    function readStoryDramatic(list) {
+      stopSpeak();
+      let i = 0;
+      const pitches = [1.05, 0.92, 1.12, 0.88, 1.08, 0.85, 1.0];
+      const rates = [1.08, 1.0, 1.12, 0.95, 1.05, 0.9, 1.02];
+      function next() {
+        if (i >= list.length) { toast("Story durch! 🔥"); return; }
+        showStory(list[i].id);
+        const card = storyCards.querySelector(`[data-id="${list[i].id}"]`);
+        if (card) {
+          const h = card.querySelector("h3");
+          if (h && !h.querySelector(".reading-dot")) {
+            const dot = document.createElement("span");
+            dot.className = "reading-dot";
+            h.prepend(dot);
+            setTimeout(() => dot.remove(), 5000);
+          }
+        }
+        speak(list[i].speak, "de-DE", {
+          rate: rates[i % rates.length],
+          pitch: pitches[i % pitches.length],
+          onend: () => { i++; setTimeout(next, 420); }
+        });
+      }
+      next();
+    }
+
+    $("readStoryAll").onclick = () => readStoryDramatic(STORIES);
+    $("stopStory").onclick = stopSpeak;
+
+    const SACH_QUIZ = [
+      {
+        q: "Was bedeuten Neros angebliche letzte Worte Qualis artifex pereo?",
+        choices: ["Welch ein Künstler geht mit mir zugrunde!", "Der Senat soll brennen!", "Ich war der beste Kaiser!", "Seneca hatte recht."],
+        a: 0,
+        why: "Genau — Künstler-Identität bis zum Schluss."
+      },
+      {
+        q: "Wie alt war Nero ungefähr, als er Kaiser wurde?",
+        choices: ["Noch keine 17", "25", "40", "12"],
+        a: 0,
+        why: "54 n. Chr., Teenager auf dem Thron."
+      },
+      {
+        q: "Wer war Neros philosophischer Berater am Anfang?",
+        choices: ["Seneca", "Cicero", "Nymphidius allein", "Horaz"],
+        a: 0,
+        why: "Seneca — bis Nero ihn in den Tod schickt."
+      },
+      {
+        q: "Wofür braucht Nero laut Gerücht den Brand Roms?",
+        choices: ["Platz für Bauprojekte / Neropolis", "Eine Gartenparty", "Den Senat zu heizen", "Christliche Kirchen"],
+        a: 0,
+        why: "Gerücht: Brand → Bauplatz. Historisch umstritten."
+      },
+      {
+        q: "Wen macht Nero zum Sündenbock für den Brand?",
+        choices: ["Die Christen", "Die Gallier", "Die Gladiatoren", "Die Vestalinnen"],
+        a: 0,
+        why: "Christenverfolgung nach dem Brand 64."
+      },
+      {
+        q: "Wie heißt Neros Megapalast?",
+        choices: ["Domus Aurea", "Ara Pacis", "Pantheon", "Colosseum"],
+        a: 0,
+        why: "Goldenes Haus — Domus Aurea."
+      },
+      {
+        q: "Was erklärt der Senat Nero am Ende?",
+        choices: ["hostis (Staatsfeind)", "deus (Gott)", "consul auf Lebenszeit", "pontifex maximus neu"],
+        a: 0,
+        why: "hostis → Flucht → Tod."
+      },
+      {
+        q: "Augustus vs. Nero — welche Kurzformel passt?",
+        choices: ["Augustus = Pflicht-Image, Nero = Show-Image", "Beide hassten Kunst", "Nero baute die Ara Pacis", "Augustus sang im Theater"],
+        a: 0,
+        why: "Vergleichsaufgabe in einem Satz."
+      }
+    ];
+
+    let sachIdx = 0, sachScore = 0, sachLock = false, sachOrder = [];
+
+    function startSachQuiz() {
+      stopSpeak();
+      sachOrder = [...SACH_QUIZ.keys()].sort(() => Math.random() - 0.5);
+      sachIdx = 0; sachScore = 0; sachLock = false;
+      $("sachQuiz").style.display = "block";
+      $("sachResults").style.display = "none";
+      renderSachQ();
+      $("sachQuiz").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function renderSachQ() {
+      const item = SACH_QUIZ[sachOrder[sachIdx]];
+      $("sachMeta").textContent = `Frage ${sachIdx + 1} / ${SACH_QUIZ.length}`;
+      $("sachBar").style.width = ((sachIdx) / SACH_QUIZ.length * 100) + "%";
+      $("sachPrompt").textContent = item.q;
+      $("sachFeedback").textContent = "";
+      $("sachFeedback").className = "feedback";
+      $("sachNext").disabled = true;
+      sachLock = false;
+      const box = $("sachChoices");
+      box.innerHTML = "";
+      item.choices.forEach((c, i) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "choice";
+        b.textContent = c;
+        b.onclick = () => {
+          if (sachLock) return;
+          sachLock = true;
+          const ok = i === item.a;
+          [...box.children].forEach((ch, j) => {
+            ch.disabled = true;
+            if (j === item.a) ch.classList.add("right");
+            if (j === i && !ok) ch.classList.add("wrong");
+          });
+          if (ok) {
+            sachScore++;
+            $("sachFeedback").textContent = "Stimmt! " + item.why;
+            $("sachFeedback").className = "feedback good";
+            speak("Richtig!", "de-DE", { rate: 1.15, pitch: 1.2 });
+          } else {
+            $("sachFeedback").textContent = "Nope. " + item.why;
+            $("sachFeedback").className = "feedback bad";
+            speak("Leider falsch.", "de-DE", { rate: 0.95, pitch: 0.85 });
+          }
+          $("sachNext").disabled = false;
+        };
+        box.appendChild(b);
+      });
+    }
+
+    $("startSachQuiz").onclick = startSachQuiz;
+    $("sachAgain").onclick = startSachQuiz;
+    $("sachNext").onclick = () => {
+      sachIdx++;
+      if (sachIdx >= SACH_QUIZ.length) {
+        $("sachQuiz").style.display = "none";
+        $("sachResults").style.display = "block";
+        $("sachBar").style.width = "100%";
+        $("sachScore").textContent = sachScore + " / " + SACH_QUIZ.length;
+        const msg = sachScore >= 7 ? "Kaiserlich! Du kennst Nero besser als Nymphidius." :
+          sachScore >= 5 ? "Solide — der Senat nickt zustimmend." :
+          "Noch Übung: Story nochmal vorlesen, dann Retry!";
+        $("sachMsg").textContent = msg;
+        if (sachScore >= 6) confetti();
+        speak(msg, "de-DE", { rate: 1.05, pitch: 1.05 });
+      } else renderSachQ();
+    };
+
+    /* ========== ÜBUNGEN ========== */
+    const EX = [
+      {
+        num: "0",
+        title: "Das kann ich schon · Zeitverhältnisse",
+        blurb: "VZ / GZ erkennen + richtige deutsche Zeit wählen",
+        body: `
+          <p class="hint-box"><strong>Mini-Regel:</strong> Schau die <em>Konjunktiv-Zeit</em> im Nebensatz und vergleiche mit dem Hauptsatz.<br>
+          Konj. Perfekt zu Gegenwart ≈ Vorzeitigkeit zur Gegenwart (VZ).<br>
+          Konj. Impf. zu Vergangenheit ≈ Gleichzeitigkeit zur Vergangenheit (GZ).<br>
+          Konj. Plusquamperfekt zu Vergangenheit ≈ Vorzeitigkeit zur Vergangenheit (VZ).</p>
+          <p class="lat-mini">1. … cum poēta ēgregius <strong>sit</strong>.</p>
+          <p>Konj. Präsens + Gegenwart im Zitat → <strong>B: GZ zur Gegenwart</strong> → „weil er ein hervorragender Dichter <strong>ist</strong>.“</p>
+          <p class="lat-mini">2. Cum Augustus … celebrāre <strong>vellet</strong>, … composuit.</p>
+          <p>Konj. Impf. + Perfekt im HS → <strong>C: GZ zur Vergangenheit</strong> → „weil Augustus … feiern <strong>wollte</strong>.“</p>
+          <p class="lat-mini">3. Cum carmen … cantātum <strong>esset</strong>, … laudātus est.</p>
+          <p>Konj. Plusquamperfekt → <strong>A: VZ zur Vergangenheit</strong> → „als das Lied … gesungen <strong>worden war</strong>.“</p>
+        `
+      },
+      {
+        num: "1",
+        title: "Formen gesucht · Konjunktiv Perfekt",
+        blurb: "Tippe alle Konj.-Perfekt-Formen — Buchstaben ergeben ein Nero-Wort",
+        body: `
+          <p class="hint-box">Konjunktiv Perfekt erkennt man oft an <strong>-eri-</strong> (Aktiv) bzw. PPP + <strong>sim/sis/sit…</strong> (Passiv). Nicht verwechseln mit Plusquamperfekt (<em>-isse-</em>) oder Impf. (<em>-re-/-ri-</em> ohne Perfektstamm).</p>
+          <div class="form-grid" id="formGrid"></div>
+          <p id="formStatus" style="font-weight:800;margin-top:0.4rem;"></p>
+          <button type="button" class="reveal-btn" id="formCheck">Prüfen</button>
+          <button type="button" class="reveal-btn" id="formSolve" style="background:var(--wine-deep);">Lösung zeigen</button>
+          <div class="ghost" id="formAnswer">
+            <div class="answer-box">
+              <div class="label">Lösung</div>
+              Konj. Perfekt: <em>negāverim, commōverīmus, permīserint, fuerīs, successerītis, celebrāta sint, auxerint, flōruerit</em><br>
+              Buchstaben: T U A E T M R H → <strong>THEATRUM</strong> 🎭<br>
+              (Natürlich wichtig für Nero — Zwangskonzerte!)
+              <p style="margin-top:0.45rem;">1b Beispiele: negāverim → negō; fuerīs → sum; flōruerit → flōreō; auxerint → augeō; permīserint → permittō; commōverīmus → commoveō; successerītis → succēdō; celebrāta sint → celebror/celebrō (Passivhilfe: celebrātum est ← celebrāre).</p>
+            </div>
+          </div>
+        `
+      },
+      {
+        num: "2",
+        title: "Reaktionen auf Kaiser Nero",
+        blurb: "Vorzeitige Nebensätze übersetzen",
+        body: `
+          <p class="hint-box">Alle <em>cum</em>-Sätze hier mit Konj. Perfekt / Plusquamperfekt = oft „nachdem / weil … (schon) …“.</p>
+          <p class="lat-mini">1. Nōnnūllī senātōrēs putāvērunt: „Iuvenis, cum ā Senecā … īnstrūctus sit, certē probus est.“</p>
+          <div class="answer-box"><div class="label">Übersetzung</div>Einige Senatoren meinten: „Der junge Mann ist sicher rechtschaffen, <strong>weil/da</strong> er von dem Philosophen Seneca ausgebildet <strong>worden ist</strong>.“</div>
+          <p class="lat-mini">2. Seneca …: „Cum Nerōnem īnstrūxerim, is tamen mea cōnsilia neglegit.“</p>
+          <div class="answer-box"><div class="label">Übersetzung</div>Seneca …: „Obwohl/Obgleich ich Nero ausgebildet habe, vernachlässigt er trotzdem meine Ratschläge.“ (konzessiv möglich; kausal „obwohl ich ihn erzogen habe“)</div>
+          <p class="lat-mini">3. Multī cīvēs: „Nerō, cum ā iūdicibus … victor dēclārātus sit, ipse sē artificem ēgregium putat.“</p>
+          <div class="answer-box"><div class="label">Übersetzung</div>Viele Bürger: „Weil Nero von den Richtern immer wieder zum Sieger erklärt worden ist, hält er sich selbst für einen hervorragenden Künstler.“</div>
+          <p class="lat-mini">4. Suētōnius scrībit: „Hominēs in theātra convēnērunt, cum Nerō id imperāvisset.“</p>
+          <div class="answer-box"><div class="label">Übersetzung</div>Sueton schreibt: „Die Menschen kamen in die Theater, <strong>nachdem</strong> Nero das befohlen <strong>hatte</strong>.“ (Plusquamperfekt!)</div>
+        `
+      },
+      {
+        num: "3",
+        title: "Nymphidius macht sich Gedanken",
+        blurb: "Relativ vs. Interrogativ — Partnerübung",
+        body: `
+          <p class="hint-box"><strong>Trick:</strong> Steht davor ein Bezugswort (omnia, artēs…)? → meist <em>Relativ</em>. Ist es eine echte Frage / indirekte Frage ohne Bezugswort? → <em>Interrogativ</em>.</p>
+          <p class="lat-mini">1. Num omnia, <strong>quae</strong> hominēs dē Nerōne nārrant, vēra sunt?</p>
+          <div class="answer-box">Relativpronomen (bezieht sich auf <em>omnia</em>). „Sind etwa alle Dinge, die die Menschen über Nero erzählen, wahr?“</div>
+          <p class="lat-mini">2. Nōnne Nerō scit, <strong>quae</strong> rēs mūnera prīncipis sint?</p>
+          <div class="answer-box">Interrogativ (indirekte Frage nach <em>scit</em>). „Weiß Nero nicht, welche Dinge die Aufgaben eines Princeps sind?“</div>
+          <p class="lat-mini">3. <strong>Quī</strong> prīncipēs sē umquam in cīvēs suōs vertērunt?</p>
+          <div class="answer-box">Interrogativ (direkte Frage). „Welche Principes haben sich jemals gegen ihre Bürger gewandt?“</div>
+          <p class="lat-mini">4. Artēs, <strong>quās</strong> Nerō dīligit, prīncipem nōn decent.</p>
+          <div class="answer-box">Relativpronomen (bezieht sich auf <em>artēs</em>). „Die Künste, die Nero liebt, schicken sich nicht für einen Princeps.“</div>
+        `
+      },
+      {
+        num: "4",
+        title: "Fit für Deutsch",
+        blurb: "Wann braucht Deutsch auch einen Konjunktiv?",
+        body: `
+          <p class="hint-box">Latein-Konjunktiv ≠ automatisch Deutsch-Konjunktiv. Finalsätze oft mit „damit“ + Indikativ; irreale Wünsche/Bedingungen → Deutsch Konjunktiv II.</p>
+          <p class="lat-mini">1. Augustus … voluit, ut deīs grātiās ageret.</p>
+          <div class="answer-box">„Augustus wollte Opfer darbringen, damit er den Göttern dankte.“ → Deutsch meist Indikativ / „um zu danken“. <strong>Kein Muss-Konjunktiv.</strong></div>
+          <p class="lat-mini">2. „Nisi Mārcum Antōnium vīcissem, pāx nunc nōn esset.“</p>
+          <div class="answer-box">„Wenn ich Marcus Antonius nicht besiegt hätte, gäbe es jetzt keinen Frieden.“ → <strong>Ja, Deutsch Konjunktiv II</strong> (irreal).</div>
+          <p class="lat-mini">3. Optāvit, ut multī Rōmānī sacrīs interessent.</p>
+          <div class="answer-box">„Er wünschte, dass viele Römer an den heiligen Handlungen teilnahmen.“ → oft Indikativ / „möge“; Konjunktiv möglich, aber nicht zwingend wie bei 2.</div>
+          <p class="lat-mini">4. … vīdit, quanta turba … convēnisset.</p>
+          <div class="answer-box">„… sah, welch große Menschenmenge zusammengekommen war.“ → Indikativ Perfekt/Plusquam im Deutschen.</div>
+          <p class="lat-mini">5. … tam illūstre est, ut etiam nunc legātur.</p>
+          <div class="answer-box">„… ist so berühmt, dass es sogar jetzt gelesen wird.“ → Konsekutivsatz, Deutsch Indikativ.</div>
+          <p class="fun" style="margin-top:0.6rem;">Merksatz: <strong>Irrealis = Deutsch Konjunktiv.</strong> Final/Konsekutiv/indirekte Frage = oft normal erzählen.</p>
+        `
+      },
+      {
+        num: "5",
+        title: "Ausgegraben",
+        blurb: "Recherche-Cheat-Sheet (kurz & präsentierbar)",
+        body: `
+          <div class="answer-box"><strong>Domus Aurea:</strong> Neros Goldenes Haus nach dem Brand 64 — riesiger Palastkomplex.</div>
+          <div class="answer-box"><strong>Trajansthermen:</strong> Große Thermen Trajans; später über Teilen der Domus-Aurea-Fläche.</div>
+          <div class="answer-box"><strong>Pantheon:</strong> Rundtempel aller Götter in Rom (Hadrian-Bau, Inschrift Agrippa).</div>
+          <div class="answer-box"><strong>Troja / Delphi:</strong> Mythische bzw. Orakel-Orte der griechischen Welt — Nero tourte durch Griechenland.</div>
+          <div class="answer-box"><strong>Forum Romanum:</strong> Politisches Herz Roms — Reden, Tempel, Macht.</div>
+          <p class="hint-box">Präsentier-Trick: 1 Fakt + 1 Bildbeschreibung + 1 Verbindung zu Nero/Augustus. Fertig.</p>
+        `
+      },
+      {
+        num: "6",
+        title: "Ohne Maß und Ziel · Satz für Satz",
+        blurb: "Der Übungstext — mit Worthelp und Zeitverhältnissen",
+        body: `<div id="massText"></div>`
+      },
+      {
+        num: "T",
+        title: "Textaufgaben zum Dialog (S. 170)",
+        blurb: "Textsorte, Stimmung, Wortstellung",
+        body: `
+          <div class="answer-box"><div class="label">1 · Textsorte</div>
+          Es ist ein <strong>Dialog / dramatische Wechselrede</strong> (nach Cassius Dio & Sueton).<br>
+          Anhaltspunkte: Sprechnamen <em>Nerō / Nymphidius</em>, Anrede, Imperative, direkte Rede, Streitgespräch.</div>
+          <div class="answer-box"><div class="label">2 · Stimmung</div>
+          <strong>Nero:</strong> stolz → unsicher/bedürftig nach Lob → genervt/abweisend → wütend.<br>
+          <strong>Nymphidius:</strong> diplomatisch schmeichelnd → sachlich fordernd → warnend/anklagend → bittend.<br>
+          Entwicklung: vom Ego-Trip zum politischen Konflikt, der eskaliert.</div>
+          <div class="answer-box"><div class="label">3 · Wortstellung</div>
+          <em>Tē scīlicet populus dīligit</em>: Akkusativobjekt <strong>Tē</strong> ganz vorne → Betonung: „DICH (zwar) liebt das Volk…“.<br>
+          <em>cūnctīs in oppidīs</em>: Attribut <strong>cūnctīs</strong> vorgezogen → „in ALLEN Städten“ klingt total und erdrückend.<br>
+          Wirkung: Kontrast (Liebe vs. Kritik) und Übertreibung/Druck.</div>
+        `
+      }
+    ];
+
+    const MASS = [
+      {
+        who: "Satz 1", whoClass: "narr",
+        la: "Apud Suētōnium legimus, quantā ambitiōne Nerō prīnceps commōtus sit.",
+        de: "Bei Sueton lesen wir, von wie großem Ehrgeiz der Princeps Nero ergriffen worden ist.",
+        fun: "Indirekte Frage: <em>quantā … commōtus sit</em> (Konj. Perf. = vorzeitig zur Gegenwart des Lesens).",
+        words: [
+          w("apud Suētōnium", "bei Sueton"),
+          w("legimus", "wir lesen"),
+          w("quantā ambitiōne", "von wie großem Ehrgeiz"),
+          w("commōtus sit", "ergriffen worden ist")
+        ]
+      },
+      {
+        who: "Satz 2", whoClass: "narr",
+        la: "Optāns, ut ab omnibus dīligerētur, populum nōn modo lūdīs, sed etiam pecūniā frūmentōque dēlectābat.",
+        de: "Weil/Indem er wünschte, von allen geliebt zu werden, erfreute er das Volk nicht nur durch Spiele, sondern auch durch Geld und Getreide.",
+        fun: "<em>ut … dīligerētur</em> = Finalsatz (Passiv). Nero kauft Liebe mit Brot und Spielen.",
+        words: [
+          w("optāns", "wünschend"),
+          w("ut … dīligerētur", "dass er geliebt würde"),
+          w("nōn modo … sed etiam", "nicht nur … sondern auch"),
+          w("lūdīs", "durch Spiele"),
+          w("pecūniā frūmentōque", "durch Geld und Getreide"),
+          w("dēlectābat", "erfreute / belustigte")
+        ]
+      },
+      {
+        who: "Satz 3", whoClass: "narr",
+        la: "In certāminibus mūsicīs hominibus deīsque praestāre cupīvit.",
+        de: "Bei musikalischen Wettkämpfen wollte er Menschen und Götter übertreffen.",
+        fun: "Remember Apoll aus dem Dialog? Same energy.",
+        words: [
+          w("in certāminibus mūsicīs", "bei musikalischen Wettkämpfen"),
+          w("hominibus deīsque", "Menschen und Göttern (Dat.)"),
+          w("praestāre cupīvit", "wollte übertreffen")
+        ]
+      },
+      {
+        who: "Satz 4", whoClass: "narr",
+        la: "Cum diū in hortīs suīs sē exercuisset, in Circō Māximō audāciter sē gessit et curriculō equōrum victor esse cupīvit.",
+        de: "Nachdem er sich lange in seinen Gärten geübt hatte, benahm er sich im Circus Maximus kühn und wollte Sieger im Pferderennen sein.",
+        fun: "<em>exercuisset</em> = Konj. Plusquamperfekt → VZ zur Vergangenheit. Erst Training, dann Main-Stage.",
+        words: [
+          w("cum … sē exercuisset", "nachdem er sich geübt hatte"),
+          w("in hortīs suīs", "in seinen Gärten"),
+          w("in Circō Māximō", "im Circus Maximus"),
+          w("audāciter sē gessit", "benahm sich kühn"),
+          w("curriculō equōrum", "im Pferderennen"),
+          w("victor esse cupīvit", "wollte Sieger sein")
+        ]
+      },
+      {
+        who: "Satz 5", whoClass: "narr",
+        la: "Profectō ambitiō Nerōnis tanta erat, ut hominēs hoc vix crēderent:",
+        de: "In der Tat war Neros Ehrgeiz so groß, dass die Menschen das kaum glaubten:",
+        fun: "Konsekutivsatz <em>ut … crēderent</em> (GZ zur Vergangenheit).",
+        words: [
+          w("profectō", "in der Tat / fürwahr"),
+          w("tanta erat, ut", "war so groß, dass"),
+          w("vix crēderent", "kaum glaubten")
+        ]
+      },
+      {
+        who: "Satz 6", whoClass: "nero",
+        la: "Quondam, dum theātrum mōtū terrae concutitur, ille cantāre perrēxit.",
+        de: "Einst, während das Theater durch ein Erdbeben erschüttert wurde, sang jener weiter.",
+        fun: "Boss-Level Ehrgeiz: Erde bebt — Nero macht weiter. <em>dum</em> + Indikativ = während.",
+        words: [
+          w("quondam", "einst / einmal"),
+          w("dum … concutitur", "während … erschüttert wird"),
+          w("mōtū terrae", "durch ein Erdbeben"),
+          w("ille", "jener (Nero)"),
+          w("cantāre perrēxit", "sang weiter / fuhr fort zu singen")
+        ]
+      }
+    ];
+
+    const exHost = $("exercises");
+    EX.forEach(ex => {
+      const box = document.createElement("div");
+      box.className = "ex";
+      box.innerHTML = `
+        <button type="button" class="ex-head">
+          <span class="ex-num">${ex.num}</span>
+          <span><h3>${ex.title}</h3><p>${ex.blurb}</p></span>
+        </button>
+        <div class="ex-body">${ex.body}</div>
+      `;
+      box.querySelector(".ex-head").onclick = () => box.classList.toggle("open");
+      exHost.appendChild(box);
+    });
+
+    // Fill mass text
+    const massHost = $("massText");
+    if (massHost) MASS.forEach(s => renderSentence(s, massHost));
+
+    // Form puzzle
+    const FORM_ITEMS = [
+      { la: "statuissem", letter: "L", ok: false },
+      { la: "negāverim", letter: "T", ok: true },
+      { la: "terruit", letter: "B", ok: false },
+      { la: "audīret", letter: "I", ok: false },
+      { la: "īssēs", letter: "N", ok: false },
+      { la: "persuāsērunt", letter: "O", ok: false },
+      { la: "commōverīmus", letter: "U", ok: true },
+      { la: "permīserint", letter: "A", ok: true },
+      { la: "voluissētis", letter: "S", ok: false },
+      { la: "fuerīs", letter: "E", ok: true },
+      { la: "successerītis", letter: "T", ok: true },
+      { la: "sint", letter: "D", ok: false },
+      { la: "celebrāta sint", letter: "M", ok: true },
+      { la: "auxerint", letter: "R", ok: true },
+      { la: "flōruerit", letter: "H", ok: true },
+      { la: "contendimus", letter: "C", ok: false },
+      { la: "composita sunt", letter: "F", ok: false }
+    ];
+    const formGrid = $("formGrid");
+    if (formGrid) {
+      FORM_ITEMS.forEach((f, i) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "form-chip";
+        b.dataset.i = i;
+        b.innerHTML = `${f.la}<br><small style="font-family:var(--font-b);opacity:.7;">${f.letter}</small>`;
+        b.onclick = () => b.classList.toggle("picked");
+        formGrid.appendChild(b);
+      });
+      $("formCheck").onclick = () => {
+        let letters = [];
+        let correct = true;
+        formGrid.querySelectorAll(".form-chip").forEach((b, i) => {
+          const f = FORM_ITEMS[i];
+          const picked = b.classList.contains("picked");
+          b.classList.remove("yes", "no");
+          if (picked && f.ok) { b.classList.add("yes"); letters.push(f.letter); }
+          else if (picked && !f.ok) { b.classList.add("no"); correct = false; }
+          else if (!picked && f.ok) { correct = false; }
+        });
+        const word = letters.join("");
+        const sorted = letters.slice().sort().join("");
+        const target = "THEATRUM".split("").sort().join("");
+        if (correct && sorted === target) {
+          $("formStatus").textContent = `Perfekt! Buchstaben → THEATRUM 🎭`;
+          confetti();
+          toast("THEATRUM!");
+          speak("Theatrum! Super!", "de-DE", { pitch: 1.2, rate: 1.1 });
+        } else {
+          $("formStatus").textContent = `Noch nicht. Du hast: ${word || "—"} — Zielwort hat 8 Buchstaben.`;
+        }
+      };
+      $("formSolve").onclick = () => {
+        $("formAnswer").classList.add("show");
+        formGrid.querySelectorAll(".form-chip").forEach((b, i) => {
+          b.classList.toggle("picked", FORM_ITEMS[i].ok);
+          b.classList.toggle("yes", FORM_ITEMS[i].ok);
+          b.classList.remove("no");
+        });
+        $("formStatus").textContent = "Lösung: THEATRUM";
+      };
+    }
+
+    // Tabs
+    document.querySelectorAll(".tab-btn[data-tab]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn[data-tab]").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+        btn.classList.add("active");
+        $("panel-" + btn.dataset.tab).classList.add("active");
+        stopSpeak();
+      });
+    });
+  </script>
+</body>
+</html>
